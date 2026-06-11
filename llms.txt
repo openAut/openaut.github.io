@@ -16,7 +16,7 @@ openAut hjälper fastighetsägare att analysera byggnadsdata och implementera Py
 
 ### Systemtopologi
 - URL: https://openaut.io/topologi.html
-- Beskrivning: Fullständig arkitekturvy — fältsensorer, edge-noder, AI-lager och gränssnitt lager för lager. Visar protokoll (Modbus RTU/TCP, BACnet, M-Bus, LoRaWAN, KNX, DALI), dataflöden och hårdvarukrav. AI-lagret är hårdvaruagnostiskt — valfri lokal LLM- och ML-hårdvara dimensionerad efter modellval. Driftlagret är delat i openAut Advisor och openAut Engineer på var sin server, med en delad AI-backend (NemoClaw/Nemotron). Power BI Report Server (on-prem) läser read-only från Systemdatabasen.
+- Beskrivning: Fullständig arkitekturvy — fältsensorer, edge-noder, AI-lager och gränssnitt lager för lager. Visar protokoll (Modbus RTU/TCP, BACnet, M-Bus, LoRaWAN, KNX, DALI), dataflöden och hårdvarukrav. AI-lagret är hårdvaruagnostiskt — valfri lokal LLM- och ML-hårdvara dimensionerad efter modellval. Driftlagret är delat i openAut Advisor och openAut Engineer på var sin server, med en delad AI-backend (NemoClaw med öppna modeller). Power BI Report Server (on-prem) läser read-only från Systemdatabasen.
 
 ### IT/OT-säkerhet
 - URL: https://openaut.io/security.html
