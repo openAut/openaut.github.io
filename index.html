@@ -1703,7 +1703,7 @@
     <span class="ticker-item">Anomalidetektering</span>
     <span class="ticker-item accent">Energioptimering</span>
     <span class="ticker-item">Felsökning med AI-stöd</span>
-    <span class="ticker-item accent">ARMv9-A · 128 GB unified memory</span>
+    <span class="ticker-item accent">Hårdvaruagnostisk · valfri lokal AI-hårdvara</span>
     <span class="ticker-item">Data lämnar aldrig byggnaden</span>
     <!-- duplicate for seamless loop -->
     <span class="ticker-item accent">MIT-licens</span>
@@ -1717,7 +1717,7 @@
     <span class="ticker-item">Anomalidetektering</span>
     <span class="ticker-item accent">Energioptimering</span>
     <span class="ticker-item">Felsökning med AI-stöd</span>
-    <span class="ticker-item accent">ARMv9-A · 128 GB unified memory</span>
+    <span class="ticker-item accent">Hårdvaruagnostisk · valfri lokal AI-hårdvara</span>
     <span class="ticker-item">Data lämnar aldrig byggnaden</span>
   </div>
 </div>
@@ -1975,7 +1975,7 @@
         <span class="pain-num">04</span>
         <div class="pain-content">
           <h4>Lokal AI har krävt datahallsinvestering — tills nu</h4>
-          <p>On-premise AI-infrastruktur med tillräcklig kapacitet för stora språkmodeller har tidigare kostat miljoner och krävt dedikerade maskinrum. ARMv9-A-hårdvara med 128 GB unified memory förändrar den ekvationen.</p>
+          <p>On-premise AI-infrastruktur med tillräcklig kapacitet för stora språkmodeller har tidigare kostat miljoner och krävt dedikerade maskinrum. En ny generation lokal LLM- och ML-hårdvara — från kompakta AI-system till GPU-servrar — förändrar den ekvationen.</p>
         </div>
       </div>
       <div class="pain-point">
@@ -2034,7 +2034,7 @@
       </div>
       <div class="stack-layer-content">
         <div class="stack-layer-desc">
-          NVIDIAs härdade referensimplementation ovanpå OpenClaw. Installeras med ett kommando och tillför <strong>OpenShell-sandbox</strong> (Landlock + seccomp + nätverksisolering), policy-baserade säkerhets- och integritetsskydd, lokal Nemotron-inferens och livscykelhantering. <em>All inferens körs lokalt</em> — ingen data lämnar nätverket. Optimerad för DGX Spark och ARMv9-A-hårdvara. NemoClaw är i tidig fas (alpha, lanserad mars 2026) — openAut pinnar därför verifierade versioner och kapslar in stacken bakom stabila gränssnitt, så att grunden kan utvecklas utan att din driftmiljö påverkas.
+          NVIDIAs härdade referensimplementation ovanpå OpenClaw. Installeras med ett kommando och tillför <strong>OpenShell-sandbox</strong> (Landlock + seccomp + nätverksisolering), policy-baserade säkerhets- och integritetsskydd, lokal Nemotron-inferens och livscykelhantering. <em>All inferens körs lokalt</em> — ingen data lämnar nätverket. Körs på valfri lokal AI-hårdvara med tillräcklig inferenskapacitet. NemoClaw är i tidig fas (alpha, lanserad mars 2026) — openAut pinnar därför verifierade versioner och kapslar in stacken bakom stabila gränssnitt, så att grunden kan utvecklas utan att din driftmiljö påverkas.
         </div>
         <div class="stack-chips">
           <span class="stack-chip cyan">OpenShell sandbox</span>
@@ -2046,7 +2046,7 @@
           <span class="stack-chip">NIS2-kompatibel</span>
           <span class="stack-chip">CRA-redo</span>
           <span class="stack-chip">AI Act-kompatibel</span>
-          <span class="stack-chip">ARM64-optimerad</span>
+          <span class="stack-chip">Hårdvaruagnostisk</span>
         </div>
       </div>
     </div>
@@ -2207,13 +2207,13 @@
 <section class="hardware" id="hardvara">
   <div class="grid-bg"></div>
   <div class="section-label" data-num="06">AI-hårdvara</div>
-  <h2 class="section-title reveal">Superdatorkapacitet.<br><span class="accent">I ditt maskinrum.</span></h2>
+  <h2 class="section-title reveal">Valfri AI-hårdvara.<br><span class="accent">I ditt maskinrum.</span></h2>
 
   <p class="hardware-intro reveal reveal-delay-1">
-    openAut körs på <strong>ARMv9-A-baserad hårdvara med 128 GB unified memory</strong> —
-    samma generation som driver frontlinje-AI-forskning, nu tillgänglig i ett format
-    som passar i ett maskinrum. Eftersom plattformen är byggd på ARM64-arkitektur
-    och öppen källkod är du <strong>inte låst till en enda hårdvaruleverantör.</strong>
+    openAut är <strong>hårdvaruagnostiskt</strong> — plattformen körs på valfri lokal
+    LLM- och ML-hårdvara med tillräcklig inferenskapacitet, från kompakta AI-system
+    till GPU-servrar. Det som styr valet är vilka modeller du vill köra —
+    <strong>inte vilken leverantör plattformen råkar stödja.</strong>
     Välj det som passar din upphandling, ditt befintliga ramavtal eller din
     befintliga infrastruktur.
   </p>
@@ -2221,74 +2221,72 @@
   <div class="hw-grid reveal reveal-delay-2">
 
     <div class="hw-card">
-      <div class="hw-card-tier">Rekommenderat referenssystem</div>
-      <h3>NVIDIA DGX Spark</h3>
-      <div class="hw-card-vendor">NVIDIA · GB10 Grace Blackwell Superchip · ARMv9-A</div>
-      <p>Referenshårdvaran för openAut. Grace Blackwell-arkitekturen kombinerar en 72-kärnig ARM Neoverse V2-processor med en Blackwell GPU i ett enhetligt minnessystem — vilket eliminerar flaskhalsen mellan CPU och GPU vid AI-inferens.</p>
+      <div class="hw-card-tier">Kapacitetskrav — inte produktkrav</div>
+      <h3>Lokal AI-server</h3>
+      <div class="hw-card-vendor">Valfri leverantör · GPU eller annan AI-accelerator · x86_64 / ARM64</div>
+      <p>openAut ställer krav på kapacitet, inte på fabrikat. Allt som kör Linux och klarar lokal LLM-inferens med tillräckligt acceleratorminne för dina valda modeller fungerar — en GPU-server, en AI-workstation eller ett kompakt system med unified memory.</p>
       <div class="hw-specs">
         <div class="hw-spec">
-          <div class="hw-spec-val">128 GB</div>
-          <div class="hw-spec-label">Unified Memory</div>
+          <div class="hw-spec-val">Linux</div>
+          <div class="hw-spec-label">Ubuntu 24.04 LTS</div>
         </div>
         <div class="hw-spec">
-          <div class="hw-spec-val">1 PFLOP</div>
-          <div class="hw-spec-label">FP4 AI-prestanda</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">200B+</div>
-          <div class="hw-spec-label">Parametermodeller</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">4 TB</div>
-          <div class="hw-spec-label">NVMe SSD</div>
-        </div>
-      </div>
-      <div class="hw-tags">
-        <div class="hw-tag green">DGX OS (Ubuntu 24.04 LTS)</div>
-        <div class="hw-tag green">Air-gap redo</div>
-        <div class="hw-tag">ARM64-nativ</div>
-        <div class="hw-tag">2× länkade = 405B param</div>
-      </div>
-    </div>
-
-    <div class="hw-card">
-      <div class="hw-card-tier">Alternativa leverantörer (ARM64-kompatibla)</div>
-      <h3>Valfritt ARMv9-A-system</h3>
-      <div class="hw-card-vendor">Ampere · Qualcomm · Oracle · AWS Graviton-kompatibel</div>
-      <p>openAut kräver ingen specifik hårdvaruleverantör. Eftersom hela stacken körs på ARM64 och öppen källkod kan du välja hårdvara från din befintliga leverantörslista, ett befintligt ramavtal, eller egna driftsättningskrav.</p>
-      <div class="hw-specs">
-        <div class="hw-spec">
-          <div class="hw-spec-val">ARMv9-A</div>
-          <div class="hw-spec-label">Arkitekturkrav</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">≥128 GB</div>
-          <div class="hw-spec-label">Minne (rekommenderat)</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">Ubuntu</div>
-          <div class="hw-spec-label">24.04 LTS (ARM64)</div>
+          <div class="hw-spec-val">Lokal</div>
+          <div class="hw-spec-label">All inferens on-premise</div>
         </div>
         <div class="hw-spec">
           <div class="hw-spec-val">≥2 TB</div>
-          <div class="hw-spec-label">Lagring</div>
+          <div class="hw-spec-label">Lagring (rekommenderat)</div>
+        </div>
+        <div class="hw-spec">
+          <div class="hw-spec-val">Air-gap</div>
+          <div class="hw-spec-label">Inga molnberoenden</div>
         </div>
       </div>
       <div class="hw-tags">
         <div class="hw-tag green">Ingen hårdvarulåsning</div>
+        <div class="hw-tag green">Air-gap redo</div>
+        <div class="hw-tag">GPU-server</div>
+        <div class="hw-tag">AI-workstation</div>
+      </div>
+    </div>
+
+    <div class="hw-card">
+      <div class="hw-card-tier">Dimensionering efter behov</div>
+      <h3>Modellen styr hårdvaran</h3>
+      <div class="hw-card-vendor">Lättviktig LLM · resonerande modell · tidsserie-ML</div>
+      <p>Olika uppgifter kräver olika modeller — och olika mycket hårdvara. En lättviktig LLM för rutinfrågor klarar sig på ett kompakt system, medan stora resonerande modeller för rotorsaksanalys kräver mer acceleratorminne. Dimensionera efter din mest krävande modell och skala upp när behoven växer.</p>
+      <div class="hw-specs">
+        <div class="hw-spec">
+          <div class="hw-spec-val">LLM</div>
+          <div class="hw-spec-label">Lokal språkmodell</div>
+        </div>
+        <div class="hw-spec">
+          <div class="hw-spec-val">ML</div>
+          <div class="hw-spec-label">Tidsserie · FDD · prognos</div>
+        </div>
+        <div class="hw-spec">
+          <div class="hw-spec-val">Skalbart</div>
+          <div class="hw-spec-label">Workstation → GPU-server</div>
+        </div>
+        <div class="hw-spec">
+          <div class="hw-spec-val">Modulärt</div>
+          <div class="hw-spec-label">Byt hårdvara, behåll plattform</div>
+        </div>
+      </div>
+      <div class="hw-tags">
         <div class="hw-tag green">LOU-anpassningsbar</div>
-        <div class="hw-tag cyan">Ampere Altra</div>
-        <div class="hw-tag cyan">Qualcomm Cloud AI</div>
+        <div class="hw-tag cyan">Uppgradera vid behov</div>
         <div class="hw-tag">Edge-varianter möjliga</div>
       </div>
     </div>
 
     <div class="hw-arch-note">
       <div>
-        <h4>Varför <span>ARM64</span> är strategiskt rätt val</h4>
+        <h4>Varför <span>hårdvaruagnostik</span> är strategiskt rätt val</h4>
       </div>
       <div>
-        <p>ARM64 (ARMv9-A) har blivit den dominerande arkitekturen för energieffektiv AI-inferens. Unified memory — där CPU och GPU delar samma minnesutrymme — är avgörande för att köra stora språkmodeller lokalt utan prestandaförlust. Hela openAut-stacken är verifierad på ARM64: <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">pymodbus</code>, <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">BAC0</code>, <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">paho-mqtt</code> och alla AI-ramverk. Inga proprietära beroenden i kärnlösningen — oavsett hårdvaruleverantör.</p>
+        <p>Hela openAut-stacken är öppen källkod och körs på både x86_64 och ARM64: <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">pymodbus</code>, <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">BAC0</code>, <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">paho-mqtt</code> och alla AI-ramverk. Inga proprietära beroenden i kärnlösningen. Det betyder att AI-hårdvaran kan väljas — och bytas — utifrån prestanda, pris och tillgänglighet, utan att plattformen påverkas. När modellerna växer uppgraderar du hårdvaran, inte systemet.</p>
       </div>
     </div>
 

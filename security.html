@@ -1248,7 +1248,7 @@ footer {
       <div>
         <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em;margin:0.25rem 0 0.5rem;">DELAT:</div>
         <div class="arch-nodes">
-          <div class="arch-node cyan">Delad AI-backend: NemoClaw · Nemotron (DGX Spark / GX10)</div>
+          <div class="arch-node cyan">Delad AI-backend: NemoClaw · Nemotron (valfri lokal AI-hårdvara)</div>
           <div class="arch-node cyan">Systemdatabas (PostgreSQL)</div>
           <div class="arch-node cyan">MQTT-broker (EMQX · TLS) · Audit log daemon</div>
           <div class="arch-node">VLAN 10 — OT · VLAN 20 — Management</div>
@@ -1278,7 +1278,7 @@ footer {
     <div class="arch-instance sec">
       <span class="arch-inst-badge badge-sec">Säkerhetsinstans</span>
       <div class="arch-inst-name red">openAut Security</div>
-      <div class="arch-inst-hw">DGX Spark / ARM64 · Separat VLAN</div>
+      <div class="arch-inst-hw">Egen AI-hårdvara · Separat VLAN</div>
       <div class="arch-nodes">
         <div class="arch-node red">NemoClaw — security mode</div>
         <div class="arch-node red">IT-säkerhets-skill</div>
@@ -1763,7 +1763,7 @@ footer {
   <div class="section-label" data-num="07">Hårdvara &amp; nätverksisolering</div>
   <h2 class="section-title reveal">Separat maskin.<br><span class="accent-red">Eget VLAN.</span></h2>
   <p class="hw-intro reveal reveal-delay-1">
-    Säkerhetsinstansen kräver samma ARMv9-A-arkitektur som driftinstanserna — men är aldrig
+    Säkerhetsinstansen kör samma typ av lokal AI-hårdvara som driftinstanserna — men aldrig
     på samma fysiska maskin. <strong>Isolering är en arkitektonisk egenskap, inte en
     konfigurationsinställning.</strong>
   </p>
@@ -1773,10 +1773,10 @@ footer {
     <div class="hw-card">
       <span class="hw-card-badge" style="background:var(--green);color:var(--bg)">Driftinstanser</span>
       <h3 class="green">openAut Advisor + Engineer</h3>
-      <div class="hw-card-sub">Egna servrar · delad AI-backend (DGX Spark / ASUS GX10)</div>
+      <div class="hw-card-sub">Egna servrar · delad lokal AI-backend</div>
       <div class="hw-spec-list">
         <div class="hw-spec-row"><span class="hw-spec-key">Hårdvara</span><span class="hw-spec-val hi">Två servrar + delad AI-backend</span></div>
-        <div class="hw-spec-row"><span class="hw-spec-key">Minne</span><span class="hw-spec-val">128 GB unified</span></div>
+        <div class="hw-spec-row"><span class="hw-spec-key">Minne</span><span class="hw-spec-val">Dimensioneras efter modellval</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">VLAN</span><span class="hw-spec-val">VLAN 10 (OT) · VLAN 20 (Mgmt)</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">Nätverksåtkomst</span><span class="hw-spec-val">Edge-noder · BMS · Teams API</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">SSH-exponering</span><span class="hw-spec-val hi">openaut-sec-ro (read-only)</span></div>
@@ -1792,10 +1792,10 @@ footer {
     <div class="hw-card">
       <span class="hw-card-badge" style="background:var(--red);color:var(--bg)">Säkerhetsinstans</span>
       <h3 class="red">openAut Security</h3>
-      <div class="hw-card-sub">ARM64-kompatibel</div>
+      <div class="hw-card-sub">Egen lokal AI-hårdvara</div>
       <div class="hw-spec-list">
-        <div class="hw-spec-row"><span class="hw-spec-key">Hårdvara</span><span class="hw-spec-val hi">DGX Spark eller ARMv9-A-ekvivalent</span></div>
-        <div class="hw-spec-row"><span class="hw-spec-key">Minne</span><span class="hw-spec-val">≥64 GB unified (128 GB rekommenderat)</span></div>
+        <div class="hw-spec-row"><span class="hw-spec-key">Hårdvara</span><span class="hw-spec-val hi">Valfri lokal AI-hårdvara — egen maskin</span></div>
+        <div class="hw-spec-row"><span class="hw-spec-key">Minne</span><span class="hw-spec-val">Dimensioneras efter modellval</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">VLAN</span><span class="hw-spec-val hi">VLAN 30 — Säkerhetsnät (isolerat)</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">Nätverksåtkomst</span><span class="hw-spec-val">SSH read-only → drift · Teams API</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">Skrivåtkomst till OT</span><span class="hw-spec-val hi">Aldrig — inga OT-rättigheter</span></div>

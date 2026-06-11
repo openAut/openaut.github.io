@@ -573,7 +573,7 @@ footer {
       <text x="448" y="287" font-family="'Space Mono',monospace" font-size="7"   fill="#8b5cf6">▸ Kontrollplan: web/CLI (mgmt)</text>
 
       <!-- Delad AI-backend banner -->
-      <text x="438" y="302" font-family="'Space Mono',monospace" font-size="6.5" fill="rgba(167,139,250,0.6)" text-anchor="middle">Delad AI-backend: NemoClaw · Nemotron — DGX Spark / ASUS GX10 · air-gapped · egen sandbox + credentials per instans</text>
+      <text x="438" y="302" font-family="'Space Mono',monospace" font-size="6.5" fill="rgba(167,139,250,0.6)" text-anchor="middle">Delad AI-backend: NemoClaw · Nemotron — valfri lokal AI-hårdvara · air-gapped · egen sandbox + credentials per instans</text>
       <circle cx="651" cy="204" r="3.5" fill="#a78bfa" opacity="0.8">
         <animate attributeName="opacity" values="0.8;0.15;0.8" dur="2.1s" repeatCount="indefinite"/>
       </circle>
@@ -734,35 +734,35 @@ footer {
 
     <div class="hw-grid hw-grid-2">
 
-      <!-- NVIDIA DGX Spark -->
+      <!-- Lokal AI-server -->
       <div class="hw-card">
-        <div class="hw-vendor">NVIDIA</div>
-        <div class="hw-model">DGX Spark</div>
-        <div class="hw-model-sub">Personal AI Supercomputer · GB10 Grace Blackwell</div>
+        <div class="hw-vendor">Valfri leverantör</div>
+        <div class="hw-model">Lokal AI-server</div>
+        <div class="hw-model-sub">LLM- &amp; ML-inferens · GPU eller annan AI-accelerator</div>
         <div class="hw-specs">
           <div class="hw-spec">
             <span class="hw-spec-label">Prestanda</span>
-            <span class="hw-spec-value">1 PFLOP FP4</span>
+            <span class="hw-spec-value">Dimensioneras efter modellval</span>
           </div>
           <div class="hw-spec">
             <span class="hw-spec-label">Minne</span>
-            <span class="hw-spec-value">128 GB unified</span>
+            <span class="hw-spec-value">Acceleratorminne efter modell</span>
           </div>
           <div class="hw-spec">
             <span class="hw-spec-label">Lagring</span>
-            <span class="hw-spec-value">4 TB NVMe SSD</span>
+            <span class="hw-spec-value">≥2 TB NVMe rekommenderat</span>
           </div>
           <div class="hw-spec">
             <span class="hw-spec-label">OS</span>
-            <span class="hw-spec-value">DGX OS (Ubuntu 24.04)</span>
+            <span class="hw-spec-value">Linux (Ubuntu 24.04 LTS)</span>
           </div>
           <div class="hw-spec">
             <span class="hw-spec-label">Arkitektur</span>
-            <span class="hw-spec-value">ARM64 (ARMv9-A)</span>
+            <span class="hw-spec-value">x86_64 / ARM64</span>
           </div>
           <div class="hw-spec">
             <span class="hw-spec-label">Modeller</span>
-            <span class="hw-spec-value">Upp till 200B param</span>
+            <span class="hw-spec-value">Väljs per uppgift</span>
           </div>
         </div>
         <div class="hw-role">
@@ -778,47 +778,47 @@ footer {
         </div>
       </div>
 
-      <!-- ASUS Ascent GX10 -->
+      <!-- Dimensionering -->
       <div class="hw-card">
-        <div class="hw-card-alt-badge">Alternativ</div>
-        <div class="hw-vendor">ASUS</div>
-        <div class="hw-model">Ascent GX10</div>
-        <div class="hw-model-sub">Desktop AI Supercomputer · GB10 Grace Blackwell</div>
+        <div class="hw-card-alt-badge">Dimensionering</div>
+        <div class="hw-vendor">Kapacitetskrav</div>
+        <div class="hw-model">Modellen styr hårdvaran</div>
+        <div class="hw-model-sub">Hårdvaruagnostisk · ingen leverantörslåsning</div>
         <div class="hw-specs">
           <div class="hw-spec">
-            <span class="hw-spec-label">Prestanda</span>
-            <span class="hw-spec-value">1 PFLOP FP4</span>
+            <span class="hw-spec-label">Lättviktig LLM</span>
+            <span class="hw-spec-value">Kompakt AI-system räcker</span>
           </div>
           <div class="hw-spec">
-            <span class="hw-spec-label">Minne</span>
-            <span class="hw-spec-value">128 GB LPDDR5x</span>
+            <span class="hw-spec-label">Resonerande LLM</span>
+            <span class="hw-spec-value">GPU-server / workstation</span>
           </div>
           <div class="hw-spec">
-            <span class="hw-spec-label">Lagring</span>
-            <span class="hw-spec-value">1 TB – 4 TB NVMe</span>
+            <span class="hw-spec-label">Tidsserie-ML</span>
+            <span class="hw-spec-value">Låga krav — CPU räcker ofta</span>
           </div>
           <div class="hw-spec">
-            <span class="hw-spec-label">OS</span>
-            <span class="hw-spec-value">DGX OS · NVIDIA stack</span>
+            <span class="hw-spec-label">Skalning</span>
+            <span class="hw-spec-value">Workstation → multi-GPU</span>
           </div>
           <div class="hw-spec">
-            <span class="hw-spec-label">Nät</span>
-            <span class="hw-spec-value">ConnectX-7 · Wi-Fi 7</span>
+            <span class="hw-spec-label">Air-gap</span>
+            <span class="hw-spec-value">Möjligt — inga molnberoenden</span>
           </div>
           <div class="hw-spec">
-            <span class="hw-spec-label">Formfaktor</span>
-            <span class="hw-spec-value">150 × 150 × 51 mm</span>
+            <span class="hw-spec-label">Upphandling</span>
+            <span class="hw-spec-value">Välj efter ramavtal &amp; pris</span>
           </div>
         </div>
         <div class="hw-role">
           <div class="hw-role-label">Roll i openAut</div>
-          <div class="hw-role-text">Identisk chip som DGX Spark — <strong>samma prestanda, annat fabrikat</strong>. Certifierad för OpenClaw och NemoClaw. En GX10 kan agera delad backend för flera instanser. Välj baserat på tillgänglighet och pris.</div>
+          <div class="hw-role-text">openAut ställer <strong>kapacitetskrav — inte produktkrav</strong>. Välj hårdvara efter de modeller du vill köra, från din befintliga leverantörslista eller ett ramavtal. Byt eller uppgradera utan att plattformen påverkas.</div>
         </div>
         <div class="hw-tags">
           <span class="hw-tag hw-tag-hi">OpenClaw</span>
           <span class="hw-tag hw-tag-hi">NemoClaw</span>
           <span class="hw-tag">Delad backend</span>
-          <span class="hw-tag">Samma chip som DGX Spark</span>
+          <span class="hw-tag">Ingen hårdvarulåsning</span>
         </div>
       </div>
 
