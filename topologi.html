@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Systemtopologi — openAut</title>
-<meta name="description" content="openAuts systemtopologi: lager, protokoll, dataflöden och verifierad referenshårdvara för AI-driven fastighetsautomation.">
+<meta name="description" content="openAuts systemtopologi: lager, protokoll, dataflöden och hårdvarukrav för AI-driven fastighetsautomation.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://openaut.io/topologi.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sv_SE">
 <meta property="og:title" content="Systemtopologi — openAut">
-<meta property="og:description" content="Fullständig bild av openAuts arkitektur — fältsensorer, edge-noder, AI-lager och gränssnitt. Protokoll, dataflöden och referenshårdvara lager för lager.">
+<meta property="og:description" content="Fullständig bild av openAuts arkitektur — fältsensorer, edge-noder, AI-lager och gränssnitt. Protokoll, dataflöden och hårdvarukrav lager för lager.">
 <meta property="og:url" content="https://openaut.io/topologi.html">
 <meta property="og:image" content="https://openaut.io/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Systemtopologi — openAut">
-<meta name="twitter:description" content="Fullständig bild av openAuts arkitektur — fältsensorer, edge-noder, AI-lager och gränssnitt. Protokoll, dataflöden och referenshårdvara lager för lager.">
+<meta name="twitter:description" content="Fullständig bild av openAuts arkitektur — fältsensorer, edge-noder, AI-lager och gränssnitt. Protokoll, dataflöden och hårdvarukrav lager för lager.">
 <meta name="twitter:image" content="https://openaut.io/icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -477,7 +477,7 @@ footer {
 <div class="page-header">
   <div class="page-label">Arkitektur</div>
   <h1 class="page-title">Systemtopologi.<br><em>Lager för lager.</em></h1>
-  <p class="page-desc">Fullständig bild av openAuts arkitektur — från fältsensorer via edge-noder till AI-lager och gränssnitt. Protokoll, dataflöden och verifierad referenshårdvara för varje lager. Driftlagret är delat i två instanser med olika förtroendenivå: <em>Advisor</em> (read-only, Teams) och <em>Engineer</em> (SSH/deploy, ej Teams).</p>
+  <p class="page-desc">Fullständig bild av openAuts arkitektur — från fältsensorer via edge-noder till AI-lager och gränssnitt. Protokoll, dataflöden och hårdvarukrav för varje lager. Driftlagret är delat i två instanser med olika förtroendenivå: <em>Advisor</em> (read-only, Teams) och <em>Engineer</em> (SSH/deploy, ej Teams).</p>
 </div>
 
 <!-- TOPOLOGY DIAGRAM -->
@@ -718,11 +718,11 @@ footer {
 <!-- HARDWARE SECTION -->
 <div class="hw-section">
 
-  <div class="hw-section-label">Referenshårdvara</div>
-  <h2 class="hw-section-title">Verifierad på riktig<br><em>hårdvara.</em></h2>
+  <div class="hw-section-label">Hårdvara</div>
+  <h2 class="hw-section-title">Valfri hårdvara.<br><em>Tydliga krav.</em></h2>
 
   <div class="hw-disclaimer">
-    <strong>openAut är hårdvaruagnostisk.</strong> Nedanstående är testad referenshårdvara — inte ett krav. Varje lager kan ersättas med kompatibel utrustning som uppfyller protokoll- och prestandakraven. AI-inferensen är en <strong>delad backend</strong> som Advisor, Engineer och Security ringer in till — samma modellvikter och GPU, men egen sandbox och egna credentials per instans. Välj det din organisation redan äger, kan upphandla eller föredrar.
+    <strong>openAut är hårdvaruagnostisk.</strong> AI-lagret specificeras som kapacitetskrav — valfri lokal LLM- och ML-hårdvara med tillräcklig inferenskapacitet fungerar. Edge-lagret visar testad referenshårdvara — inte ett krav. Varje lager kan ersättas med kompatibel utrustning som uppfyller protokoll- och prestandakraven. AI-inferensen är en <strong>delad backend</strong> som Advisor, Engineer och Security ringer in till — samma modellvikter och GPU, men egen sandbox och egna credentials per instans. Välj det din organisation redan äger, kan upphandla eller föredrar.
   </div>
 
   <!-- AI-LAGER -->
