@@ -22,7 +22,7 @@ openAut är ett **öppet tillägg till ditt befintliga BMS** — inte en ersätt
 
 ```
 LAGER 04 — GRÄNSSNITT   Teams · Slack · Webb-HMI · REST API
-LAGER 03 — AI           OpenClaw · NemoClaw · DGX Spark · Nemotron (lokal LLM) · FDD · Energioptimering
+LAGER 03 — AI           OpenClaw · NemoClaw · lokal AI-hårdvara · Nemotron (lokal LLM) · FDD · Energioptimering
                          EMQX-broker · Telegraf (ingest) · TimescaleDB/PostgreSQL
 LAGER 02 — EDGE         Linux-noder · SSH · Protokolldrivrutiner · Python edge-reglering
                          MQTT over TLS (stream + on-demand request/response via topics)
@@ -33,7 +33,7 @@ LAGER 01 — FÄLT         Modbus RTU/TCP · BACnet · M-Bus · LoRaWAN · KNX �
 
 **LAGER 02 — EDGE:** Siemens SIMATIC IOT2050-noder kör standard Linux och nås av NemoClaw via krypterad SSH. Protokolldrivrutiner körs direkt på noden. NemoClaw kan via SSH även driftsätta Python-regleringsskript mot lokal I/O — slutna reglerloopar utan molnrundtur. Data transporteras krypterat till EMQX-brokern via MQTT over TLS — både som kontinuerlig mätström och som on-demand request/response via topics.
 
-**LAGER 03 — AI:** NVIDIA DGX Spark (GB10 Grace Blackwell, 128 GB unified memory, 1 PFLOP FP4) kör EMQX-brokern, Telegraf (ingest till TimescaleDB/PostgreSQL) och agentstacken lokalt. Agentstacken är **NemoClaw** — NVIDIAs härdade referensimplementation ovanpå **OpenClaw** — som kör lokal **Nemotron**-inferens i en OpenShell-sandbox. NemoClaw läser historik och skriver analyser och larm till masterdatabasen. All data stannar i fastigheten.
+**LAGER 03 — AI:** En lokal AI-server — valfri LLM- och ML-hårdvara, dimensionerad efter de modeller som ska köras — kör EMQX-brokern, Telegraf (ingest till TimescaleDB/PostgreSQL) och agentstacken lokalt. Agentstacken är **NemoClaw** — NVIDIAs härdade referensimplementation ovanpå **OpenClaw** — som kör lokal **Nemotron**-inferens i en OpenShell-sandbox. NemoClaw läser historik och skriver analyser och larm till masterdatabasen. All data stannar i fastigheten.
 
 **LAGER 04 — GRÄNSSNITT:** Insikter når de som behöver dem i de verktyg de redan använder. Drifttekniker i Teams. Energisamordnare i dashboard. Integrationsteam via REST API.
 
@@ -46,8 +46,8 @@ LAGER 01 — FÄLT         Modbus RTU/TCP · BACnet · M-Bus · LoRaWAN · KNX �
 | **openAut** (domänramverk) | BACnet-skill · Modbus-skill · M-Bus-skill · LoRa-skill · FDD-skill · Energianalys-skill · SSH edge-access · Python I/O-skill · Edge-reglerings-skill · MIT |
 | **NemoClaw** (agentstack) | NVIDIAs referensimplementation ovanpå OpenClaw · OpenShell-sandbox (Landlock + seccomp + netns) · policy-baserade guardrails · lokal Nemotron-inferens · livscykelhantering · Apache 2.0 · alpha/tidig fas (mars 2026) |
 | **OpenClaw** (agent-gateway) | Självhostad multi-channel-gateway för AI-agenter · Teams/Slack/m.fl. · skills & verktygsstöd · MIT · 250 000+ GitHub-stjärnor (mars 2026) |
-| **Modell** (LLM) | NVIDIA Nemotron (öppna modeller) · lokal inferens · 200B+ lokalt, ~405B med två länkade DGX Spark |
-| **AI-hårdvara** | NVIDIA DGX Spark (primär) · valfritt ARMv9-A-system ≥128 GB (Ampere · Qualcomm · Oracle · AWS Graviton-kompatibel) |
+| **Modell** (LLM) | NVIDIA Nemotron (öppna modeller) · lokal inferens · modellstorlek dimensioneras efter tillgänglig hårdvara |
+| **AI-hårdvara** | Valfri lokal LLM- och ML-hårdvara · GPU eller annan AI-accelerator · dimensioneras efter modellval · ingen hårdvarulåsning |
 | **Edge-hårdvara** | Siemens SIMATIC IOT2050 |
 | **I/O-modul** | Siemens EM1.8U (8× universell I/O · Modbus RTU · RS485) |
 | **MQTT-broker** | EMQX · TLS · klientcertifikat · request/response-topics |
@@ -81,10 +81,16 @@ Arkitekturen är modulär, dokumenterad och kan tas vid av vilken kompetent inte
 ## Referenshårdvara
 
 ### AI-lager
-| Enhet | Chip | Minne | Prestanda | Roll |
-|---|---|---|---|---|
-| NVIDIA DGX Spark | GB10 Grace Blackwell | 128 GB unified | 1 PFLOP FP4 | Primär referenshårdvara |
-| Valfritt ARMv9-A-system | Ampere · Qualcomm · Oracle · AWS Graviton-kompatibel | ≥128 GB | — | Alternativ — ingen hårdvarulåsning |
+
+openAut är hårdvaruagnostiskt i AI-lagret — plattformen ställer kapacitetskrav, inte produktkrav:
+
+| Krav | Beskrivning |
+|---|---|
+| Hårdvara | Valfri lokal LLM- och ML-hårdvara — GPU-server, AI-workstation eller kompakt system med unified memory |
+| Acceleratorminne | Dimensioneras efter vald modell — lättviktig LLM kräver lite, stora resonerande modeller mer |
+| OS | Linux (Ubuntu 24.04 LTS rekommenderat) · x86_64 eller ARM64 |
+| Lagring | ≥2 TB NVMe rekommenderat |
+| Nät | Lokal inferens · air-gap möjligt — inga molnberoenden |
 
 ### Edge-lager
 | Enhet | CPU | Gränssnitt | Roll |
@@ -92,7 +98,7 @@ Arkitekturen är modulär, dokumenterad och kan tas vid av vilken kompetent inte
 | Siemens SIMATIC IOT2050 | TI AM6548 · 4× A53 · 1 GHz | RS232/422/485 · 2× GbE · Arduino Shield | Python-regulator och datainsamlare via SSH |
 | Siemens EM1.8U | — | 8× universell I/O · Modbus RTU · RS485 | Industriell I/O, upp till 31 moduler per buss |
 
-Hela stacken är ARM64-nativ. `pymodbus`, `paho-mqtt` och `BAC0` är verifierade på ARM64 utan proprietära beroenden.
+Hela stacken körs på både x86_64 och ARM64. `pymodbus`, `paho-mqtt` och `BAC0` är verifierade utan proprietära beroenden — oavsett hårdvaruleverantör.
 
 ---
 
