@@ -2034,11 +2034,11 @@
       </div>
       <div class="stack-layer-content">
         <div class="stack-layer-desc">
-          NVIDIAs härdade referensimplementation ovanpå OpenClaw. Installeras med ett kommando och tillför <strong>OpenShell-sandbox</strong> (Landlock + seccomp + nätverksisolering), policy-baserade säkerhets- och integritetsskydd, lokal Nemotron-inferens och livscykelhantering. <em>All inferens körs lokalt</em> — ingen data lämnar nätverket. Körs på valfri lokal AI-hårdvara med tillräcklig inferenskapacitet. NemoClaw är i tidig fas (alpha, lanserad mars 2026) — openAut pinnar därför verifierade versioner och kapslar in stacken bakom stabila gränssnitt, så att grunden kan utvecklas utan att din driftmiljö påverkas.
+          NVIDIAs härdade referensimplementation ovanpå OpenClaw. Installeras med ett kommando och tillför <strong>OpenShell-sandbox</strong> (Landlock + seccomp + nätverksisolering), policy-baserade säkerhets- och integritetsskydd, lokal inferens med öppna modeller (open weights) och livscykelhantering. <em>All inferens körs lokalt</em> — ingen data lämnar nätverket. Körs på valfri lokal AI-hårdvara med tillräcklig inferenskapacitet. NemoClaw är i tidig fas (alpha, lanserad mars 2026) — openAut pinnar därför verifierade versioner och kapslar in stacken bakom stabila gränssnitt, så att grunden kan utvecklas utan att din driftmiljö påverkas.
         </div>
         <div class="stack-chips">
           <span class="stack-chip cyan">OpenShell sandbox</span>
-          <span class="stack-chip cyan">Lokal Nemotron-inferens</span>
+          <span class="stack-chip cyan">Lokal inferens · öppna modeller</span>
           <span class="stack-chip cyan">Policy-baserade guardrails</span>
           <span class="stack-chip cyan">Auditloggning</span>
           <span class="stack-chip cyan">IEC 62443-anpassad</span>
@@ -2147,7 +2147,7 @@
     <div class="arch-layer">
       <div class="arch-layer-num">LAGER 03 — AI</div>
       <div class="arch-layer-name">Systemdatabas & AI-analys</div>
-      <div class="arch-layer-desc">EMQX-brokern tar emot MQTT over TLS från alla edge-noder. Telegraf skriver tidsseriedata och larm till TimescaleDB, medan enheter, metadata, konfiguration och ärendekö ligger i Systemdatabasen (PostgreSQL). En delad AI-backend kör Nemotron lokalt och betjänar både openAut Advisor (read-only, Teams) och openAut Engineer (SSH/deploy) — samma modellvikter och GPU, men egen sandbox och egna credentials per instans. Analyser, larm och åtgärdsförslag skrivs tillbaka utan externa anrop. On-demand-förfrågningar till edge-noder sker via MQTT request/response-topics.</div>
+      <div class="arch-layer-desc">EMQX-brokern tar emot MQTT over TLS från alla edge-noder. Telegraf skriver tidsseriedata och larm till TimescaleDB, medan enheter, metadata, konfiguration och ärendekö ligger i Systemdatabasen (PostgreSQL). En delad AI-backend kör öppna modeller lokalt och betjänar både openAut Advisor (read-only, Teams) och openAut Engineer (SSH/deploy) — samma modellvikter och GPU, men egen sandbox och egna credentials per instans. Analyser, larm och åtgärdsförslag skrivs tillbaka utan externa anrop. On-demand-förfrågningar till edge-noder sker via MQTT request/response-topics.</div>
       <div class="arch-user-view">All data stannar i byggnaden. GDPR-säkert per design.</div>
       <div class="arch-nodes">
         <div class="arch-node cyan">EMQX-broker (MQTT over TLS)</div>
