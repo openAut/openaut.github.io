@@ -1011,6 +1011,22 @@
     line-height: 1.7;
   }
 
+  .about-project {
+    margin-top: 4rem;
+    max-width: 760px;
+  }
+
+  .about-project p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.9;
+    margin-top: 1.4rem;
+  }
+
+  .about-project p:first-child { margin-top: 0; }
+  .about-project p strong { color: var(--text); font-weight: 500; }
+
   /* ── CTA ── */
   .cta {
     text-align: center;
@@ -2400,38 +2416,16 @@
   </div>
 </section>
 
-<!-- PRINCIPER -->
-<section class="principles" id="principer">
+<!-- OM PROJEKTET -->
+<section class="principles" id="om-projektet">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="08">Kärnprinciper</div>
-  <h2 class="section-title reveal">Vad openAut<br><span class="accent">inte</span> gör.</h2>
+  <div class="section-label" data-num="08">Om projektet</div>
+  <h2 class="section-title reveal">Ett öppet projekt<br><span class="accent">under utveckling.</span></h2>
 
-  <div class="principles-list">
-    <div class="principle reveal">
-      <span class="principle-num">P.01</span>
-      <h3>Reglerar på autopilot</h3>
-      <p>openAut Engineer kan driftsätta Python-baserad reglering direkt på edge-noder via I/O, men aldrig på eget bevåg — bara efter godkänt ärende och ett explicit regleringsuppdrag konfigurerat av behörig användare, steg för steg. All skrivåtkomst loggas, versionshanteras och kan återkallas. Fältets befintliga PLC:er och DDC-regulatorer behåller prioritet — openAut:s reglering är ett komplement, aldrig en override av säkerhetsfunktioner.</p>
-    </div>
-    <div class="principle reveal reveal-delay-1">
-      <span class="principle-num">P.02</span>
-      <h3>Skickar din data till molnet</h3>
-      <p>All inferens körs på den lokala AI-servern i fastigheten. Ingen driftdata — temperaturer, närvaro, energimätningar — skickas till externa API:er eller molntjänster, om du inte aktivt konfigurerar det.</p>
-    </div>
-    <div class="principle reveal reveal-delay-2">
-      <span class="principle-num">P.03</span>
-      <h3>Kräver proprietära beroenden</h3>
-      <p>Kärnstacken körs helt på öppen källkod. Inga proprietära drivrutiner, licenser eller SDK:er behövs för att driftsätta eller använda openAut.</p>
-    </div>
-    <div class="principle reveal reveal-delay-3">
-      <span class="principle-num">P.04</span>
-      <h3>Ersätter ditt befintliga BMS</h3>
-      <p>openAut samexisterar med Siemens Desigo, Schneider EcoStruxure, Trend, Regin och alla andra plattformar. Det läser deras data. Det lär sig deras mönster. Det konkurrerar aldrig med dem.</p>
-    </div>
-    <div class="principle reveal reveal-delay-4">
-      <span class="principle-num">P.05</span>
-      <h3>Skapar ett nytt leverantörsberoende</h3>
-      <p>Varje designbeslut utvärderas mot frågan: skapar detta inlåsning? Om svaret är ja hittar openAut en annan väg. Arkitekturen är modulär, dokumenterad och kan tas vid av vilken kompetent integratör som helst.</p>
-    </div>
+  <div class="about-project reveal reveal-delay-1">
+    <p>openAut är i grunden ett kunskapsprojekt: ett sätt att utforska hur AI faktiskt kan användas i fastigheter — inte bara i teorin. Plattformen är under aktiv utveckling, med målet att över tid mogna till något som går att driftsätta skarpt.</p>
+
+    <p>Arkitekturen hålls medvetet öppen, modulär och fri från inlåsning, så att den kan växa i den riktning som visar sig vara rätt — utan att något utesluts i förväg. Allt utvecklas öppet under MIT-licens, fritt att granska, ifrågasätta och bidra till.</p>
   </div>
 </section>
 
