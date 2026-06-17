@@ -59,22 +59,11 @@ LAGER 01 — FÄLT         Modbus RTU/TCP · BACnet · M-Bus · LoRaWAN · KNX �
 
 ---
 
-## Kärnprinciper — vad openAut inte gör
+## Om projektet
 
-**P.01 — Reglerar inte på autopilot**
-openAut kan driftsätta Python-baserad reglering direkt på edge-noder via I/O, men aldrig på eget bevåg — bara när en applikationsprofil och ett explicit regleringsuppdrag konfigurerats av behörig användare. All skrivåtkomst loggas, versionshanteras och kan återkallas. Befintliga PLC:er och DDC-regulatorer behåller prioritet — openAut:s reglering är ett komplement, aldrig en override av säkerhetsfunktioner.
+openAut är i grunden ett kunskapsprojekt: ett sätt att utforska hur AI faktiskt kan användas i fastigheter — inte bara i teorin. Plattformen är under aktiv utveckling, med målet att över tid mogna till något som går att driftsätta skarpt.
 
-**P.02 — Skickar inte din data till molnet**
-All inferens körs på den lokala AI-servern i fastigheten. Ingen driftdata lämnar byggnaden om du inte aktivt konfigurerar det.
-
-**P.03 — Kräver inga proprietära beroenden**
-Kärnstacken körs helt på öppen källkod: `pymodbus`, `BAC0`, `paho-mqtt`, EMQX, Telegraf, TimescaleDB med flera. Inga proprietära drivrutiner eller licenser.
-
-**P.04 — Ersätter inte ditt befintliga BMS**
-openAut samexisterar med Desigo CC, EcoStruxure, Trend, Regin, Niagara och alla andra plattformar. Det läser deras data — konkurrerar aldrig med dem.
-
-**P.05 — Skapar inget nytt leverantörsberoende**
-Arkitekturen är modulär, dokumenterad och kan tas vid av vilken kompetent integratör som helst. Varje designbeslut utvärderas mot frågan: skapar detta inlåsning?
+Arkitekturen hålls medvetet öppen, modulär och fri från inlåsning, så att den kan växa i den riktning som visar sig vara rätt — utan att något utesluts i förväg. Allt utvecklas öppet under MIT-licens, fritt att granska, ifrågasätta och bidra till.
 
 ---
 
