@@ -1,12 +1,15 @@
 # openAut
 
-> openAut är en öppen AI-plattform för fastighetsautomation med lokal inferens, full transparens och ingen leverantörsinlåsning.
+> openAut är ett öppet kunskaps- och konceptprojekt under utveckling för att utforska hur AI med lokala modeller kan användas inom fastighetsautomation. Inte en färdig produkt — ska inte användas i skarp drift eller live-miljöer.
 
 ## Primary URL
 - https://openaut.io/
 
+## Status
+openAut befinner sig i konceptstadiet (v0.1) och är under aktiv utveckling. Det är ett kunskaps- och konceptprojekt byggt för att lära, experimentera och visa på möjligheter — inte en driftfärdig produkt. Det ska inte användas i skarp drift eller live-miljöer.
+
 ## Summary
-openAut hjälper fastighetsägare att analysera byggnadsdata och implementera Python-baserad reglering lokalt i den egna infrastrukturen, utan molntjänster eller leverantörsinlåsning. Plattformen är öppen källkod och designad för offentlig sektor, upphandling och långsiktig förvaltning. Driftlagret är uppdelat i två instanser med olika förtroendenivå: openAut Advisor (read-only, Teams-vänd) och openAut Engineer (SSH/deploy, ej Teams-exponerad), med åtgärdsöverlämning via godkända ärenden i Systemdatabasen.
+openAut utforskar hur fastighetsägare skulle kunna analysera byggnadsdata och implementera Python-baserad reglering lokalt i den egna infrastrukturen, med lokala AI-modeller, utan molntjänster eller leverantörsinlåsning. Projektet är öppen källkod och utforskar offentlig sektor, upphandling och långsiktig förvaltning som tänkbara användningsområden. Driftlagret är (i konceptet) uppdelat i två instanser med olika förtroendenivå: openAut Advisor (read-only, Teams-vänd) och openAut Engineer (SSH/deploy, ej Teams-exponerad), med åtgärdsöverlämning via godkända ärenden i Systemdatabasen.
 
 ## Pages
 
