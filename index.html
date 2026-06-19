@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>openAut — AI-driven fastighetsanalys. Öppen källkod.</title>
-<meta name="description" content="openAut är en öppen AI-plattform för fastighetsautomation: lokal analys, inga molnkrav och full transparens för offentlig sektor.">
+<title>openAut — Konceptprojekt: lokal AI för fastighetsautomation. Öppen källkod.</title>
+<meta name="description" content="openAut är ett öppet konceptprojekt under utveckling för att utforska hur AI med lokala modeller kan användas inom fastighetsautomation. Inte en färdig produkt — ska inte användas i skarp drift.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://openaut.io/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sv_SE">
-<meta property="og:title" content="openAut — AI-driven fastighetsanalys. Öppen källkod.">
-<meta property="og:description" content="Öppen AI-plattform för fastighetsautomation med lokal inferens, transparens och ingen leverantörsinlåsning.">
+<meta property="og:title" content="openAut — Konceptprojekt: lokal AI för fastighetsautomation. Öppen källkod.">
+<meta property="og:description" content="Öppet kunskaps- och konceptprojekt under utveckling som utforskar AI med lokala modeller inom fastighetsautomation. Inte avsett för live-miljöer.">
 <meta property="og:url" content="https://openaut.io/">
 <meta property="og:image" content="https://openaut.io/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="openAut — AI-driven fastighetsanalys. Öppen källkod.">
-<meta name="twitter:description" content="Öppen AI-plattform för fastighetsautomation med lokal inferens, transparens och ingen leverantörsinlåsning.">
+<meta name="twitter:title" content="openAut — Konceptprojekt: lokal AI för fastighetsautomation. Öppen källkod.">
+<meta name="twitter:description" content="Öppet kunskaps- och konceptprojekt under utveckling som utforskar AI med lokala modeller inom fastighetsautomation. Inte avsett för live-miljöer.">
 <meta name="twitter:image" content="https://openaut.io/icon-512.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
@@ -213,6 +213,38 @@
     height: 1px;
     background: var(--green);
   }
+
+  .concept-notice {
+    max-width: 60ch;
+    margin-bottom: 2.2rem;
+    padding: 1.1rem 1.4rem;
+    border: 1px solid rgba(245,166,35,0.35);
+    border-left: 3px solid var(--amber);
+    background: rgba(245,166,35,0.06);
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+  .concept-notice strong { color: var(--amber); font-weight: 700; }
+
+  .inline-note {
+    max-width: 64ch;
+    margin: 1.5rem auto 0;
+    padding: 0.9rem 1.2rem;
+    border-left: 3px solid var(--amber);
+    background: rgba(245,166,35,0.05);
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    text-align: left;
+  }
+  .inline-note strong { color: var(--amber); }
 
   .hero-title {
     font-family: var(--display);
@@ -1683,22 +1715,29 @@
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
 
-  <div class="hero-tag">openAut — v0.1 — Öppen källkod · MIT-licens</div>
+  <div class="hero-tag">openAut — v0.1 · Konceptstadie · Öppen källkod · MIT</div>
+
+  <div class="concept-notice">
+    <strong>⚠ Konceptprojekt under utveckling.</strong> openAut är ett öppet kunskaps- och
+    konceptprojekt för att utforska hur AI med <strong>lokala modeller</strong> kan användas inom
+    fastighetsautomation. Det är <strong>inte</strong> en färdig produkt och ska
+    <strong>inte</strong> användas i skarp drift eller live-miljöer.
+  </div>
 
   <h1 class="hero-title">
-    Din fastighet<br>genererar data.<br><em>Börja använda den.</em>
+    Din fastighet<br>genererar data.<br><em>Vad kan lokal AI göra med den?</em>
   </h1>
 
   <p class="hero-sub">
-    openAut är ett <strong>öppet tillägg till ditt befintliga BMS</strong> — inte en ersättare.
-    Det samlar in driftsdata, analyserar den lokalt med kraftfull AI-hårdvara,
-    och berättar för dina tekniker vad som är fel, varför energiförbrukningen ökar,
-    och vad som bör åtgärdas — <strong>innan det blir ett problem.</strong><br><br>
-    Ingen molntjänst. Ingen leverantörslåsning. Redo för offentlig upphandling.
+    openAut utforskar hur ett <strong>öppet tillägg till ett befintligt BMS</strong> skulle kunna
+    se ut — ett som samlar in driftsdata, analyserar den lokalt med <strong>lokala AI-modeller</strong>,
+    och pekar tekniker mot vad som är fel och varför energiförbrukningen ökar.<br><br>
+    Allt utforskas öppet: lokal inferens, ingen molntjänst, ingen leverantörslåsning.
+    <strong>Målet är att lära — inte att leverera en driftfärdig produkt.</strong>
   </p>
 
   <div class="hero-ctas">
-    <a href="#scenario" class="btn-primary">Se hur det fungerar i praktiken</a>
+    <a href="#scenario" class="btn-primary">Se konceptet i praktiken</a>
     <a href="https://github.com/openaut" class="btn-ghost">GitHub →</a>
   </div>
 
@@ -1712,7 +1751,7 @@
     <span class="ticker-item">Ingen leverantörslåsning</span>
     <span class="ticker-item accent">Komplement till befintligt BMS</span>
     <span class="ticker-item">BACnet · Modbus · M-Bus · KNX · DALI · LoRaWAN</span>
-    <span class="ticker-item accent">LOU-kompatibelt</span>
+    <span class="ticker-item accent">Konceptprojekt · ej för skarp drift</span>
     <span class="ticker-item">IEC 62443 säkerhet</span>
     <span class="ticker-item accent">Anslut mot fältutrustning</span>
     <span class="ticker-item">Python edge-reglering</span>
@@ -1726,7 +1765,7 @@
     <span class="ticker-item">Ingen leverantörslåsning</span>
     <span class="ticker-item accent">Komplement till befintligt BMS</span>
     <span class="ticker-item">BACnet · Modbus · M-Bus · KNX · DALI · LoRaWAN</span>
-    <span class="ticker-item accent">LOU-kompatibelt</span>
+    <span class="ticker-item accent">Konceptprojekt · ej för skarp drift</span>
     <span class="ticker-item">IEC 62443 säkerhet</span>
     <span class="ticker-item accent">Anslut mot fältutrustning</span>
     <span class="ticker-item">Python edge-reglering</span>
@@ -1740,14 +1779,19 @@
 
 <!-- SCENARIO: SÅ HÄR ANVÄNDS DET -->
 <section class="scenario" id="scenario">
-  <div class="section-label" data-num="01">Hur det används i praktiken</div>
-  <h2 class="section-title reveal">Tre roller.<br>Samma <span class="accent">system.</span></h2>
+  <div class="section-label" data-num="01">Så är det tänkt att fungera</div>
+  <h2 class="section-title reveal">Tre roller.<br>Samma <span class="accent">idé.</span></h2>
 
   <p class="scenario-intro reveal reveal-delay-1">
-    openAut ger olika svar till olika roller — i de verktyg de redan använder.
+    Tanken är att openAut ska kunna ge olika svar till olika roller — i de verktyg de redan använder.
     <strong>Drifttekniker</strong> får larmkorrelation och rotorsak i sin chatt.
     <strong>Energisamordnare</strong> får automatiska veckoapporter och avvikelseanalyser.
     <strong>Förvaltare</strong> ser fastighetsstatus och underhållsprognos i en webbvy.
+  </p>
+
+  <p class="inline-note reveal reveal-delay-1">
+    <strong>Illustrativt exempel.</strong> Scenarierna nedan visar hur konceptet är tänkt att
+    fungera — de beskriver målbilden, inte en färdig eller verifierad produkt.
   </p>
 
   <div class="scenario-cards reveal reveal-delay-2">
@@ -2312,12 +2356,12 @@
 <!-- ÖPPEN KÄLLKOD + OFFENTLIG SEKTOR -->
 <section class="oss" id="offentlig">
   <div class="section-label" data-num="07">Öppen källkod & offentlig sektor</div>
-  <h2 class="section-title reveal">Designat för offentlig<br>upphandling. <span class="accent">Från dag ett.</span></h2>
+  <h2 class="section-title reveal">Tänkt för offentlig<br>upphandling. <span class="accent">Från grunden.</span></h2>
 
   <div class="oss-layout">
 
     <div class="oss-text reveal reveal-delay-1">
-      <p>För kommuner, regioner och offentliga fastighetsägare skapar LOU reella begränsningar för teknikval. openAut är designat inifrån och ut för att <strong>fungera inom de begränsningarna</strong> — inte runt dem.</p>
+      <p>En av de frågor konceptet utforskar är hur en öppen plattform skulle kunna passa offentlig sektor. För kommuner, regioner och offentliga fastighetsägare skapar LOU reella begränsningar för teknikval — och tanken är att openAut ska kunna <strong>fungera inom de begränsningarna</strong>, inte runt dem.</p>
 
       <p>Eftersom openAut är MIT-licensierat och öppen källkod <strong>finns det ingen enskild leverantör att upphandla.</strong> Plattformen är gratis att använda. Vad din organisation upphandlar är <strong>kompetensen</strong> att implementera, konfigurera och förvalta den — tjänster som kan läggas ut på öppen anbudsgivning och tilldelas valfri regional konsult, befintliga ramavtalspartner, eller en intern driftsorganisation.</p>
 
@@ -2423,7 +2467,9 @@
   <h2 class="section-title reveal">Ett öppet projekt<br><span class="accent">under utveckling.</span></h2>
 
   <div class="about-project reveal reveal-delay-1">
-    <p>openAut är i grunden ett kunskapsprojekt: ett sätt att utforska hur AI faktiskt kan användas i fastigheter — inte bara i teorin. Plattformen är under aktiv utveckling, med målet att över tid mogna till något som går att driftsätta skarpt.</p>
+    <p>openAut är i grunden ett <strong>kunskaps- och konceptprojekt</strong>: ett sätt att utforska hur AI med lokala modeller faktiskt kan användas inom fastighetsautomation — inte bara i teorin. Projektet befinner sig i <strong>konceptstadiet</strong> och är under aktiv utveckling.</p>
+
+    <p>Det här är ingen färdig produkt. openAut <strong>ska inte användas i skarp drift eller live-miljöer</strong> — det är byggt för att lära, experimentera och visa på möjligheter. Målet är att över tid förstå vad som krävs för att något liknande ska kunna mogna till en driftsäker lösning.</p>
 
     <p>Arkitekturen hålls medvetet öppen, modulär och fri från inlåsning, så att den kan växa i den riktning som visar sig vara rätt — utan att något utesluts i förväg. Allt utvecklas öppet under MIT-licens, fritt att granska, ifrågasätta och bidra till.</p>
   </div>
@@ -2432,8 +2478,8 @@
 <!-- CTA -->
 <section class="cta" id="start">
   <div class="cta-label">Kom igång</div>
-  <h2 class="reveal">Din fastighet pratar<br>redan. <span style="color:var(--green)">Börja lyssna.</span></h2>
-  <p class="reveal reveal-delay-1">openAut är öppen källkod, under aktiv utveckling och redo för pilotdriftsättningar. Utforska dokumentationen, bidra med en protokolldrivrutin, eller anpassa en applikationsprofil till din fastighetsportfölj.</p>
+  <h2 class="reveal">Din fastighet pratar<br>redan. <span style="color:var(--green)">Låt oss utforska lyssnandet.</span></h2>
+  <p class="reveal reveal-delay-1">openAut är öppen källkod och ett konceptprojekt under aktiv utveckling — för att lära, inte för skarp drift. Utforska dokumentationen, granska arkitekturen, bidra med en protokolldrivrutin eller experimentera med en applikationsprofil.</p>
   <div class="cta-btns reveal reveal-delay-2">
     <a href="https://github.com/openaut" class="btn-primary">Se projektet på GitHub</a>
     <a href="#arkitektur" class="btn-ghost">Utforska arkitekturen</a>

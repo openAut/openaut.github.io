@@ -1,10 +1,14 @@
 # openAut
 
-> Öppen AI-plattform för fastighetsautomation med lokal inferens, Python edge-reglering och ingen leverantörsinlåsning.
+> Öppet kunskaps- och konceptprojekt för att utforska hur AI med lokala modeller kan användas inom fastighetsautomation.
 
-openAut är ett **öppet tillägg till ditt befintliga BMS** — inte en ersättare. Plattformen samlar in driftsdata via MQTT over TLS, analyserar den lokalt med kraftfull AI-hårdvara, och kan driftsätta Python-baserad reglering direkt på edge-noder. Designat för offentlig upphandling, regelefterlevnad (ISO 27001, NIS2, IEC 62443, CRA, AI Act) och långsiktig förvaltning.
+> [!WARNING]
+> **openAut är ett konceptprojekt under utveckling — inte en färdig produkt.**
+> Det är byggt för att lära, experimentera och visa på möjligheter med lokala AI-modeller inom fastighetsautomation. Det ska **inte** användas i skarp drift eller live-miljöer.
 
-**Hemsida:** https://openaut.io · **Licens:** MIT · **Status:** v0.1 — aktiv utveckling
+openAut utforskar hur ett **öppet tillägg till ett befintligt BMS** skulle kunna se ut — ett som samlar in driftsdata via MQTT over TLS, analyserar den lokalt med **lokala AI-modeller**, och i förlängningen skulle kunna driftsätta Python-baserad reglering på edge-noder. Konceptet utforskas med offentlig upphandling, regelefterlevnad (ISO 27001, NIS2, IEC 62443, CRA, AI Act) och långsiktig förvaltning i åtanke.
+
+**Hemsida:** https://openaut.io · **Licens:** MIT · **Status:** v0.1 — konceptstadie, aktiv utveckling
 
 ---
 
@@ -61,7 +65,9 @@ LAGER 01 — FÄLT         Modbus RTU/TCP · BACnet · M-Bus · LoRaWAN · KNX �
 
 ## Om projektet
 
-openAut är i grunden ett kunskapsprojekt: ett sätt att utforska hur AI faktiskt kan användas i fastigheter — inte bara i teorin. Plattformen är under aktiv utveckling, med målet att över tid mogna till något som går att driftsätta skarpt.
+openAut är i grunden ett **kunskaps- och konceptprojekt**: ett sätt att utforska hur AI med lokala modeller faktiskt kan användas inom fastighetsautomation — inte bara i teorin. Projektet befinner sig i **konceptstadiet** och är under aktiv utveckling.
+
+Det här är ingen färdig produkt. openAut **ska inte användas i skarp drift eller live-miljöer** — det är byggt för att lära, experimentera och visa på möjligheter. Målet är att över tid förstå vad som krävs för att något liknande ska kunna mogna till en driftsäker lösning.
 
 Arkitekturen hålls medvetet öppen, modulär och fri från inlåsning, så att den kan växa i den riktning som visar sig vara rätt — utan att något utesluts i förväg. Allt utvecklas öppet under MIT-licens, fritt att granska, ifrågasätta och bidra till.
 
@@ -150,7 +156,7 @@ https://openaut.io/security.html
 https://github.com/openaut
 ```
 
-Projektet är under aktiv utveckling och redo för pilotdriftsättningar. Bidra med en protokolldrivrutin, anpassa en applikationsprofil, eller testa edge-reglering mot din befintliga I/O-hårdvara.
+Projektet är ett konceptprojekt under aktiv utveckling — för att lära, inte för skarp drift. Bidra med en protokolldrivrutin, anpassa en applikationsprofil, eller experimentera med edge-reglering i en testmiljö.
 
 ---
 
