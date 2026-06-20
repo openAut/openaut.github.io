@@ -1302,7 +1302,7 @@ footer {
         <div class="arch-node red">NemoClaw — security mode</div>
         <div class="arch-node red">IT-säkerhets-skill</div>
         <div class="arch-node red">OT-säkerhets-skill</div>
-        <div class="arch-node red">Prompt injection-detektor</div>
+        <div class="arch-node red">Prompt-klassificerare (icke-genererande)</div>
         <div class="arch-node red">Anomalikorrelation</div>
         <div class="arch-node amber">Teams Bot — listen-only</div>
         <div class="arch-node amber">Larmsändare → Säkerhetskanal</div>
@@ -1522,12 +1522,13 @@ footer {
         <div class="listen-p">
           <span class="listen-p-num">02</span>
           <div>
-            <h4>Inkommande meddelanden ignoreras — per arkitektur</h4>
+            <h4>Inget svar — men innehållet analyseras</h4>
             <p>
-              Säkerhetsagentens NemoClaw har inget konfigurerat svarsbeteende för inkommande Teams-meddelanden.
-              En <strong>felhanterare fångar alla inkommande webhooks och loggar dem som
-              övervakningsdata</strong> — de når aldrig agentens LLM-motor.
-              <em>Det finns ingen prompt att injicera i.</em>
+              Säkerhetsagentens NemoClaw har <strong>ingen svarsväg</strong> för inkommande Teams-meddelanden:
+              en felhanterare fångar alla inkommande webhooks så att de aldrig kan utlösa ett svar eller en handling.
+              Innehållet <strong>läses ändå</strong> — det är så hot upptäcks — men bedömningen görs av en
+              icke-genererande klassificerare, inte av en LLM som kan luras av instruktioner i texten.
+              <em>Skyddet ligger i hur innehållet analyseras, inte i att det aldrig läses.</em>
             </p>
           </div>
         </div>
@@ -1576,10 +1577,156 @@ footer {
   </div>
 </section>
 
+<!-- DETEKTIONSLAGRET -->
+<section class="threats" id="detektion">
+  <div class="grid-bg"></div>
+  <div class="section-label" data-num="05">Detektionslagret</div>
+  <h2 class="section-title reveal">Klassificerare,<br><span class="accent-red">inte domare.</span></h2>
+  <p class="threats-intro reveal reveal-delay-1">
+    Säkerhetsagenten <strong>läser</strong> angriparkontrollerat innehåll — det är hela poängen med att
+    övervaka konversationer och loggar. Skyddet ligger inte i att innehållet aldrig läses, utan i
+    <strong>hur</strong> det bedöms. Bedömningen görs i två steg, och det avgörande steget tar inga instruktioner.
+  </p>
+
+  <div class="threat-cols reveal reveal-delay-2">
+
+    <div class="threat-col">
+      <div class="threat-col-label it">Klassificeraren — bedömer</div>
+      <div class="threat-list">
+
+        <div class="threat-item">
+          <span class="threat-item-icon">⚡</span>
+          <div class="threat-item-body">
+            <h5>Llama Prompt Guard 2 · 86M</h5>
+            <p>Liten, icke-genererande klassificerare som snabb första linje mot prompt injection och jailbreak. <em>Den följer inga instruktioner — den producerar bara en sannolikhet.</em></p>
+          </div>
+        </div>
+
+        <div class="threat-item">
+          <span class="threat-item-icon">🛡</span>
+          <div class="threat-item-body">
+            <h5>Llama Guard 3 / 4</h5>
+            <p>Grövre innehållsklassificering mot definierade riskkategorier — körs lokalt på säkerhetsinstansens egen AI-hårdvara.</p>
+          </div>
+        </div>
+
+        <div class="threat-item">
+          <span class="threat-item-icon">🔬</span>
+          <div class="threat-item-body">
+            <h5>ProtectAI / PIGuard (DeBERTa)</h5>
+            <p>DeBERTa-baserade detektorer som alternativ eller komplement — encoder-modeller utan textgenerering, och därför svåra att prompt-injicera.</p>
+          </div>
+        </div>
+
+        <div class="threat-item">
+          <span class="threat-item-icon">🔬</span>
+          <div class="threat-item-body">
+            <h5>IBM Granite Guardian</h5>
+            <p>Ytterligare ett öppet alternativ för risk- och innehållsklassificering. Modellvalet är utbytbart — principen är det inte.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="threat-col">
+      <div class="threat-col-label ot">NemoClaw — förklarar</div>
+      <div class="threat-list">
+
+        <div class="threat-item">
+          <span class="threat-item-icon">🗣</span>
+          <div class="threat-item-body">
+            <h5>Förklaring, inte grindvakt</h5>
+            <p>Den genererande LLM:en (NemoClaw) används <strong>först efter</strong> att klassificeraren flaggat — för att formulera larmet, sammanfatta bevis och beskriva mönster på begripligt språk. <em>Aldrig som det som avgör om något är ett hot.</em></p>
+          </div>
+        </div>
+
+        <div class="threat-item">
+          <span class="threat-item-icon">📋</span>
+          <div class="threat-item-body">
+            <h5>Compliance-assistans</h5>
+            <p>NemoClaw hjälper compliance-ansvariga att tolka krav och generera dokumentation utifrån redan klassificerade händelser — en assistent, inte en beslutsfattare.</p>
+          </div>
+        </div>
+
+        <div class="threat-item">
+          <span class="threat-item-icon">🚫</span>
+          <div class="threat-item-body">
+            <h5>Varför grindvakten inte är en LLM</h5>
+            <p>En genererande modell följer instruktioner — och kan därför luras av instruktioner gömda i det den läser. Den icke-genererande klassificeraren gör ingen sådan tolkning: den klassar text, den lyder den inte.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cs-callout reveal" style="margin-top:3rem;border-color:rgba(255,77,77,0.3);background:rgba(255,77,77,0.04);">
+    <div class="cs-callout-label" style="color:var(--red)">Inline-skydd vs passiv analys</div>
+    <p>
+      <strong>Blockerande inline-guardrails</strong> — som stoppar ett svar innan det skickas — hör hemma på
+      <strong>Advisor och Engineer</strong>, där det finns en svarsväg att skydda. <strong>Säkerhetsinstansen</strong>
+      kör samma klassificerare men i <strong>passivt analysläge</strong>: den blockerar ingenting i driftflödet,
+      den observerar, korrelerar och larmar — plus compliance-skills. Det är därför den kan se allt utan att
+      själv gå att styra.
+    </p>
+  </div>
+</section>
+
+<!-- TEKNIKVAL -->
+<section class="principles-hero" id="teknikval">
+  <div class="section-label" data-num="06">Teknikval</div>
+  <h2 class="section-title reveal">Öppet.<br><span class="accent-red">Lokalt.</span></h2>
+  <p class="principles-intro reveal reveal-delay-1">
+    Orkestreringen av rails och klassificerare är inte egenutvecklad — den bygger på etablerade öppna
+    ramverk som körs <strong>helt lokalt</strong> på säkerhetsinstansens egen hårdvara. Inga molnanrop
+    sker med driftdata: det är ett krav, inte en inställning, och en förutsättning för NIS2 och AI Act.
+  </p>
+
+  <div class="three-principles reveal reveal-delay-2">
+
+    <div class="tp-card">
+      <span class="tp-num">ORKESTRERING</span>
+      <div class="tp-icon">🧩</div>
+      <h3>NVIDIA <em>NeMo Guardrails</em></h3>
+      <p>
+        Passar Nemotron-stacken bakom NemoClaw och <strong>självhostas via vLLM eller NVIDIA NIM</strong>.
+        Kör <em>input-, output-, dialog- och retrieval-rails</em> som kedjar samman klassificerarna ovan
+        med policyer — allt på den lokala AI-hårdvaran.
+      </p>
+      <div class="tp-verdict">Lokal orkestrering. Inga molnberoenden.</div>
+    </div>
+
+    <div class="tp-card">
+      <span class="tp-num">ALTERNATIV</span>
+      <div class="tp-icon">🔓</div>
+      <h3>LLM Guard <em>· Protect AI</em></h3>
+      <p>
+        MIT-licensierad verktygslåda med scanners för prompt injection, känslig data och toxiskt innehåll.
+        <strong>Ett öppet alternativ</strong> för organisationer som hellre bygger sin egen pipeline.
+      </p>
+      <div class="tp-verdict">MIT-licens. Modulär. Lokal.</div>
+    </div>
+
+    <div class="tp-card">
+      <span class="tp-num">ALTERNATIV</span>
+      <div class="tp-icon">🧱</div>
+      <h3>Meta <em>LlamaFirewall</em></h3>
+      <p>
+        Ramverk för att lägga flera guardrail-lager — inklusive promptgranskning och granskning av
+        agentbeteende — i ett sammanhållet filter. <strong>Ytterligare ett byggblock</strong>, inte en låsning.
+      </p>
+      <div class="tp-verdict">Flera lager. Ett filter.</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- HOTMODELL -->
 <section class="threats" id="hotmodell">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="05">Hotmodell</div>
+  <div class="section-label" data-num="07">Hotmodell</div>
   <h2 class="section-title reveal">Vad den letar efter.<br><span class="accent-red">IT och OT.</span></h2>
   <p class="threats-intro reveal reveal-delay-1">
     Säkerhetsagenten täcker två angreppsytor: <strong>IT-sidan</strong> — konversationer, botar, prompter och autentisering — och <strong>OT-sidan</strong> — protokollanomalier, ovanliga skrivkommandon och enheter som inte borde finnas på nätverket.
@@ -1686,7 +1833,7 @@ footer {
 
 <!-- LARMFLÖDE -->
 <section class="alert-section" id="larmflode">
-  <div class="section-label" data-num="06">Larmflöde</div>
+  <div class="section-label" data-num="08">Larmflöde</div>
   <h2 class="section-title reveal">Från detektion till<br>säkerhetsteam — <span class="accent-red">isolerat.</span></h2>
   <p class="alert-intro reveal reveal-delay-1">
     Larmet tar aldrig vägen tillbaka in i driftkanalen. Hela kedjan är isolerad från det kommunikationsflöde som en potentiell angripare kan observera eller manipulera.
@@ -1701,7 +1848,7 @@ footer {
       </div>
       <div class="alert-step-content">
         <div class="alert-step-desc">
-          Säkerhetsagentens NemoClaw analyserar kontinuerligt SSH-loggar och Teams-konversationsflöden. Detekterar ett mönster som matchar hotmodellen — ensamt eller i kombination med ett andra signal.
+          Säkerhetsinstansens <strong>detektionslager</strong> — den icke-genererande klassificeraren — bedömer kontinuerligt SSH-loggar och Teams-konversationsflöden och matchar mot hotmodellen, ensamt eller i kombination med en andra signal. NemoClaw formulerar därefter fyndet i klartext.
           <strong>All detektion loggas lokalt på säkerhetsinstansen</strong> innan någon extern åtgärd vidtas.
         </div>
         <div class="alert-chips">
@@ -1779,7 +1926,7 @@ footer {
 <!-- HÅRDVARA -->
 <section class="hw-section" id="hardvara">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="07">Hårdvara &amp; nätverksisolering</div>
+  <div class="section-label" data-num="09">Hårdvara &amp; nätverksisolering</div>
   <h2 class="section-title reveal">Separat maskin.<br><span class="accent-red">Eget VLAN.</span></h2>
   <p class="hw-intro reveal reveal-delay-1">
     Säkerhetsinstansen kör samma typ av lokal AI-hårdvara som driftinstanserna — men aldrig
@@ -1836,6 +1983,9 @@ footer {
           SSH port 22 inåt (till driftinstanserna) och Teams-API utåt. All annan trafik blockeras av nätverksinfrastrukturen — inte av mjukvara.
           En angripare som tar kontroll över säkerhetsinstansen kan inte använda den som språngbräda mot OT-nätverket
           eftersom routingtabeller och VLAN-access-listor förbjuder det på switchnivå.
+          Det <strong>utgående Teams-API:t är enda egress-vägen</strong> — låst med explicit ACL och används
+          enbart för strukturerade larm till säkerhetskanalen. Ingen rådata förs ut den vägen, så den blir
+          ingen exfiltreringskanal.
         </p>
       </div>
     </div>
@@ -1845,7 +1995,7 @@ footer {
 
 <!-- KAN EJ STYRAS -->
 <section class="nocmd-section" id="notyp">
-  <div class="section-label" data-num="08">Angreppsytan</div>
+  <div class="section-label" data-num="10">Angreppsytan</div>
   <h2 class="section-title reveal">Vad händer om <em style="font-style:normal;color:var(--red)">den</em> attackeras?</h2>
   <p class="threats-intro reveal reveal-delay-1" style="margin-bottom:0;">
     Säkerhetsagenten är designad med antagandet att <strong>även den kan vara ett mål.</strong>
@@ -1859,9 +2009,9 @@ footer {
       <h3>Prompt injection via Teams-kanalen</h3>
       <p>
         En angripare skickar ett meddelande i en driftkanal med en instruktion till säkerhetsboten.
-        <strong>Har ingen effekt.</strong> Säkerhetsbotklienten har ingen koppling från inkommande
-        Teams-meddelanden till NemoClaw-motorn. Meddelandet loggas som övervakningsdata —
-        <em>det exekveras aldrig.</em>
+        <strong>Har ingen effekt på beteendet.</strong> Säkerhetsboten har ingen svars- eller kommandoväg
+        från inkommande Teams-meddelanden. Innehållet analyseras — men av en icke-genererande klassificerare
+        som inte följer instruktioner — så injicerad text kan inte kapa bedömningen. <em>Den klassas, den lyds inte.</em>
       </p>
     </div>
 
@@ -1893,8 +2043,9 @@ footer {
       <p>
         Angriparen komprometterar säkerhetsinstansen och försöker radera bevis.
         <strong>Audit-databasen är append-only</strong> med signaturer per post.
-        Dessutom replikerar säkerhetsinstansen larmposter till ett externt, isolerat
-        system — <em>angriparen kan inte radera vad som redan skickats.</em>
+        Dessutom replikerar säkerhetsinstansen larmposter till ett <strong>append-only-mål i en separat
+        förtroendedomän</strong> — en WORM-logg eller en extern syslog-mottagare — <em>angriparen kan inte
+        radera vad som redan skickats.</em>
       </p>
     </div>
 
@@ -1925,10 +2076,71 @@ footer {
   </div>
 </section>
 
+<!-- ÄRLIGA BEGRÄNSNINGAR -->
+<section class="threats" id="begransningar">
+  <div class="grid-bg"></div>
+  <div class="section-label" data-num="11">Ärliga begränsningar</div>
+  <h2 class="section-title reveal">Vad det <span class="accent-red">inte</span><br>löser.</h2>
+  <p class="threats-intro reveal reveal-delay-1">
+    Modellen ovan är ett konceptprojekt, och ärlighet om dess gränser är en del av designen.
+    Två saker är värda att säga rakt ut.
+  </p>
+
+  <div class="threat-cols reveal reveal-delay-2">
+
+    <div class="threat-col">
+      <div class="threat-col-label it">Guardrails är inte vattentäta</div>
+      <div class="threat-list">
+
+        <div class="threat-item">
+          <span class="threat-item-icon">⚠️</span>
+          <div class="threat-item-body">
+            <h5>De går att kringgå</h5>
+            <p>Ingen klassificerare fångar allt. Nya jailbreak-tekniker dyker upp, och detektion är ett kontinuerligt kapprustningslopp — inte ett löst problem.</p>
+          </div>
+        </div>
+
+        <div class="threat-item">
+          <span class="threat-item-icon">🚦</span>
+          <div class="threat-item-body">
+            <h5>Överdefensivitet är ett känt problem</h5>
+            <p>Godartad text med triggerord kan falskflaggas. För hårt satta trösklar skapar larmtrötthet; för lösa missar hot. <em>Slutsatsen är defense-in-depth — flera oberoende lager, inte en enda grind.</em></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="threat-col">
+      <div class="threat-col-label ot">OT är inte ett språkmodellsproblem</div>
+      <div class="threat-list">
+
+        <div class="threat-item">
+          <span class="threat-item-icon">📐</span>
+          <div class="threat-item-body">
+            <h5>Annan typ av detektion</h5>
+            <p>Protokollanomalier, okända enheter och värden utanför fysikaliska gränser fångas av <strong>statistisk och regelbaserad anomalidetektering</strong> plus skills — inte av en LLM-guardrail.</p>
+          </div>
+        </div>
+
+        <div class="threat-item">
+          <span class="threat-item-icon">🔧</span>
+          <div class="threat-item-body">
+            <h5>Rätt verktyg för rätt lager</h5>
+            <p>Språkmodellklassificerare hör hemma på IT- och konversationssidan. OT-sidan vilar på deterministiska regler och baseline-jämförelser mot Systemdatabasen — där en LLM aldrig är grindvakt.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- EU COMPLIANCE SKILLS -->
 <section class="compliance-section" id="compliance">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="09">Regelverksskills</div>
+  <div class="section-label" data-num="12">Regelverksskills</div>
   <h2 class="section-title reveal">AI Act. NIS2. CRA.<br><span class="accent-red">Inbyggt — inte påklistrat.</span></h2>
 
   <p class="compliance-intro reveal reveal-delay-1">
