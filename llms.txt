@@ -9,7 +9,7 @@
 openAut befinner sig i konceptstadiet (v0.1) och är under aktiv utveckling. Det är ett kunskaps- och konceptprojekt byggt för att lära, experimentera och visa på möjligheter — inte en driftfärdig produkt. Det ska inte användas i skarp drift eller live-miljöer.
 
 ## Summary
-openAut utforskar hur fastighetsägare skulle kunna analysera byggnadsdata och implementera Python-baserad reglering lokalt i den egna infrastrukturen, med lokala AI-modeller, utan molntjänster eller leverantörsinlåsning. Projektet är öppen källkod och utforskar offentlig sektor, upphandling och långsiktig förvaltning som tänkbara användningsområden. Driftlagret är (i konceptet) uppdelat i två instanser med olika förtroendenivå: openAut Advisor (read-only, Teams-vänd) och openAut Engineer (SSH/deploy, ej Teams-exponerad), med åtgärdsöverlämning via godkända ärenden i Systemdatabasen.
+openAut utforskar hur fastighetsägare skulle kunna analysera byggnadsdata och implementera Python-baserad reglering lokalt i den egna infrastrukturen, med lokala AI-modeller, utan molntjänster eller leverantörsinlåsning. Projektet är öppen källkod och utforskar offentlig sektor, upphandling och långsiktig förvaltning som tänkbara användningsområden. Driftlagret är (i konceptet) uppdelat i två instanser med olika förtroendenivå: openAut Advisor (read-only, Teams-vänd) och openAut Engineer (SSH/deploy, ej Teams-exponerad), med åtgärdsöverlämning via godkända ärenden i Systemdatabasen. Kod, manualer och dokumentation lagras versionerat i en lokal, självhostad Forge (Forgejo) som både människor och AI hämtar från, med CI- och granskningsgrindar och behörighetsstyrning. Den enda mänskliga kanalen är Microsoft Teams.
 
 ## Pages
 
