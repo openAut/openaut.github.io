@@ -1732,7 +1732,7 @@
     openAut är ett <strong>öppet tillägg till ett befintligt BMS</strong> — inte en ersättare.
     Det samlar in driftsdata, analyserar den lokalt med <strong>lokala AI-modeller</strong>,
     och kan peka tekniker mot vad som är fel och varför energiförbrukningen ökar.<br><br>
-    Ingen molntjänst. Ingen leverantörslåsning. Lokal inferens — data lämnar aldrig byggnaden.
+    Ingen molnanalys. Ingen leverantörslåsning. Driftsdata och inferens stannar i byggnaden — bara beslut och notiser går via Teams.
   </p>
 
   <div class="hero-ctas">
@@ -1758,7 +1758,7 @@
     <span class="ticker-item accent">Energioptimering</span>
     <span class="ticker-item">Felsökning med AI-stöd</span>
     <span class="ticker-item accent">Hårdvaruagnostisk · valfri lokal AI-hårdvara</span>
-    <span class="ticker-item">Data lämnar aldrig byggnaden</span>
+    <span class="ticker-item">Driftsdata stannar i byggnaden</span>
     <!-- duplicate for seamless loop -->
     <span class="ticker-item accent">MIT-licens</span>
     <span class="ticker-item">Ingen leverantörslåsning</span>
@@ -1772,7 +1772,7 @@
     <span class="ticker-item accent">Energioptimering</span>
     <span class="ticker-item">Felsökning med AI-stöd</span>
     <span class="ticker-item accent">Hårdvaruagnostisk · valfri lokal AI-hårdvara</span>
-    <span class="ticker-item">Data lämnar aldrig byggnaden</span>
+    <span class="ticker-item">Driftsdata stannar i byggnaden</span>
   </div>
 </div>
 
@@ -2000,7 +2000,7 @@
       <p>Du har redan datan. Dina system registrerar temperaturer, tryck, energiuttag, driftlägen och larmstatus dygnet runt. Det är inte tillgången till data som är problemet.</p>
       <p>Problemet är vad som krävs för att <strong>analysera den.</strong> Marknadens AI-tjänster förutsätter att du skickar driftsdata till en molnplattform — deras plattform. Känslig information om dina byggnaders tekniska status, energimönster och driftslägen hamnar hos en extern leverantör, under deras villkor, till ett löpande abonnemangspris som kan förändras.</p>
       <p>För offentliga fastighetsägare är det här <strong>inte ett acceptabelt utbyte.</strong> Driftsdata om samhällsviktig infrastruktur ska inte lämna nätverket. Verksamheten ska inte bli beroende av en extern tjänst som kan sägas upp, prisändras eller läggas ned.</p>
-      <p>openAut löser det genom att köra all AI-analys <strong>lokalt — i din fastighet, på din hårdvara, under din kontroll.</strong> Inget moln. Inga abonnemang. Ingen data som lämnar byggnaden.</p>
+      <p>openAut löser det genom att köra all AI-analys <strong>lokalt — i din fastighet, på din hårdvara, under din kontroll.</strong> Inget moln för analys och lagring. Inga abonnemang. Din driftsdata stannar i byggnaden — bara beslut och notiser går vidare till Teams.</p>
     </div>
 
     <div class="pain-points reveal reveal-delay-2">
@@ -2070,7 +2070,7 @@
           <span class="stack-chip">Alltid-på agenter</span>
           <span class="stack-chip">Multi-agent orkestrering</span>
           <span class="stack-chip">Verktygsstöd</span>
-          <span class="stack-chip">Teams / Slack</span>
+          <span class="stack-chip">Teams-kanal</span>
           <span class="stack-chip">Självhostad</span>
           <span class="stack-chip green">250 000+ GitHub-stars (mars 2026)</span>
         </div>
@@ -2132,7 +2132,7 @@
           <span class="stack-chip">Edge-reglerings-skill</span>
           <span class="stack-chip">MQTT over TLS (stream + req/resp)</span>
           <span class="stack-chip">Teams-integration</span>
-          <span class="stack-chip">Slack-integration</span>
+          <span class="stack-chip green">Forge-skills (Forgejo)</span>
           <span class="stack-chip">Webb-HMI</span>
         </div>
       </div>
@@ -2201,12 +2201,13 @@
     <div class="arch-layer">
       <div class="arch-layer-num">LAGER 03 — AI</div>
       <div class="arch-layer-name">Systemdatabas & AI-analys</div>
-      <div class="arch-layer-desc">EMQX-brokern tar emot MQTT over TLS från alla edge-noder. Telegraf skriver tidsseriedata och larm till TimescaleDB, medan enheter, metadata, konfiguration och ärendekö ligger i Systemdatabasen (PostgreSQL). En delad AI-backend kör öppna modeller lokalt och betjänar både openAut Advisor (read-only, Teams) och openAut Engineer (SSH/deploy) — samma modellvikter och GPU, men egen sandbox och egna credentials per instans. Analyser, larm och åtgärdsförslag skrivs tillbaka utan externa anrop. On-demand-förfrågningar till edge-noder sker via MQTT request/response-topics.</div>
-      <div class="arch-user-view">All data stannar i byggnaden. GDPR-säkert per design.</div>
+      <div class="arch-layer-desc">EMQX-brokern tar emot MQTT over TLS från alla edge-noder. Telegraf skriver tidsseriedata och larm till TimescaleDB, medan enheter, metadata, konfiguration och ärendekö ligger i Systemdatabasen (PostgreSQL). En delad AI-backend kör öppna modeller lokalt och betjänar både openAut Advisor (read-only, Teams) och openAut Engineer (SSH/deploy) — samma modellvikter och GPU, men egen sandbox och egna credentials per instans. Analyser, larm och åtgärdsförslag skrivs tillbaka utan externa anrop. Kod, manualer, genererad dokumentation och migrationer versionshanteras i en lokal Forge (Forgejo) som både människor och AI hämtar från, med CI- och granskningsgrindar innan något blir betrott eller driftsatt. On-demand-förfrågningar till edge-noder sker via MQTT request/response-topics.</div>
+      <div class="arch-user-view">Driftsdata stannar i byggnaden. GDPR-säkert per design.</div>
       <div class="arch-nodes">
         <div class="arch-node cyan">EMQX-broker (MQTT over TLS)</div>
         <div class="arch-node cyan">Telegraf (ingest → TimescaleDB)</div>
         <div class="arch-node cyan">TimescaleDB (tidsserie) · PostgreSQL (Systemdatabas)</div>
+        <div class="arch-node cyan">Lokal Forge (Forgejo) — kod · manualer · dok</div>
         <div class="arch-node cyan">Lokal LLM-inferens</div>
         <div class="arch-node cyan">Feldetektering (FDD)</div>
         <div class="arch-node cyan">Energioptimering</div>
@@ -2221,7 +2222,7 @@
       <div class="arch-layer-desc">Insikter når de som behöver dem — i verktyg de redan använder. Chatten (openAut Advisor) för drifttekniker. Dashboarden och Power BI för energisamordnare och förvaltare. API:et för integrationsteamet.</div>
       <div class="arch-user-view">Inget nytt system att lära sig. Rådgivande — aldrig styrande.</div>
       <div class="arch-nodes">
-        <div class="arch-node">Microsoft Teams / Slack</div>
+        <div class="arch-node">Microsoft Teams</div>
         <div class="arch-node">Webb-HMI & dashboard</div>
         <div class="arch-node">Power BI Report Server (on-prem, read-only)</div>
         <div class="arch-node">Larmhantering</div>
@@ -2294,12 +2295,12 @@
         </div>
         <div class="hw-spec">
           <div class="hw-spec-val">Air-gap</div>
-          <div class="hw-spec-label">Inga molnberoenden</div>
+          <div class="hw-spec-label">Dataplan — Teams undantaget</div>
         </div>
       </div>
       <div class="hw-tags">
         <div class="hw-tag green">Ingen hårdvarulåsning</div>
-        <div class="hw-tag green">Air-gap redo</div>
+        <div class="hw-tag green">Air-gap-bart dataplan</div>
         <div class="hw-tag">GPU-server</div>
         <div class="hw-tag">AI-workstation</div>
       </div>
