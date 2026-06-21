@@ -86,7 +86,7 @@ openAut är hårdvaruagnostiskt i AI-lagret — plattformen ställer kapacitetsk
 | Acceleratorminne | Dimensioneras efter vald modell — lättviktig LLM kräver lite, stora resonerande modeller mer |
 | OS | Linux (Ubuntu 24.04 LTS rekommenderat) · x86_64 eller ARM64 |
 | Lagring | ≥2 TB NVMe rekommenderat |
-| Nät | Lokal inferens · air-gap möjligt — inga molnberoenden |
+| Nät | Lokal inferens · air-gap möjligt för dataplanet (Teams-notiser kräver nät) |
 
 ### Edge-lager
 | Enhet | CPU | Gränssnitt | Roll |
