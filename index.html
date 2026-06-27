@@ -1788,6 +1788,14 @@
     <strong>Förvaltare</strong> ser fastighetsstatus och underhållsprognos i en webbvy.
   </p>
 
+  <p class="scenario-intro reveal reveal-delay-1">
+    Det här är <em>operatörsroller</em> — <strong>vem</strong> som får insikten. De betjänas av openAuts
+    tre agenter, som avgör <strong>vad</strong> systemet får göra: <strong>openAut Advisor</strong> läser
+    och svarar i chatten, <strong>openAut Engineer</strong> driftsätter via SSH efter godkännande, och
+    <strong>openAut Security</strong> vakar över båda. En roll är inte sin egen agent — den realiseras
+    genom dem, främst Advisor.
+  </p>
+
   <div class="scenario-cards reveal reveal-delay-2">
 
     <div class="scenario-card">
@@ -2450,6 +2458,7 @@
       <span class="oss-card-tag">Säkerhet</span>
       <h3>Säker by design</h3>
       <p>openAut håller sig inom fem ramverk — ISO 27001 (governance), NIS2 (verksamhet), IEC 62443 (OT), CRA (produkt) och AI Act (AI-funktion) — inbyggt från dag ett, inte tillagt i efterhand. VLAN-segmentering, MQTT over TLS med klientcertifikat, WireGuard VPN, RBAC och auditloggning är baskrav, inte tillval.</p>
+      <p>Säkerheten är också en egen agent: en separat, läsande <strong>openAut Security</strong>-instans vakar över Advisor, Engineer och OT-miljön — <em>den kan se, men inte styra</em>. Audit och larm skickas från en gräns som de agerande agenterna inte själva kan tysta.</p>
     </div>
 
   </div>
