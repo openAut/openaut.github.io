@@ -307,6 +307,8 @@ section { padding: 7rem 4rem; position: relative; }
   gap: 0; align-items: stretch;
   border: 1px solid var(--border-sec);
 }
+/* Two-card variant (no middle connector) — e.g. Åtkomst & roller: KAN / KAN INTE */
+.arch-diagram-2col { grid-template-columns: 1fr 1fr; }
 .arch-instance {
   padding: 2.5rem 2rem;
   display: flex; flex-direction: column; gap: 1rem;
@@ -1340,7 +1342,7 @@ footer {
     låser upp. Den stannar hos dig som äger anläggningen.
   </div>
 
-  <div class="arch-diagram reveal reveal-delay-2">
+  <div class="arch-diagram arch-diagram-2col reveal reveal-delay-2">
 
     <div class="arch-instance main">
       <span class="arch-inst-badge badge-main">Styrentreprenör — KAN</span>
