@@ -1320,10 +1320,76 @@ footer {
   </div>
 </section>
 
+<!-- ÅTKOMST & ROLLER -->
+<section class="arch-section" id="atkomst">
+  <div class="section-label green" data-num="03">Åtkomst &amp; roller</div>
+  <h2 class="section-title reveal">Vem får ändra vad.<br>Och vem <span class="accent-green">bestämmer det.</span></h2>
+
+  <p class="reveal reveal-delay-1" style="max-width:760px;margin:0 auto 1.5rem;text-align:center;color:var(--text-muted);">
+    De tre instanserna svarar på <strong>vad</strong> systemet får göra. Den här delen svarar på
+    <strong>vem</strong> som får operera dem — och, viktigast, vem som får ändra reglerna. Alla som
+    arbetar i systemet, intern personal som upphandlade konsulter, kör genom <strong>avgränsade,
+    signerade behörighetsprofiler</strong>. En profil låter dig göra ditt jobb inom ett bestämt
+    område, men kan aldrig ändra säkerheten, ändra vad andra får göra, eller utöka sin egen
+    behörighet — det kräver en ändring i en separat styrnivå som inga driftroller når.
+  </p>
+
+  <div class="reveal reveal-delay-1" style="max-width:760px;margin:0 auto 2.5rem;padding:1.1rem 1.5rem;border-left:2px solid var(--green);background:var(--green-glow);color:var(--text);font-style:italic;">
+    En liknelse: en upphandlad konsult får en nyckel till de rum de arbetar i, under den tid jobbet
+    pågår. De får aldrig nyckelfilningsmaskinen — den som bestämmer vilka nycklar som finns och vad de
+    låser upp. Den stannar hos dig som äger anläggningen.
+  </div>
+
+  <div class="arch-diagram reveal reveal-delay-2">
+
+    <div class="arch-instance main">
+      <span class="arch-inst-badge badge-main">Styrentreprenör — KAN</span>
+      <div class="arch-inst-name green">Göra jobbet, inom sitt område</div>
+      <div class="arch-inst-hw">Avgränsad, tidsbegränsad, loggad Engineer-profil</div>
+      <div class="arch-nodes">
+        <div class="arch-node green">Felsöka och läsa sin egen anläggning</div>
+        <div class="arch-node green">Installera nya edge-noder — efter ditt godkännande</div>
+        <div class="arch-node green">Tidsbegränsad åtkomst (just-in-time)</div>
+        <div class="arch-node green">Släcks rent när uppdraget tar slut</div>
+        <div class="arch-node amber">Allt loggas av Security-instansen</div>
+      </div>
+    </div>
+
+    <div class="arch-instance sec">
+      <span class="arch-inst-badge badge-sec">Styrentreprenör — KAN INTE</span>
+      <div class="arch-inst-name red">Röra säkerheten eller reglerna</div>
+      <div class="arch-inst-hw">Ingen väg till styrnivån som äger policyn</div>
+      <div class="arch-nodes">
+        <div class="arch-node red">Ändra säkerhetsövervakningen</div>
+        <div class="arch-node red">Ändra vad andra roller får göra</div>
+        <div class="arch-node red">Utöka sin egen behörighet</div>
+        <div class="arch-node red">Nå Advisor- eller Security-instansen</div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="reveal reveal-delay-2" style="max-width:760px;margin:2rem auto 0;text-align:center;color:var(--text-muted);">
+    Samma mekanism gäller intern personal — en driftstekniker som gör edge-arbete får en egen profil
+    som skiljer sig bara i område, förtroende och varaktighet. Behöver någon mer behörighet blir det en
+    ny, godkänd profil — aldrig en lokal ändring.
+  </p>
+
+  <p class="reveal reveal-delay-2" style="max-width:760px;margin:1rem auto 0;text-align:center;color:var(--text-dim);font-size:0.8rem;">
+    För dig som granskar: modellen vilar på etablerade principer — minsta privilegium och uppdelade
+    ansvar (IEC 62443, ISO 27001), en oberoende auditor-roll (Security) och tidsbegränsad
+    just-in-time-åtkomst. Policyn ägs av en separat styrnivå (Policy Administration Point) skild från
+    alla som opererar systemet. Beslut och detaljer i
+    <a href="https://github.com/openAut/main/blob/main/docs/adr/0002-access-control-and-roles.md" style="color:var(--green);">ADR 0002</a>
+    och
+    <a href="https://github.com/openAut/main/blob/main/docs/adr/0003-engineer-runtime-containment.md" style="color:var(--green);">0003</a>.
+  </p>
+</section>
+
 <!-- SSH READ-ONLY -->
 <section class="ssh-section" id="ssh">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="03">SSH-åtkomst</div>
+  <div class="section-label" data-num="04">SSH-åtkomst</div>
   <h2 class="section-title reveal">Read-only SSH.<br><span class="accent-red">Noll skrivåtkomst.</span></h2>
 
   <div class="ssh-grid">
@@ -1433,7 +1499,7 @@ footer {
 
 <!-- TEAMS LISTEN-ONLY -->
 <section class="teams-section" id="teams">
-  <div class="section-label" data-num="04">Teams-övervakning</div>
+  <div class="section-label" data-num="05">Teams-övervakning</div>
   <h2 class="section-title reveal">Lyssnar i alla kanaler.<br><span class="accent-red">Svarar aldrig.</span></h2>
 
   <div class="teams-layout">
@@ -1580,7 +1646,7 @@ footer {
 <!-- DETEKTIONSLAGRET -->
 <section class="threats" id="detektion">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="05">Detektionslagret</div>
+  <div class="section-label" data-num="06">Detektionslagret</div>
   <h2 class="section-title reveal">Klassificerare,<br><span class="accent-red">inte domare.</span></h2>
   <p class="threats-intro reveal reveal-delay-1">
     Säkerhetsagenten <strong>läser</strong> angriparkontrollerat innehåll — det är hela poängen med att
@@ -1676,7 +1742,7 @@ footer {
 
 <!-- TEKNIKVAL -->
 <section class="principles-hero" id="teknikval">
-  <div class="section-label" data-num="06">Teknikval</div>
+  <div class="section-label" data-num="07">Teknikval</div>
   <h2 class="section-title reveal">Öppet.<br><span class="accent-red">Lokalt.</span></h2>
   <p class="principles-intro reveal reveal-delay-1">
     Orkestreringen av rails och klassificerare är inte egenutvecklad — den bygger på etablerade öppna
@@ -1726,7 +1792,7 @@ footer {
 <!-- HOTMODELL -->
 <section class="threats" id="hotmodell">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="07">Hotmodell</div>
+  <div class="section-label" data-num="08">Hotmodell</div>
   <h2 class="section-title reveal">Vad den letar efter.<br><span class="accent-red">IT och OT.</span></h2>
   <p class="threats-intro reveal reveal-delay-1">
     Säkerhetsagenten täcker två angreppsytor: <strong>IT-sidan</strong> — konversationer, botar, prompter och autentisering — och <strong>OT-sidan</strong> — protokollanomalier, ovanliga skrivkommandon och enheter som inte borde finnas på nätverket.
@@ -1833,7 +1899,7 @@ footer {
 
 <!-- LARMFLÖDE -->
 <section class="alert-section" id="larmflode">
-  <div class="section-label" data-num="08">Larmflöde</div>
+  <div class="section-label" data-num="09">Larmflöde</div>
   <h2 class="section-title reveal">Från detektion till<br>säkerhetsteam — <span class="accent-red">isolerat.</span></h2>
   <p class="alert-intro reveal reveal-delay-1">
     Larmet tar aldrig vägen tillbaka in i driftkanalen. Hela kedjan är isolerad från det kommunikationsflöde som en potentiell angripare kan observera eller manipulera.
@@ -1926,7 +1992,7 @@ footer {
 <!-- HÅRDVARA -->
 <section class="hw-section" id="hardvara">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="09">Hårdvara &amp; nätverksisolering</div>
+  <div class="section-label" data-num="10">Hårdvara &amp; nätverksisolering</div>
   <h2 class="section-title reveal">Separat maskin.<br><span class="accent-red">Eget VLAN.</span></h2>
   <p class="hw-intro reveal reveal-delay-1">
     Säkerhetsinstansen kör samma typ av lokal AI-hårdvara som driftinstanserna — men aldrig
@@ -1995,7 +2061,7 @@ footer {
 
 <!-- KAN EJ STYRAS -->
 <section class="nocmd-section" id="notyp">
-  <div class="section-label" data-num="10">Angreppsytan</div>
+  <div class="section-label" data-num="11">Angreppsytan</div>
   <h2 class="section-title reveal">Vad händer om <em style="font-style:normal;color:var(--red)">den</em> attackeras?</h2>
   <p class="threats-intro reveal reveal-delay-1" style="margin-bottom:0;">
     Säkerhetsagenten är designad med antagandet att <strong>även den kan vara ett mål.</strong>
@@ -2079,7 +2145,7 @@ footer {
 <!-- BEGRÄNSNINGAR -->
 <section class="threats" id="begransningar">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="11">Begränsningar</div>
+  <div class="section-label" data-num="12">Begränsningar</div>
   <h2 class="section-title reveal">Vad det <span class="accent-red">inte</span><br>löser.</h2>
   <p class="threats-intro reveal reveal-delay-1">
     Modellen ovan är ett konceptprojekt, och ärlighet om dess gränser är en del av designen.
@@ -2139,7 +2205,7 @@ footer {
 <!-- EU COMPLIANCE SKILLS -->
 <section class="compliance-section" id="compliance">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="12">Regelverksskills</div>
+  <div class="section-label" data-num="13">Regelverksskills</div>
   <h2 class="section-title reveal">AI Act. NIS2. CRA.<br><span class="accent-red">Inbyggt — inte påklistrat.</span></h2>
 
   <p class="compliance-intro reveal reveal-delay-1">

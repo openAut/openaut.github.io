@@ -1796,6 +1796,14 @@
     genom dem, främst Advisor.
   </p>
 
+  <p class="scenario-intro reveal reveal-delay-1">
+    Tanken är också att rollerna — och de som arbetar i dem, intern personal som upphandlade konsulter —
+    alltid körs genom <strong>avgränsade, granskade behörighetsprofiler</strong>. Var och en ska kunna
+    göra sitt jobb inom ett bestämt område, men ingen ska kunna ändra säkerheten, ändra reglerna för vad
+    andra får göra, eller utöka sin egen behörighet. Den makten är tänkt att stanna hos dig som äger
+    anläggningen.
+  </p>
+
   <div class="scenario-cards reveal reveal-delay-2">
 
     <div class="scenario-card">
@@ -2459,6 +2467,15 @@
       <h3>Säker by design</h3>
       <p>openAut håller sig inom fem ramverk — ISO 27001 (governance), NIS2 (verksamhet), IEC 62443 (OT), CRA (produkt) och AI Act (AI-funktion) — inbyggt från dag ett, inte tillagt i efterhand. VLAN-segmentering, MQTT over TLS med klientcertifikat, WireGuard VPN, RBAC och auditloggning är baskrav, inte tillval.</p>
       <p>Säkerheten är också en egen agent: en separat, läsande <strong>openAut Security</strong>-instans vakar över Advisor, Engineer och OT-miljön — <em>den kan se, men inte styra</em>. Audit och larm skickas från en gräns som de agerande agenterna inte själva kan tysta.</p>
+      <p>Åtkomst följer etablerade principer: minsta privilegium och uppdelade ansvar (IEC 62443, ISO 27001), en oberoende auditor-roll och tidsbegränsad (just-in-time) behörighet för tillfälliga uppdrag.</p>
+    </div>
+
+    <div class="oss-card">
+      <div class="oss-card-icon">⚿</div>
+      <span class="oss-card-tag">Kontroll</span>
+      <h3>Du behåller nyckeln</h3>
+      <p>Tanken är att en upphandlad konsult ska kunna göra sitt jobb — felsöka, ansluta nya edge-noder — genom en <strong>avgränsad, tidsbegränsad och loggad</strong> behörighet. Aldrig nyckeln till säkerheten eller till vad andra får göra. När uppdraget tar slut släcks åtkomsten rent.</p>
+      <p>Samma princip gäller intern personal: alla arbetar genom en avgränsad roll — <strong>ingen äger allt</strong>. Se <a href="/security.html#atkomst">Åtkomst &amp; roller</a>.</p>
     </div>
 
   </div>
