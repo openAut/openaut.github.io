@@ -651,52 +651,6 @@
   .arch-node.cyan  { color: var(--cyan);  border-left-color: var(--cyan);  }
   .arch-node.amber { color: var(--amber); border-left-color: var(--amber); }
 
-  /* ── TERMINAL ── */
-  .terminal {
-    margin-top: 3rem;
-    border: 1px solid var(--border);
-    background: var(--surface2);
-    max-width: 860px;
-  }
-
-  .terminal-header {
-    background: var(--surface);
-    padding: 0.7rem 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .terminal-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--text-dim);
-  }
-
-  .terminal-title {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    margin-left: 0.5rem;
-  }
-
-  .terminal-body {
-    padding: 1.8rem 2rem;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    line-height: 2;
-    color: var(--text-muted);
-  }
-
-  .t-prompt  { color: var(--green); }
-  .t-cmd     { color: var(--text); }
-  .t-comment { color: var(--text-dim); }
-  .t-output  { color: var(--cyan); }
-  .t-success { color: var(--green); }
-  .t-warn    { color: var(--amber); }
-
   /* ── HARDWARE ── */
   .hardware {
     position: relative;
@@ -713,136 +667,6 @@
   }
 
   .hardware-intro strong { color: var(--text); font-weight: 500; }
-
-  .hw-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 3.5rem;
-  }
-
-  .hw-card {
-    background: var(--bg);
-    padding: 2.5rem 2.5rem;
-    transition: background 0.3s;
-    position: relative;
-  }
-
-  .hw-card:hover { background: var(--green-glow); }
-
-  .hw-card-tier {
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    color: var(--text-dim);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  .hw-card h3 {
-    font-family: var(--display);
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.02em;
-  }
-
-  .hw-card-vendor {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--green);
-    letter-spacing: 0.1em;
-    margin-bottom: 1.2rem;
-  }
-
-  .hw-card p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.75;
-    margin-bottom: 1.5rem;
-  }
-
-  .hw-specs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-bottom: 1.5rem;
-  }
-
-  .hw-spec {
-    background: var(--surface2);
-    padding: 0.9rem 1rem;
-  }
-
-  .hw-spec-val {
-    font-family: var(--display);
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--green);
-    letter-spacing: -0.02em;
-  }
-
-  .hw-spec-label {
-    font-family: var(--mono);
-    font-size: 0.58rem;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 0.15rem;
-  }
-
-  .hw-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .hw-tag {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-    padding: 0.28rem 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .hw-tag.green { color: var(--green); border-color: rgba(0,220,130,0.3); }
-  .hw-tag.cyan  { color: var(--cyan);  border-color: rgba(0,200,224,0.3); }
-
-  .hw-arch-note {
-    grid-column: 1 / -1;
-    background: var(--surface);
-    padding: 2rem 2.5rem;
-    border-top: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3rem;
-    align-items: center;
-  }
-
-  .hw-arch-note h4 {
-    font-family: var(--display);
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-
-  .hw-arch-note h4 span { color: var(--green); }
-
-  .hw-arch-note p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.75;
-  }
 
   /* ── OPEN SOURCE + OFFENTLIG SEKTOR ── */
   .oss {
@@ -935,129 +759,6 @@
     font-weight: 300;
     line-height: 1.65;
   }
-
-  /* ── OSS CARDS ── */
-  .oss-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 4rem;
-  }
-
-  .oss-card {
-    background: var(--bg);
-    padding: 2.2rem;
-    transition: background 0.3s;
-  }
-
-  .oss-card:hover { background: var(--green-glow); }
-
-  .oss-card-icon {
-    width: 38px; height: 38px;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.2rem;
-    font-size: 1rem;
-  }
-
-  .oss-card-tag {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    color: var(--green);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
-    display: block;
-  }
-
-  .oss-card h3 {
-    font-family: var(--display);
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 0.7rem;
-    letter-spacing: -0.01em;
-  }
-
-  .oss-card p {
-    font-size: 0.83rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.75;
-  }
-
-  .oss-card p code {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--cyan);
-  }
-
-  /* ── PRINCIPER ── */
-  .principles {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .principles-list {
-    margin-top: 4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .principle {
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 5rem 1fr 2fr;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  .principle:first-child { border-top: 1px solid var(--border); }
-
-  .principle-num {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    padding-top: 0.2rem;
-  }
-
-  .principle h3 {
-    font-family: var(--display);
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-
-  .principle p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.7;
-  }
-
-  .about-project {
-    margin-top: 4rem;
-    max-width: 760px;
-  }
-
-  .about-project p {
-    font-size: 1rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.9;
-    margin-top: 1.4rem;
-  }
-
-  .about-project p:first-child { margin-top: 0; }
-  .about-project p strong { color: var(--text); font-weight: 500; }
 
   /* ── CTA ── */
   .cta {
@@ -1378,42 +1079,6 @@
   .guided-step p strong { color: var(--text); font-weight: 500; }
   .guided-step p em     { color: var(--green); font-style: normal; }
 
-  .guided-callout {
-    grid-column: 1 / -1;
-    margin-top: 3rem;
-    border: 1px solid rgba(0,220,130,0.25);
-    background: var(--green-glow);
-    padding: 1.8rem 2.2rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5rem;
-    align-items: start;
-  }
-
-  .guided-callout-icon {
-    font-size: 1.6rem;
-    line-height: 1;
-    margin-top: 0.15rem;
-  }
-
-  .guided-callout h4 {
-    font-family: var(--display);
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.01em;
-  }
-
-  .guided-callout p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.75;
-  }
-
-  .guided-callout p strong { color: var(--green); font-weight: 500; }
-
   /* ── NEMOCLAW STACK ── */
   .stack {
     position: relative;
@@ -1645,18 +1310,11 @@
     .hero { padding: 7rem 1.5rem 4rem; }
     .hero-scroll { left: 1.5rem; }
     .problem-grid,
-    .oss-layout,
-    .hw-arch-note { grid-template-columns: 1fr; gap: 3rem; }
+    .oss-layout { grid-template-columns: 1fr; gap: 3rem; }
     .arch-diagram { grid-template-columns: 1fr 1fr; }
     .guided-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-    .guided-callout { grid-template-columns: 1fr; }
     .arch-layer { border-right: none; border-bottom: 1px solid var(--border); }
-    .scenario-cards,
-    .oss-cards { grid-template-columns: 1fr 1fr; }
-    .hw-grid { grid-template-columns: 1fr; }
-    .principle { grid-template-columns: 3rem 1fr; gap: 0.55rem 1rem; }
-    .principle h3 { grid-column: 2; }
-    .principle p { grid-column: 2; }
+    .scenario-cards { grid-template-columns: 1fr 1fr; }
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
     .footer-meta { text-align: center; }
     .cta-btns { flex-direction: column; align-items: center; }
@@ -1665,8 +1323,7 @@
 
   @media (max-width: 600px) {
     .arch-diagram { grid-template-columns: 1fr; }
-    .scenario-cards,
-    .oss-cards { grid-template-columns: 1fr; }
+    .scenario-cards { grid-template-columns: 1fr; }
     .cta { padding: 5rem 1.5rem; }
 
     /* Mindre rubriker så de inte dominerar mobilskärmen */
@@ -1679,16 +1336,13 @@
     section { padding: 3.5rem 1.2rem; }
     .hero { padding: 6.5rem 1.2rem 3.5rem; }
     .hero-scroll { display: none; }
-    .hw-card, .scenario-card { padding: 1.8rem 1.4rem; }
-    .hw-specs { grid-template-columns: 1fr; }
-    .hw-arch-note { padding: 1.8rem 1.4rem; gap: 1.5rem; }
-    .terminal-body { padding: 1.4rem 1.2rem; font-size: 0.72rem; }
+    .scenario-card { padding: 1.8rem 1.4rem; }
   }
 
   /* Skydd mot horisontell overflow på små skärmar */
   @media (max-width: 900px) {
     img, svg, table, pre { max-width: 100%; height: auto; }
-    .terminal-body, .teams-text, .oss-card p, .hw-arch-note p,
+    .teams-text,
     code, pre { overflow-wrap: anywhere; word-break: break-word; }
   }
 </style>
@@ -1992,14 +1646,6 @@
         </div>
 
       </div>
-
-      <div class="guided-callout">
-        <div class="guided-callout-icon">🔄</div>
-        <div>
-          <h4>Teknikern styr. AI:n navigerar.</h4>
-          <p>Rollen är omvänd mot traditionell automation. openAut ersätter inte teknikern — det ger teknikern <strong>specialistkunskap on-demand</strong>, direkt i det verktyg hen redan använder. Varje integration bygger organisationens samlade kunskapsbas och bidrar till projektets delade dokumentation.</p>
-        </div>
-      </div>
     </div>
 
   </div>
@@ -2217,7 +1863,7 @@
     <div class="arch-layer">
       <div class="arch-layer-num">LAGER 03 — AI</div>
       <div class="arch-layer-name">Systemdatabas & AI-analys</div>
-      <div class="arch-layer-desc">EMQX-brokern tar emot MQTT over TLS från alla edge-noder. Telegraf skriver tidsseriedata och larm till TimescaleDB, medan enheter, metadata, konfiguration och ärendekö ligger i Systemdatabasen (PostgreSQL). En delad AI-backend kör öppna modeller lokalt och betjänar både openAut Advisor (read-only, Teams) och openAut Engineer (SSH/deploy) — samma modellvikter och GPU, men egen sandbox och egna credentials per instans. Analyser, larm och åtgärdsförslag skrivs tillbaka utan externa anrop. Kod, manualer, genererad dokumentation och migrationer versionshanteras i en lokal Forge (Forgejo) som både människor och AI hämtar från, med CI- och granskningsgrindar innan något blir betrott eller driftsatt. On-demand-förfrågningar till edge-noder sker via MQTT request/response-topics.</div>
+      <div class="arch-layer-desc">EMQX-brokern tar emot MQTT over TLS från alla edge-noder. Telegraf skriver tidsseriedata och larm till TimescaleDB, medan enheter, metadata, konfiguration och ärendekö ligger i Systemdatabasen (PostgreSQL). Separata agentmotorer kör öppna modeller lokalt — openAut Advisor (read-only, Teams) och openAut Engineer (SSH/deploy) som egna runtimes med egen sandbox och egna credentials, samlokaliserade på samma lokala AI-hårdvara. Analyser, larm och åtgärdsförslag skrivs tillbaka utan externa anrop. Kod, manualer, genererad dokumentation och migrationer versionshanteras i en lokal Forge (Forgejo) som både människor och AI hämtar från, med CI- och granskningsgrindar innan något blir betrott eller driftsatt. On-demand-förfrågningar till edge-noder sker via MQTT request/response-topics.</div>
       <div class="arch-user-view">Driftsdata stannar i byggnaden. GDPR-säkert per design.</div>
       <div class="arch-nodes">
         <div class="arch-node cyan">EMQX-broker (MQTT over TLS)</div>
@@ -2248,30 +1894,6 @@
     </div>
 
   </div>
-
-  <div class="terminal reveal reveal-delay-2">
-    <div class="terminal-header">
-      <div class="terminal-dot"></div>
-      <div class="terminal-dot"></div>
-      <div class="terminal-dot"></div>
-      <span class="terminal-title">openaut — drifttekniker, Stadshus Kvarter A</span>
-    </div>
-    <div class="terminal-body">
-      <div><span class="t-prompt">openaut&gt; </span><span class="t-cmd">status --byggnad "Stadshus-A"</span></div>
-      <div><span class="t-output">▸ 312 datapunkter online  ·  3 aktiva avvikelser  ·  senaste synk 4s sedan</span></div>
-      <div>&nbsp;</div>
-      <div><span class="t-prompt">openaut&gt; </span><span class="t-cmd">diagnostik --system LA03</span></div>
-      <div><span class="t-output">Analyserar 72h trenddata för LA03...</span></div>
-      <div><span class="t-success">✔ Tillufttemperaturavvikelse detekterad sedan 06:14</span></div>
-      <div><span class="t-output">  Rotorsak (87% konfidens): hysteresfel på värmeventil SV01</span></div>
-      <div><span class="t-output">  Korrelerat: Tillufttemperatur +34°C med 0% utsignal på SV01</span></div>
-      <div><span class="t-output">  Åtgärd: Kontrollera ventil och ventilställdon SV01</span></div>
-      <div>&nbsp;</div>
-      <div><span class="t-prompt">openaut&gt; </span><span class="t-cmd">energirapport --period vecka --format pdf</span></div>
-      <div><span class="t-success">✔ Rapport genererad: /rapporter/2025-V22-stadshus-a.pdf</span></div>
-      <div><span class="t-comment"># Reglering kräver explicit konfigurerad applikationsprofil — loggad och versionshanterad</span></div>
-    </div>
-  </div>
 </section>
 
 <!-- HÅRDVARA -->
@@ -2281,87 +1903,11 @@
   <h2 class="section-title reveal">Valfri AI-hårdvara.<br><span class="accent">I din egen infrastruktur.</span></h2>
 
   <p class="hardware-intro reveal reveal-delay-1">
-    openAut är <strong>hårdvaruagnostiskt</strong> — plattformen körs på valfri lokal
-    LLM- och ML-hårdvara med tillräcklig inferenskapacitet, från kompakta AI-system
-    till GPU-servrar. Det som styr valet är vilka modeller du vill köra —
-    <strong>inte vilken leverantör plattformen råkar stödja.</strong>
-    Välj det som passar din upphandling, ditt befintliga ramavtal eller din
-    befintliga infrastruktur.
+    openAut är <strong>hårdvaruagnostiskt</strong> — plattformen körs på valfri lokal LLM- och
+    ML-hårdvara med tillräcklig inferenskapacitet, från kompakta AI-system till GPU-servrar.
+    Det som styr valet är vilka modeller du vill köra, inte vilken leverantör plattformen råkar
+    stödja. <a href="/topologi.html" class="hardware-link">Se hårdvarukrav och dimensionering i systemtopologin →</a>
   </p>
-
-  <div class="hw-grid reveal reveal-delay-2">
-
-    <div class="hw-card">
-      <div class="hw-card-tier">Kapacitetskrav — inte produktkrav</div>
-      <h3>Lokal AI-server</h3>
-      <div class="hw-card-vendor">Valfri leverantör · GPU eller annan AI-accelerator · x86_64 / ARM64</div>
-      <p>openAut ställer krav på kapacitet, inte på fabrikat. Allt som kör Linux och klarar lokal LLM-inferens med tillräckligt acceleratorminne för dina valda modeller fungerar — en GPU-server, en AI-workstation eller ett kompakt system med unified memory.</p>
-      <div class="hw-specs">
-        <div class="hw-spec">
-          <div class="hw-spec-val">Linux</div>
-          <div class="hw-spec-label">Ubuntu 24.04 LTS</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">Lokal</div>
-          <div class="hw-spec-label">All inferens on-premise</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">≥2 TB</div>
-          <div class="hw-spec-label">Lagring (rekommenderat)</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">Air-gap</div>
-          <div class="hw-spec-label">Dataplan — Teams undantaget</div>
-        </div>
-      </div>
-      <div class="hw-tags">
-        <div class="hw-tag green">Ingen hårdvarulåsning</div>
-        <div class="hw-tag green">Air-gap-bart dataplan</div>
-        <div class="hw-tag">GPU-server</div>
-        <div class="hw-tag">AI-workstation</div>
-      </div>
-    </div>
-
-    <div class="hw-card">
-      <div class="hw-card-tier">Dimensionering efter behov</div>
-      <h3>Modellen styr hårdvaran</h3>
-      <div class="hw-card-vendor">Lättviktig LLM · resonerande modell · tidsserie-ML</div>
-      <p>Olika uppgifter kräver olika modeller — och olika mycket hårdvara. En lättviktig LLM för rutinfrågor klarar sig på ett kompakt system, medan stora resonerande modeller för rotorsaksanalys kräver mer acceleratorminne. Dimensionera efter din mest krävande modell och skala upp när behoven växer.</p>
-      <div class="hw-specs">
-        <div class="hw-spec">
-          <div class="hw-spec-val">LLM</div>
-          <div class="hw-spec-label">Lokal språkmodell</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">ML</div>
-          <div class="hw-spec-label">Tidsserie · FDD · prognos</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">Skalbart</div>
-          <div class="hw-spec-label">Workstation → GPU-server</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">Modulärt</div>
-          <div class="hw-spec-label">Byt hårdvara, behåll plattform</div>
-        </div>
-      </div>
-      <div class="hw-tags">
-        <div class="hw-tag green">LOU-anpassningsbar</div>
-        <div class="hw-tag cyan">Uppgradera vid behov</div>
-        <div class="hw-tag">Edge-varianter möjliga</div>
-      </div>
-    </div>
-
-    <div class="hw-arch-note">
-      <div>
-        <h4>Varför <span>hårdvaruagnostik</span> är strategiskt rätt val</h4>
-      </div>
-      <div>
-        <p>Hela openAut-stacken är öppen källkod och körs på både x86_64 och ARM64: <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">pymodbus</code>, <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">BAC0</code>, <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">paho-mqtt</code> och alla AI-ramverk. Inga proprietära beroenden i kärnlösningen. Det betyder att AI-hårdvaran kan väljas — och bytas — utifrån prestanda, pris och tillgänglighet, utan att plattformen påverkas. När modellerna växer uppgraderar du hårdvaran, inte systemet.</p>
-      </div>
-    </div>
-
-  </div>
 </section>
 
 <!-- ÖPPEN KÄLLKOD + OFFENTLIG SEKTOR -->
@@ -2421,78 +1967,6 @@
       </div>
     </div>
 
-  </div>
-
-  <!-- OSS EGENSKAPER -->
-  <div class="oss-cards reveal reveal-delay-3">
-
-    <div class="oss-card">
-      <div class="oss-card-icon">⚖</div>
-      <span class="oss-card-tag">Äganderätt</span>
-      <h3>Du äger din driftsättning</h3>
-      <p>MIT är den mest permissiva licensen inom öppen källkod. Använd openAut kommersiellt, modifiera det fritt, integrera det i befintliga system — utan royalties, utan anmälan och utan tillstånd.</p>
-    </div>
-
-    <div class="oss-card">
-      <div class="oss-card-icon">🔬</div>
-      <span class="oss-card-tag">Transparens</span>
-      <h3>Varje rad är granskningsbar</h3>
-      <p>All konfiguration, alla applikationsprofiler, all AI-promptlogik — publicerad öppet. Säkerhetsrevisorer, tekniska förvaltare och din upphandlingsjurist kan granska exakt vad systemet gör med era data.</p>
-    </div>
-
-    <div class="oss-card">
-      <div class="oss-card-icon">🌱</div>
-      <span class="oss-card-tag">Ekosystem</span>
-      <h3>Byggt på bidrag</h3>
-      <p>Varje organisation som driftsätter openAut kan bidra med applikationsprofiler, protokolldrivrutiner och FDD-modeller. Ekosystemet förbättras med varje installation — sammansatt värde för varje deltagare.</p>
-    </div>
-
-    <div class="oss-card">
-      <div class="oss-card-icon">🔌</div>
-      <span class="oss-card-tag">Arkitektur</span>
-      <h3>Ingen proprietär kärna</h3>
-      <p>Hela stacken körs på öppen källkod: <code>pymodbus</code>, <code>BAC0</code>, <code>paho-mqtt</code>, EMQX, Telegraf, TimescaleDB. Om du redan har licens för Kepware eller liknande ansluts det — men det krävs aldrig.</p>
-    </div>
-
-    <div class="oss-card">
-      <div class="oss-card-icon">🔄</div>
-      <span class="oss-card-tag">Reproducerbarhet</span>
-      <h3>Vilken tekniker som helst kan ta vid</h3>
-      <p>Varje applikationsprofil är självständig: hårdvaruval, protokollkonfiguration, MQTT topic-schema, AI-parametrar, FAT/SAT-checklistor. En tekniker som aldrig sett din fastighet kan driftsätta openAut från dokumentationen.</p>
-    </div>
-
-    <div class="oss-card">
-      <div class="oss-card-icon">🛡</div>
-      <span class="oss-card-tag">Säkerhet</span>
-      <h3>Säker by design</h3>
-      <p>openAut håller sig inom fem ramverk — ISO 27001 (governance), NIS2 (verksamhet), IEC 62443 (OT), CRA (produkt) och AI Act (AI-funktion) — inbyggt från dag ett, inte tillagt i efterhand. VLAN-segmentering, MQTT over TLS med klientcertifikat, WireGuard VPN, RBAC och auditloggning är baskrav, inte tillval.</p>
-      <p>Säkerheten är också en egen agent: en separat, läsande <strong>openAut Security</strong>-instans vakar över Advisor, Engineer och OT-miljön — <em>den kan se, men inte styra</em>. Audit och larm skickas från en gräns som de agerande agenterna inte själva kan tysta.</p>
-      <p>Åtkomst följer etablerade principer: minsta privilegium och uppdelade ansvar (IEC 62443, ISO 27001), en oberoende auditor-roll och tidsbegränsad (just-in-time) behörighet för tillfälliga uppdrag.</p>
-    </div>
-
-    <div class="oss-card">
-      <div class="oss-card-icon">⚿</div>
-      <span class="oss-card-tag">Kontroll</span>
-      <h3>Du behåller nyckeln</h3>
-      <p>Tanken är att en upphandlad konsult ska kunna göra sitt jobb — felsöka, ansluta nya edge-noder — genom en <strong>avgränsad, tidsbegränsad och loggad</strong> behörighet. Aldrig nyckeln till säkerheten eller till vad andra får göra. När uppdraget tar slut släcks åtkomsten rent.</p>
-      <p>Samma princip gäller intern personal: alla arbetar genom en avgränsad behörighetsprofil — <strong>ingen äger allt</strong>. Se <a href="security.html#atkomst">Åtkomst &amp; roller</a>.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- OM PROJEKTET -->
-<section class="principles" id="om-projektet">
-  <div class="grid-bg"></div>
-  <div class="section-label" data-num="08">Om projektet</div>
-  <h2 class="section-title reveal">Ett öppet projekt<br><span class="accent">under utveckling.</span></h2>
-
-  <div class="about-project reveal reveal-delay-1">
-    <p>openAut är i grunden ett <strong>kunskaps- och konceptprojekt</strong>: ett sätt att utforska hur AI med lokala modeller faktiskt kan användas inom fastighetsautomation — inte bara i teorin. Projektet befinner sig i <strong>konceptstadiet</strong> och är under aktiv utveckling.</p>
-
-    <p>Det här är ingen färdig produkt. openAut <strong>ska inte användas i skarp drift eller live-miljöer</strong> — det är byggt för att lära, experimentera och visa på möjligheter. Målet är att över tid förstå vad som krävs för att något liknande ska kunna mogna till en driftsäker lösning.</p>
-
-    <p>Arkitekturen hålls medvetet öppen, modulär och fri från inlåsning, så att den kan växa i den riktning som visar sig vara rätt — utan att något utesluts i förväg. Allt utvecklas öppet under MIT-licens, fritt att granska, ifrågasätta och bidra till.</p>
   </div>
 </section>
 
