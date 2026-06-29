@@ -651,52 +651,6 @@
   .arch-node.cyan  { color: var(--cyan);  border-left-color: var(--cyan);  }
   .arch-node.amber { color: var(--amber); border-left-color: var(--amber); }
 
-  /* ── TERMINAL ── */
-  .terminal {
-    margin-top: 3rem;
-    border: 1px solid var(--border);
-    background: var(--surface2);
-    max-width: 860px;
-  }
-
-  .terminal-header {
-    background: var(--surface);
-    padding: 0.7rem 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .terminal-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--text-dim);
-  }
-
-  .terminal-title {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    margin-left: 0.5rem;
-  }
-
-  .terminal-body {
-    padding: 1.8rem 2rem;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    line-height: 2;
-    color: var(--text-muted);
-  }
-
-  .t-prompt  { color: var(--green); }
-  .t-cmd     { color: var(--text); }
-  .t-comment { color: var(--text-dim); }
-  .t-output  { color: var(--cyan); }
-  .t-success { color: var(--green); }
-  .t-warn    { color: var(--amber); }
-
   /* ── HARDWARE ── */
   .hardware {
     position: relative;
@@ -713,136 +667,6 @@
   }
 
   .hardware-intro strong { color: var(--text); font-weight: 500; }
-
-  .hw-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 3.5rem;
-  }
-
-  .hw-card {
-    background: var(--bg);
-    padding: 2.5rem 2.5rem;
-    transition: background 0.3s;
-    position: relative;
-  }
-
-  .hw-card:hover { background: var(--green-glow); }
-
-  .hw-card-tier {
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    color: var(--text-dim);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  .hw-card h3 {
-    font-family: var(--display);
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.02em;
-  }
-
-  .hw-card-vendor {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--green);
-    letter-spacing: 0.1em;
-    margin-bottom: 1.2rem;
-  }
-
-  .hw-card p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.75;
-    margin-bottom: 1.5rem;
-  }
-
-  .hw-specs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-bottom: 1.5rem;
-  }
-
-  .hw-spec {
-    background: var(--surface2);
-    padding: 0.9rem 1rem;
-  }
-
-  .hw-spec-val {
-    font-family: var(--display);
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--green);
-    letter-spacing: -0.02em;
-  }
-
-  .hw-spec-label {
-    font-family: var(--mono);
-    font-size: 0.58rem;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 0.15rem;
-  }
-
-  .hw-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .hw-tag {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-    padding: 0.28rem 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .hw-tag.green { color: var(--green); border-color: rgba(0,220,130,0.3); }
-  .hw-tag.cyan  { color: var(--cyan);  border-color: rgba(0,200,224,0.3); }
-
-  .hw-arch-note {
-    grid-column: 1 / -1;
-    background: var(--surface);
-    padding: 2rem 2.5rem;
-    border-top: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3rem;
-    align-items: center;
-  }
-
-  .hw-arch-note h4 {
-    font-family: var(--display);
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-
-  .hw-arch-note h4 span { color: var(--green); }
-
-  .hw-arch-note p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.75;
-  }
 
   /* ── OPEN SOURCE + OFFENTLIG SEKTOR ── */
   .oss {
@@ -935,129 +759,6 @@
     font-weight: 300;
     line-height: 1.65;
   }
-
-  /* ── OSS CARDS ── */
-  .oss-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-top: 4rem;
-  }
-
-  .oss-card {
-    background: var(--bg);
-    padding: 2.2rem;
-    transition: background 0.3s;
-  }
-
-  .oss-card:hover { background: var(--green-glow); }
-
-  .oss-card-icon {
-    width: 38px; height: 38px;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.2rem;
-    font-size: 1rem;
-  }
-
-  .oss-card-tag {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    color: var(--green);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
-    display: block;
-  }
-
-  .oss-card h3 {
-    font-family: var(--display);
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 0.7rem;
-    letter-spacing: -0.01em;
-  }
-
-  .oss-card p {
-    font-size: 0.83rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.75;
-  }
-
-  .oss-card p code {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--cyan);
-  }
-
-  /* ── PRINCIPER ── */
-  .principles {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .principles-list {
-    margin-top: 4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .principle {
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 5rem 1fr 2fr;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  .principle:first-child { border-top: 1px solid var(--border); }
-
-  .principle-num {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    padding-top: 0.2rem;
-  }
-
-  .principle h3 {
-    font-family: var(--display);
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-
-  .principle p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.7;
-  }
-
-  .about-project {
-    margin-top: 4rem;
-    max-width: 760px;
-  }
-
-  .about-project p {
-    font-size: 1rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.9;
-    margin-top: 1.4rem;
-  }
-
-  .about-project p:first-child { margin-top: 0; }
-  .about-project p strong { color: var(--text); font-weight: 500; }
 
   /* ── CTA ── */
   .cta {
@@ -1378,42 +1079,6 @@
   .guided-step p strong { color: var(--text); font-weight: 500; }
   .guided-step p em     { color: var(--green); font-style: normal; }
 
-  .guided-callout {
-    grid-column: 1 / -1;
-    margin-top: 3rem;
-    border: 1px solid rgba(0,220,130,0.25);
-    background: var(--green-glow);
-    padding: 1.8rem 2.2rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5rem;
-    align-items: start;
-  }
-
-  .guided-callout-icon {
-    font-size: 1.6rem;
-    line-height: 1;
-    margin-top: 0.15rem;
-  }
-
-  .guided-callout h4 {
-    font-family: var(--display);
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.01em;
-  }
-
-  .guided-callout p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 300;
-    line-height: 1.75;
-  }
-
-  .guided-callout p strong { color: var(--green); font-weight: 500; }
-
   /* ── NEMOCLAW STACK ── */
   .stack {
     position: relative;
@@ -1645,18 +1310,11 @@
     .hero { padding: 7rem 1.5rem 4rem; }
     .hero-scroll { left: 1.5rem; }
     .problem-grid,
-    .oss-layout,
-    .hw-arch-note { grid-template-columns: 1fr; gap: 3rem; }
+    .oss-layout { grid-template-columns: 1fr; gap: 3rem; }
     .arch-diagram { grid-template-columns: 1fr 1fr; }
     .guided-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-    .guided-callout { grid-template-columns: 1fr; }
     .arch-layer { border-right: none; border-bottom: 1px solid var(--border); }
-    .scenario-cards,
-    .oss-cards { grid-template-columns: 1fr 1fr; }
-    .hw-grid { grid-template-columns: 1fr; }
-    .principle { grid-template-columns: 3rem 1fr; gap: 0.55rem 1rem; }
-    .principle h3 { grid-column: 2; }
-    .principle p { grid-column: 2; }
+    .scenario-cards { grid-template-columns: 1fr 1fr; }
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
     .footer-meta { text-align: center; }
     .cta-btns { flex-direction: column; align-items: center; }
@@ -1665,8 +1323,7 @@
 
   @media (max-width: 600px) {
     .arch-diagram { grid-template-columns: 1fr; }
-    .scenario-cards,
-    .oss-cards { grid-template-columns: 1fr; }
+    .scenario-cards { grid-template-columns: 1fr; }
     .cta { padding: 5rem 1.5rem; }
 
     /* Mindre rubriker så de inte dominerar mobilskärmen */
@@ -1679,16 +1336,13 @@
     section { padding: 3.5rem 1.2rem; }
     .hero { padding: 6.5rem 1.2rem 3.5rem; }
     .hero-scroll { display: none; }
-    .hw-card, .scenario-card { padding: 1.8rem 1.4rem; }
-    .hw-specs { grid-template-columns: 1fr; }
-    .hw-arch-note { padding: 1.8rem 1.4rem; gap: 1.5rem; }
-    .terminal-body { padding: 1.4rem 1.2rem; font-size: 0.72rem; }
+    .scenario-card { padding: 1.8rem 1.4rem; }
   }
 
   /* Skydd mot horisontell overflow på små skärmar */
   @media (max-width: 900px) {
     img, svg, table, pre { max-width: 100%; height: auto; }
-    .terminal-body, .teams-text, .oss-card p, .hw-arch-note p,
+    .teams-text,
     code, pre { overflow-wrap: anywhere; word-break: break-word; }
   }
 </style>
