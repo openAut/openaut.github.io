@@ -1244,7 +1244,7 @@ footer {
     <div class="arch-instance main">
       <span class="arch-inst-badge badge-main">Driftinstanser</span>
       <div class="arch-inst-name green">openAut Advisor + Engineer</div>
-      <div class="arch-inst-hw">Två servrar · egen sandbox + credentials per instans</div>
+      <div class="arch-inst-hw">Separata agentmotorer · egen sandbox + credentials per instans · samlokaliserad AI-hårdvara</div>
 
       <div>
         <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em;margin:0.25rem 0 0.5rem;">ADVISOR — read-only, Teams-vänd:</div>
@@ -1269,7 +1269,7 @@ footer {
       <div>
         <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em;margin:0.25rem 0 0.5rem;">DELAT:</div>
         <div class="arch-nodes">
-          <div class="arch-node cyan">Delad AI-backend: NemoClaw · öppna modeller (valfri lokal AI-hårdvara)</div>
+          <div class="arch-node cyan">Samlokaliserad AI-hårdvara · separata motorer (NemoClaw/OpenCode) · öppna modeller</div>
           <div class="arch-node cyan">Systemdatabas (PostgreSQL)</div>
           <div class="arch-node cyan">MQTT-broker (EMQX · TLS) · Audit log daemon</div>
           <div class="arch-node">VLAN 10 — OT · VLAN 20 — Management</div>
@@ -2007,9 +2007,9 @@ footer {
     <div class="hw-card">
       <span class="hw-card-badge" style="background:var(--green);color:var(--bg)">Driftinstanser</span>
       <h3 class="green">openAut Advisor + Engineer</h3>
-      <div class="hw-card-sub">Egna servrar · delad lokal AI-backend</div>
+      <div class="hw-card-sub">Separata motorer · samlokaliserad lokal AI-hårdvara</div>
       <div class="hw-spec-list">
-        <div class="hw-spec-row"><span class="hw-spec-key">Hårdvara</span><span class="hw-spec-val hi">Två servrar + delad AI-backend</span></div>
+        <div class="hw-spec-row"><span class="hw-spec-key">Hårdvara</span><span class="hw-spec-val hi">Samlokaliserad AI-hårdvara · separata sandboxar</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">Minne</span><span class="hw-spec-val">Dimensioneras efter modellval</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">VLAN</span><span class="hw-spec-val">VLAN 10 (OT) · VLAN 20 (Mgmt)</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">Nätverksåtkomst</span><span class="hw-spec-val">Edge-noder · BMS · Teams API</span></div>
@@ -2017,9 +2017,10 @@ footer {
         <div class="hw-spec-row"><span class="hw-spec-key">Skrivåtkomst till OT</span><span class="hw-spec-val hi">Ja — via applikationsprofil</span></div>
       </div>
       <div class="hw-card-note">
-        Advisor (read-only, Teams) och Engineer (SSH/deploy, ej Teams) på egna servrar
-        med delad AI-backend och Systemdatabas. Säkerhetsinstansen har <strong>aldrig skrivåtkomst</strong>
-        till dessa maskiner — enbart read-only via begränsat SSH-konto.
+        Advisor (read-only, Teams) och Engineer (SSH/deploy, ej Teams) körs som separata
+        agentmotorer (NemoClaw/OpenCode) med egen sandbox, samlokaliserade på lokal AI-hårdvara
+        mot Systemdatabasen. Säkerhetsinstansen har <strong>aldrig skrivåtkomst</strong>
+        till dessa instanser — enbart read-only via begränsat SSH-konto.
       </div>
     </div>
 
