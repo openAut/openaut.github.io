@@ -2217,7 +2217,7 @@
     <div class="arch-layer">
       <div class="arch-layer-num">LAGER 03 — AI</div>
       <div class="arch-layer-name">Systemdatabas & AI-analys</div>
-      <div class="arch-layer-desc">EMQX-brokern tar emot MQTT over TLS från alla edge-noder. Telegraf skriver tidsseriedata och larm till TimescaleDB, medan enheter, metadata, konfiguration och ärendekö ligger i Systemdatabasen (PostgreSQL). En delad AI-backend kör öppna modeller lokalt och betjänar både openAut Advisor (read-only, Teams) och openAut Engineer (SSH/deploy) — samma modellvikter och GPU, men egen sandbox och egna credentials per instans. Analyser, larm och åtgärdsförslag skrivs tillbaka utan externa anrop. Kod, manualer, genererad dokumentation och migrationer versionshanteras i en lokal Forge (Forgejo) som både människor och AI hämtar från, med CI- och granskningsgrindar innan något blir betrott eller driftsatt. On-demand-förfrågningar till edge-noder sker via MQTT request/response-topics.</div>
+      <div class="arch-layer-desc">EMQX-brokern tar emot MQTT over TLS från alla edge-noder. Telegraf skriver tidsseriedata och larm till TimescaleDB, medan enheter, metadata, konfiguration och ärendekö ligger i Systemdatabasen (PostgreSQL). Separata agentmotorer kör öppna modeller lokalt — Advisor (read-only, Teams) på NemoClaw och Engineer (SSH/deploy) på OpenCode, var och en med egen sandbox och egna credentials, samlokaliserade på samma lokala AI-hårdvara. Analyser, larm och åtgärdsförslag skrivs tillbaka utan externa anrop. Kod, manualer, genererad dokumentation och migrationer versionshanteras i en lokal Forge (Forgejo) som både människor och AI hämtar från, med CI- och granskningsgrindar innan något blir betrott eller driftsatt. On-demand-förfrågningar till edge-noder sker via MQTT request/response-topics.</div>
       <div class="arch-user-view">Driftsdata stannar i byggnaden. GDPR-säkert per design.</div>
       <div class="arch-nodes">
         <div class="arch-node cyan">EMQX-broker (MQTT over TLS)</div>
@@ -2248,30 +2248,6 @@
     </div>
 
   </div>
-
-  <div class="terminal reveal reveal-delay-2">
-    <div class="terminal-header">
-      <div class="terminal-dot"></div>
-      <div class="terminal-dot"></div>
-      <div class="terminal-dot"></div>
-      <span class="terminal-title">openaut — drifttekniker, Stadshus Kvarter A</span>
-    </div>
-    <div class="terminal-body">
-      <div><span class="t-prompt">openaut&gt; </span><span class="t-cmd">status --byggnad "Stadshus-A"</span></div>
-      <div><span class="t-output">▸ 312 datapunkter online  ·  3 aktiva avvikelser  ·  senaste synk 4s sedan</span></div>
-      <div>&nbsp;</div>
-      <div><span class="t-prompt">openaut&gt; </span><span class="t-cmd">diagnostik --system LA03</span></div>
-      <div><span class="t-output">Analyserar 72h trenddata för LA03...</span></div>
-      <div><span class="t-success">✔ Tillufttemperaturavvikelse detekterad sedan 06:14</span></div>
-      <div><span class="t-output">  Rotorsak (87% konfidens): hysteresfel på värmeventil SV01</span></div>
-      <div><span class="t-output">  Korrelerat: Tillufttemperatur +34°C med 0% utsignal på SV01</span></div>
-      <div><span class="t-output">  Åtgärd: Kontrollera ventil och ventilställdon SV01</span></div>
-      <div>&nbsp;</div>
-      <div><span class="t-prompt">openaut&gt; </span><span class="t-cmd">energirapport --period vecka --format pdf</span></div>
-      <div><span class="t-success">✔ Rapport genererad: /rapporter/2025-V22-stadshus-a.pdf</span></div>
-      <div><span class="t-comment"># Reglering kräver explicit konfigurerad applikationsprofil — loggad och versionshanterad</span></div>
-    </div>
-  </div>
 </section>
 
 <!-- HÅRDVARA -->
@@ -2281,87 +2257,11 @@
   <h2 class="section-title reveal">Valfri AI-hårdvara.<br><span class="accent">I din egen infrastruktur.</span></h2>
 
   <p class="hardware-intro reveal reveal-delay-1">
-    openAut är <strong>hårdvaruagnostiskt</strong> — plattformen körs på valfri lokal
-    LLM- och ML-hårdvara med tillräcklig inferenskapacitet, från kompakta AI-system
-    till GPU-servrar. Det som styr valet är vilka modeller du vill köra —
-    <strong>inte vilken leverantör plattformen råkar stödja.</strong>
-    Välj det som passar din upphandling, ditt befintliga ramavtal eller din
-    befintliga infrastruktur.
+    openAut är <strong>hårdvaruagnostiskt</strong> — plattformen körs på valfri lokal LLM- och
+    ML-hårdvara med tillräcklig inferenskapacitet, från kompakta AI-system till GPU-servrar.
+    Det som styr valet är vilka modeller du vill köra, inte vilken leverantör plattformen råkar
+    stödja. <a href="/topologi.html" class="hardware-link">Se hårdvarukrav och dimensionering i systemtopologin →</a>
   </p>
-
-  <div class="hw-grid reveal reveal-delay-2">
-
-    <div class="hw-card">
-      <div class="hw-card-tier">Kapacitetskrav — inte produktkrav</div>
-      <h3>Lokal AI-server</h3>
-      <div class="hw-card-vendor">Valfri leverantör · GPU eller annan AI-accelerator · x86_64 / ARM64</div>
-      <p>openAut ställer krav på kapacitet, inte på fabrikat. Allt som kör Linux och klarar lokal LLM-inferens med tillräckligt acceleratorminne för dina valda modeller fungerar — en GPU-server, en AI-workstation eller ett kompakt system med unified memory.</p>
-      <div class="hw-specs">
-        <div class="hw-spec">
-          <div class="hw-spec-val">Linux</div>
-          <div class="hw-spec-label">Ubuntu 24.04 LTS</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">Lokal</div>
-          <div class="hw-spec-label">All inferens on-premise</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">≥2 TB</div>
-          <div class="hw-spec-label">Lagring (rekommenderat)</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">Air-gap</div>
-          <div class="hw-spec-label">Dataplan — Teams undantaget</div>
-        </div>
-      </div>
-      <div class="hw-tags">
-        <div class="hw-tag green">Ingen hårdvarulåsning</div>
-        <div class="hw-tag green">Air-gap-bart dataplan</div>
-        <div class="hw-tag">GPU-server</div>
-        <div class="hw-tag">AI-workstation</div>
-      </div>
-    </div>
-
-    <div class="hw-card">
-      <div class="hw-card-tier">Dimensionering efter behov</div>
-      <h3>Modellen styr hårdvaran</h3>
-      <div class="hw-card-vendor">Lättviktig LLM · resonerande modell · tidsserie-ML</div>
-      <p>Olika uppgifter kräver olika modeller — och olika mycket hårdvara. En lättviktig LLM för rutinfrågor klarar sig på ett kompakt system, medan stora resonerande modeller för rotorsaksanalys kräver mer acceleratorminne. Dimensionera efter din mest krävande modell och skala upp när behoven växer.</p>
-      <div class="hw-specs">
-        <div class="hw-spec">
-          <div class="hw-spec-val">LLM</div>
-          <div class="hw-spec-label">Lokal språkmodell</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">ML</div>
-          <div class="hw-spec-label">Tidsserie · FDD · prognos</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">Skalbart</div>
-          <div class="hw-spec-label">Workstation → GPU-server</div>
-        </div>
-        <div class="hw-spec">
-          <div class="hw-spec-val">Modulärt</div>
-          <div class="hw-spec-label">Byt hårdvara, behåll plattform</div>
-        </div>
-      </div>
-      <div class="hw-tags">
-        <div class="hw-tag green">LOU-anpassningsbar</div>
-        <div class="hw-tag cyan">Uppgradera vid behov</div>
-        <div class="hw-tag">Edge-varianter möjliga</div>
-      </div>
-    </div>
-
-    <div class="hw-arch-note">
-      <div>
-        <h4>Varför <span>hårdvaruagnostik</span> är strategiskt rätt val</h4>
-      </div>
-      <div>
-        <p>Hela openAut-stacken är öppen källkod och körs på både x86_64 och ARM64: <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">pymodbus</code>, <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">BAC0</code>, <code style="font-family:var(--mono);font-size:0.8em;color:var(--cyan)">paho-mqtt</code> och alla AI-ramverk. Inga proprietära beroenden i kärnlösningen. Det betyder att AI-hårdvaran kan väljas — och bytas — utifrån prestanda, pris och tillgänglighet, utan att plattformen påverkas. När modellerna växer uppgraderar du hårdvaran, inte systemet.</p>
-      </div>
-    </div>
-
-  </div>
 </section>
 
 <!-- ÖPPEN KÄLLKOD + OFFENTLIG SEKTOR -->
@@ -2427,31 +2327,10 @@
   <div class="oss-cards reveal reveal-delay-3">
 
     <div class="oss-card">
-      <div class="oss-card-icon">⚖</div>
-      <span class="oss-card-tag">Äganderätt</span>
-      <h3>Du äger din driftsättning</h3>
-      <p>MIT är den mest permissiva licensen inom öppen källkod. Använd openAut kommersiellt, modifiera det fritt, integrera det i befintliga system — utan royalties, utan anmälan och utan tillstånd.</p>
-    </div>
-
-    <div class="oss-card">
       <div class="oss-card-icon">🔬</div>
       <span class="oss-card-tag">Transparens</span>
       <h3>Varje rad är granskningsbar</h3>
       <p>All konfiguration, alla applikationsprofiler, all AI-promptlogik — publicerad öppet. Säkerhetsrevisorer, tekniska förvaltare och din upphandlingsjurist kan granska exakt vad systemet gör med era data.</p>
-    </div>
-
-    <div class="oss-card">
-      <div class="oss-card-icon">🌱</div>
-      <span class="oss-card-tag">Ekosystem</span>
-      <h3>Byggt på bidrag</h3>
-      <p>Varje organisation som driftsätter openAut kan bidra med applikationsprofiler, protokolldrivrutiner och FDD-modeller. Ekosystemet förbättras med varje installation — sammansatt värde för varje deltagare.</p>
-    </div>
-
-    <div class="oss-card">
-      <div class="oss-card-icon">🔌</div>
-      <span class="oss-card-tag">Arkitektur</span>
-      <h3>Ingen proprietär kärna</h3>
-      <p>Hela stacken körs på öppen källkod: <code>pymodbus</code>, <code>BAC0</code>, <code>paho-mqtt</code>, EMQX, Telegraf, TimescaleDB. Om du redan har licens för Kepware eller liknande ansluts det — men det krävs aldrig.</p>
     </div>
 
     <div class="oss-card">
@@ -2461,38 +2340,6 @@
       <p>Varje applikationsprofil är självständig: hårdvaruval, protokollkonfiguration, MQTT topic-schema, AI-parametrar, FAT/SAT-checklistor. En tekniker som aldrig sett din fastighet kan driftsätta openAut från dokumentationen.</p>
     </div>
 
-    <div class="oss-card">
-      <div class="oss-card-icon">🛡</div>
-      <span class="oss-card-tag">Säkerhet</span>
-      <h3>Säker by design</h3>
-      <p>openAut håller sig inom fem ramverk — ISO 27001 (governance), NIS2 (verksamhet), IEC 62443 (OT), CRA (produkt) och AI Act (AI-funktion) — inbyggt från dag ett, inte tillagt i efterhand. VLAN-segmentering, MQTT over TLS med klientcertifikat, WireGuard VPN, RBAC och auditloggning är baskrav, inte tillval.</p>
-      <p>Säkerheten är också en egen agent: en separat, läsande <strong>openAut Security</strong>-instans vakar över Advisor, Engineer och OT-miljön — <em>den kan se, men inte styra</em>. Audit och larm skickas från en gräns som de agerande agenterna inte själva kan tysta.</p>
-      <p>Åtkomst följer etablerade principer: minsta privilegium och uppdelade ansvar (IEC 62443, ISO 27001), en oberoende auditor-roll och tidsbegränsad (just-in-time) behörighet för tillfälliga uppdrag.</p>
-    </div>
-
-    <div class="oss-card">
-      <div class="oss-card-icon">⚿</div>
-      <span class="oss-card-tag">Kontroll</span>
-      <h3>Du behåller nyckeln</h3>
-      <p>Tanken är att en upphandlad konsult ska kunna göra sitt jobb — felsöka, ansluta nya edge-noder — genom en <strong>avgränsad, tidsbegränsad och loggad</strong> behörighet. Aldrig nyckeln till säkerheten eller till vad andra får göra. När uppdraget tar slut släcks åtkomsten rent.</p>
-      <p>Samma princip gäller intern personal: alla arbetar genom en avgränsad behörighetsprofil — <strong>ingen äger allt</strong>. Se <a href="security.html#atkomst">Åtkomst &amp; roller</a>.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- OM PROJEKTET -->
-<section class="principles" id="om-projektet">
-  <div class="grid-bg"></div>
-  <div class="section-label" data-num="08">Om projektet</div>
-  <h2 class="section-title reveal">Ett öppet projekt<br><span class="accent">under utveckling.</span></h2>
-
-  <div class="about-project reveal reveal-delay-1">
-    <p>openAut är i grunden ett <strong>kunskaps- och konceptprojekt</strong>: ett sätt att utforska hur AI med lokala modeller faktiskt kan användas inom fastighetsautomation — inte bara i teorin. Projektet befinner sig i <strong>konceptstadiet</strong> och är under aktiv utveckling.</p>
-
-    <p>Det här är ingen färdig produkt. openAut <strong>ska inte användas i skarp drift eller live-miljöer</strong> — det är byggt för att lära, experimentera och visa på möjligheter. Målet är att över tid förstå vad som krävs för att något liknande ska kunna mogna till en driftsäker lösning.</p>
-
-    <p>Arkitekturen hålls medvetet öppen, modulär och fri från inlåsning, så att den kan växa i den riktning som visar sig vara rätt — utan att något utesluts i förväg. Allt utvecklas öppet under MIT-licens, fritt att granska, ifrågasätta och bidra till.</p>
   </div>
 </section>
 
