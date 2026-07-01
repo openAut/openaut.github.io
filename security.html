@@ -1642,10 +1642,9 @@ footer {
     <p>
       Ingen detektionsmodell fångar allt — nya sätt att kringgå övervakning dyker upp, och det är ett
       pågående arbete, inte ett löst problem. Bevisbevarandet vilar därför inte på att säkerhetsinstansen
-      aldrig kan komprometteras, utan på <strong>append-only-loggning replikerad till en extern
-      förtroendedomän</strong> — t.ex. en WORM-logg eller ett syslog/SIEM-mål med immutability/
-      retention lock och separat administrativ kontroll — så att bevis som redan skickats inte
-      går att radera i efterhand.
+      aldrig kan komprometteras, utan på <strong>append-only-loggning med retention lock, replikerad
+      till en extern förtroendedomän under separat administration</strong> — bevis som redan
+      skickats går inte att radera i efterhand.
     </p>
   </div>
 </section>
