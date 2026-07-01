@@ -1130,7 +1130,7 @@ footer {
   <p class="hero-sub">
     Säkerhetsagentens design utgår från ett enkelt antagande: <strong>driftinstanserna kan
     komprometteras.</strong> Om de gör det ska säkerhetsinstansen vara opåverkad, ha bevarat
-    relevanta bevis och kunna larma utan att använda samma kommunikationskanal som attackerades.
+    relevanta bevis och kunna larma utan att använda samma driftkanal som attackerades.
   </p>
 
   <p class="hero-sub">
@@ -1643,7 +1643,8 @@ footer {
       Ingen detektionsmodell fångar allt — nya sätt att kringgå övervakning dyker upp, och det är ett
       pågående arbete, inte ett löst problem. Bevisbevarandet vilar därför inte på att säkerhetsinstansen
       aldrig kan komprometteras, utan på <strong>append-only-loggning replikerad till en extern
-      förtroendedomän</strong> — så att bevis som redan skickats inte går att radera i efterhand.
+      förtroendedomän</strong> — t.ex. en WORM-logg eller extern syslog/SIEM under separat
+      administrativ kontroll — så att bevis som redan skickats inte går att radera i efterhand.
     </p>
   </div>
 </section>
