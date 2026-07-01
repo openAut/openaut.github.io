@@ -1128,8 +1128,14 @@ footer {
   </div>
 
   <p class="hero-sub">
-    En <strong>separat openAut-instans</strong> specialiserad på IT- och OT-säkerhet.
-    Den läser driftinstansernas loggar via read-only SSH, lyssnar på alla Teams-kanaler
+    Säkerhetsagentens design utgår från ett enkelt antagande: <strong>driftinstanserna kan
+    komprometteras.</strong> Om den gör det ska säkerhetsinstansen vara opåverkad, ha bevarat
+    alla bevis och kunna larma utan att använda samma kommunikationskanal som attackerades.
+  </p>
+
+  <p class="hero-sub">
+    En <strong>separat openAut-instans</strong> specialiserad på IT- och OT-säkerhet
+    läser driftinstansernas loggar via read-only SSH, lyssnar på alla Teams-kanaler
     utan att kunna ta emot kommandon, och flaggar misstänkt aktivitet till ett isolerat
     säkerhetsteam — <strong>utan att någon kan instruera den via Teams.</strong>
     Principen är medveten: agentstacken är kraftfull och tillåtande som standard, så
@@ -1175,67 +1181,9 @@ footer {
   </div>
 </div>
 
-<!-- TRE KÄRNPRINCIPER -->
-<section class="principles-hero" id="principer">
-  <div class="section-label" data-num="01">Arkitektoniska kärnprinciper</div>
-  <h2 class="section-title reveal">Tre principer som<br>inte går att kompromissa.</h2>
-  <p class="principles-intro reveal reveal-delay-1">
-    Säkerhetsagentens design utgår från ett enkelt antagande: <strong>driftinstanserna kan komprometteras.</strong>
-    Om den gör det ska säkerhetsinstansen vara opåverkad, ha bevarat alla bevis och kunna larma utan att använda
-    samma kommunikationskanal som attackerades.
-  </p>
-
-  <div class="three-principles reveal reveal-delay-2">
-
-    <div class="tp-card">
-      <span class="tp-num">PRINCIP 01</span>
-      <div class="tp-icon">🔒</div>
-      <h3>Arkitektonisk <em>isolation</em></h3>
-      <p>
-        Säkerhetsinstansen körs på <strong>separat fysisk hårdvara</strong> i ett eget VLAN-segment.
-        Den delar inget minne, ingen process och inga nätverksgränser med driftinstanserna.
-        Komprometteras huvudsystemet är säkerhetsagenten opåverkad — den kör sin egen
-        NemoClaw med sina egna nycklar, sina egna loggar och sin egna nätverksidentitet.
-      </p>
-      <div class="tp-verdict">Separat maskin. Separat VLAN. Separat identitet.</div>
-    </div>
-
-    <div class="tp-card">
-      <span class="tp-num">PRINCIP 02</span>
-      <div class="tp-icon">👁</div>
-      <h3>Read-only SSH — <em>noll skrivåtkomst</em></h3>
-      <p>
-        Säkerhetsagenten autentiserar med en dedikerad systemanvändare
-        (<code style="font-family:var(--mono);font-size:0.82em;color:var(--cyan)">openaut-sec-ro</code>)
-        som har <strong>exklusiv läsrättighet</strong> till auditloggar, konversationsloggar,
-        MQTT-data och systemmetrik. Kontot saknar shell-åtkomst utanför definierade
-        kommandouppsättningar. <em>Ingen sudo. Ingen skrivåtkomst. Ingen möjlighet att
-        påverka konfiguration eller fältlager.</em>
-      </p>
-      <div class="tp-verdict">Ser allt. Kan inte ändra någonting.</div>
-    </div>
-
-    <div class="tp-card">
-      <span class="tp-num">PRINCIP 03</span>
-      <div class="tp-icon">🙊</div>
-      <h3>Listen-only bot — <em>svarar aldrig</em></h3>
-      <p>
-        Teams-boten lyssnar i alla kanaler där Advisor-boten finns. Den reagerar aldrig
-        på inkommande meddelanden, svarar aldrig på frågor och utför aldrig instruktioner.
-        <strong>Prompt injection via Teams fungerar inte</strong> — boten har ingen
-        exekveringsväg från inkommande meddelanden till handling.
-        Larm går till ett <em>separat säkerhetsteams-kanalflöde</em> som Advisor-boten
-        inte har åtkomst till.
-      </p>
-      <div class="tp-verdict">Lyssnar på allt. Svarar på ingenting via Teams.</div>
-    </div>
-
-  </div>
-</section>
-
 <!-- ARKITEKTUR: ADVISOR + ENGINEER vs SECURITY -->
 <section class="arch-section" id="arkitektur">
-  <div class="section-label green" data-num="02">Systemarkitektur</div>
+  <div class="section-label green" data-num="01">Systemarkitektur</div>
   <h2 class="section-title reveal">Tre instanser.<br>Två <span class="accent-green">arbetar.</span> En <span class="accent-red">vaktar.</span></h2>
 
   <div class="arch-diagram reveal reveal-delay-1">
@@ -1324,7 +1272,7 @@ footer {
 
 <!-- ÅTKOMST & ROLLER -->
 <section class="arch-section" id="atkomst">
-  <div class="section-label green" data-num="03">Åtkomst &amp; roller</div>
+  <div class="section-label green" data-num="02">Åtkomst &amp; roller</div>
   <h2 class="section-title reveal">Vem får ändra vad.<br>Och vem <span class="accent-green">bestämmer det.</span></h2>
 
   <p class="reveal reveal-delay-1" style="max-width:760px;margin:0 auto 1.5rem;text-align:center;color:var(--text-muted);">
@@ -1342,46 +1290,9 @@ footer {
     låser upp. Den stannar hos dig som äger anläggningen.
   </div>
 
-  <div class="arch-diagram arch-diagram-2col reveal reveal-delay-2">
-
-    <div class="arch-instance main">
-      <span class="arch-inst-badge badge-main">Styrentreprenör — KAN</span>
-      <div class="arch-inst-name green">Göra jobbet, inom sitt område</div>
-      <div class="arch-inst-hw">Avgränsad, tidsbegränsad, loggad Engineer-profil</div>
-      <div class="arch-nodes">
-        <div class="arch-node green">Felsöka och läsa sin egen anläggning</div>
-        <div class="arch-node green">Installera nya edge-noder — efter ditt godkännande</div>
-        <div class="arch-node green">Tidsbegränsad åtkomst (just-in-time)</div>
-        <div class="arch-node green">Släcks rent när uppdraget tar slut</div>
-        <div class="arch-node amber">Åtgärderna loggas och granskas av Security-instansen</div>
-      </div>
-    </div>
-
-    <div class="arch-instance sec">
-      <span class="arch-inst-badge badge-sec">Styrentreprenör — KAN INTE</span>
-      <div class="arch-inst-name red">Röra säkerheten eller reglerna</div>
-      <div class="arch-inst-hw">Ingen väg till styrnivån som äger policyn</div>
-      <div class="arch-nodes">
-        <div class="arch-node red">Ändra säkerhetsövervakningen</div>
-        <div class="arch-node red">Ändra vad andra roller får göra</div>
-        <div class="arch-node red">Utöka sin egen behörighet</div>
-        <div class="arch-node red">Nå Advisor- eller Security-instansen</div>
-      </div>
-    </div>
-
-  </div>
-
-  <p class="reveal reveal-delay-2" style="max-width:760px;margin:2rem auto 0;text-align:center;color:var(--text-muted);">
-    Samma mekanism gäller intern personal — en driftstekniker som gör edge-arbete får en egen profil
-    som skiljer sig bara i område, förtroende och varaktighet. Behöver någon mer behörighet blir det en
-    ny, godkänd profil — aldrig en lokal ändring.
-  </p>
-
-  <p class="reveal reveal-delay-2" style="max-width:760px;margin:1rem auto 0;text-align:center;color:var(--text-dim);font-size:0.8rem;">
-    För dig som granskar: modellen vilar på etablerade principer — minsta privilegium och uppdelade
-    ansvar (IEC 62443, ISO 27001), en oberoende auditor-roll (Security) och tidsbegränsad
-    just-in-time-åtkomst. Policyn ägs av en separat styrnivå (Policy Administration Point) skild från
-    alla som opererar systemet. Designutkast och detaljer i
+  <p class="reveal reveal-delay-2" style="max-width:760px;margin:0 auto 0;text-align:center;color:var(--text-dim);font-size:0.8rem;">
+    Modellen vilar på etablerade principer — minsta privilegium, uppdelade ansvar (IEC 62443, ISO 27001)
+    och en oberoende auditor-roll (Security). Fullständigt designutkast i
     <a href="https://github.com/openAut/main/blob/main/docs/adr/0002-access-control-and-roles.md" style="color:var(--green);">ADR 0002</a>
     och
     <a href="https://github.com/openAut/main/blob/main/docs/adr/0003-engineer-runtime-containment.md" style="color:var(--green);">0003</a>.
@@ -1391,7 +1302,7 @@ footer {
 <!-- SSH READ-ONLY -->
 <section class="ssh-section" id="ssh">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="04">SSH-åtkomst</div>
+  <div class="section-label" data-num="03">SSH-åtkomst</div>
   <h2 class="section-title reveal">Read-only SSH.<br><span class="accent-red">Noll skrivåtkomst.</span></h2>
 
   <div class="ssh-grid">
@@ -1501,7 +1412,7 @@ footer {
 
 <!-- TEAMS LISTEN-ONLY -->
 <section class="teams-section" id="teams">
-  <div class="section-label" data-num="05">Teams-övervakning</div>
+  <div class="section-label" data-num="04">Teams-övervakning</div>
   <h2 class="section-title reveal">Lyssnar i alla kanaler.<br><span class="accent-red">Svarar aldrig.</span></h2>
 
   <div class="teams-layout">
@@ -1645,156 +1556,10 @@ footer {
   </div>
 </section>
 
-<!-- DETEKTIONSLAGRET -->
-<section class="threats" id="detektion">
-  <div class="grid-bg"></div>
-  <div class="section-label" data-num="06">Detektionslagret</div>
-  <h2 class="section-title reveal">Klassificerare,<br><span class="accent-red">inte domare.</span></h2>
-  <p class="threats-intro reveal reveal-delay-1">
-    Säkerhetsagenten <strong>läser</strong> angriparkontrollerat innehåll — det är hela poängen med att
-    övervaka konversationer och loggar. Skyddet ligger inte i att innehållet aldrig läses, utan i
-    <strong>hur</strong> det bedöms. Bedömningen görs i två steg, och det avgörande steget tar inga instruktioner.
-  </p>
-
-  <div class="threat-cols reveal reveal-delay-2">
-
-    <div class="threat-col">
-      <div class="threat-col-label it">Klassificeraren — bedömer</div>
-      <div class="threat-list">
-
-        <div class="threat-item">
-          <span class="threat-item-icon">⚡</span>
-          <div class="threat-item-body">
-            <h5>Llama Prompt Guard 2 · 86M</h5>
-            <p>Liten, icke-genererande klassificerare som snabb första linje mot prompt injection och jailbreak. <em>Den följer inga instruktioner — den producerar bara en sannolikhet.</em></p>
-          </div>
-        </div>
-
-        <div class="threat-item">
-          <span class="threat-item-icon">🛡</span>
-          <div class="threat-item-body">
-            <h5>Llama Guard 3 / 4</h5>
-            <p>Grövre innehållsklassificering mot definierade riskkategorier — körs lokalt på säkerhetsinstansens egen AI-hårdvara.</p>
-          </div>
-        </div>
-
-        <div class="threat-item">
-          <span class="threat-item-icon">🔬</span>
-          <div class="threat-item-body">
-            <h5>ProtectAI / PIGuard (DeBERTa)</h5>
-            <p>DeBERTa-baserade detektorer som alternativ eller komplement — encoder-modeller utan textgenerering, och därför svåra att prompt-injicera.</p>
-          </div>
-        </div>
-
-        <div class="threat-item">
-          <span class="threat-item-icon">🔬</span>
-          <div class="threat-item-body">
-            <h5>IBM Granite Guardian</h5>
-            <p>Ytterligare ett öppet alternativ för risk- och innehållsklassificering. Modellvalet är utbytbart — principen är det inte.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="threat-col">
-      <div class="threat-col-label ot">NemoClaw — förklarar</div>
-      <div class="threat-list">
-
-        <div class="threat-item">
-          <span class="threat-item-icon">🗣</span>
-          <div class="threat-item-body">
-            <h5>Förklaring, inte grindvakt</h5>
-            <p>Den genererande LLM:en (NemoClaw) används <strong>först efter</strong> att klassificeraren flaggat — för att formulera larmet, sammanfatta bevis och beskriva mönster på begripligt språk. <em>Aldrig som det som avgör om något är ett hot.</em></p>
-          </div>
-        </div>
-
-        <div class="threat-item">
-          <span class="threat-item-icon">📋</span>
-          <div class="threat-item-body">
-            <h5>Compliance-assistans</h5>
-            <p>NemoClaw hjälper compliance-ansvariga att tolka krav och generera dokumentation utifrån redan klassificerade händelser — en assistent, inte en beslutsfattare.</p>
-          </div>
-        </div>
-
-        <div class="threat-item">
-          <span class="threat-item-icon">🚫</span>
-          <div class="threat-item-body">
-            <h5>Varför grindvakten inte är en LLM</h5>
-            <p>En genererande modell följer instruktioner — och kan därför luras av instruktioner gömda i det den läser. Den icke-genererande klassificeraren gör ingen sådan tolkning: den klassar text, den lyder den inte.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <div class="cs-callout reveal" style="margin-top:3rem;border-color:rgba(255,77,77,0.3);background:rgba(255,77,77,0.04);">
-    <div class="cs-callout-label" style="color:var(--red)">Inline-skydd vs passiv analys</div>
-    <p>
-      <strong>Blockerande inline-guardrails</strong> — som stoppar ett svar innan det skickas — hör hemma på
-      <strong>Advisor och Engineer</strong>, där det finns en svarsväg att skydda. <strong>Säkerhetsinstansen</strong>
-      kör samma klassificerare men i <strong>passivt analysläge</strong>: den blockerar ingenting i driftflödet,
-      den observerar, korrelerar och larmar — plus compliance-skills. Det är därför den kan se allt utan att
-      själv gå att styra.
-    </p>
-  </div>
-</section>
-
-<!-- TEKNIKVAL -->
-<section class="principles-hero" id="teknikval">
-  <div class="section-label" data-num="07">Teknikval</div>
-  <h2 class="section-title reveal">Öppet.<br><span class="accent-red">Lokalt.</span></h2>
-  <p class="principles-intro reveal reveal-delay-1">
-    Orkestreringen av rails och klassificerare är inte egenutvecklad — den bygger på etablerade öppna
-    ramverk som körs <strong>helt lokalt</strong> på säkerhetsinstansens egen hårdvara. Inga molnanrop
-    sker med driftdata: det är ett krav, inte en inställning, och en förutsättning för NIS2 och AI Act.
-  </p>
-
-  <div class="three-principles reveal reveal-delay-2">
-
-    <div class="tp-card">
-      <span class="tp-num">ORKESTRERING</span>
-      <div class="tp-icon">🧩</div>
-      <h3>NVIDIA <em>NeMo Guardrails</em></h3>
-      <p>
-        Passar Nemotron-stacken bakom NemoClaw och <strong>självhostas via vLLM eller NVIDIA NIM</strong>.
-        Kör <em>input-, output-, dialog- och retrieval-rails</em> som kedjar samman klassificerarna ovan
-        med policyer — allt på den lokala AI-hårdvaran.
-      </p>
-      <div class="tp-verdict">Lokal orkestrering. Inga molnberoenden.</div>
-    </div>
-
-    <div class="tp-card">
-      <span class="tp-num">ALTERNATIV</span>
-      <div class="tp-icon">🔓</div>
-      <h3>LLM Guard <em>· Protect AI</em></h3>
-      <p>
-        MIT-licensierad verktygslåda med scanners för prompt injection, känslig data och toxiskt innehåll.
-        <strong>Ett öppet alternativ</strong> för organisationer som hellre bygger sin egen pipeline.
-      </p>
-      <div class="tp-verdict">MIT-licens. Modulär. Lokal.</div>
-    </div>
-
-    <div class="tp-card">
-      <span class="tp-num">ALTERNATIV</span>
-      <div class="tp-icon">🧱</div>
-      <h3>Meta <em>LlamaFirewall</em></h3>
-      <p>
-        Ramverk för att lägga flera guardrail-lager — inklusive promptgranskning och granskning av
-        agentbeteende — i ett sammanhållet filter. <strong>Ytterligare ett byggblock</strong>, inte en låsning.
-      </p>
-      <div class="tp-verdict">Flera lager. Ett filter.</div>
-    </div>
-
-  </div>
-</section>
-
 <!-- HOTMODELL -->
 <section class="threats" id="hotmodell">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="08">Hotmodell</div>
+  <div class="section-label" data-num="05">Hotmodell</div>
   <h2 class="section-title reveal">Vad den letar efter.<br><span class="accent-red">IT och OT.</span></h2>
   <p class="threats-intro reveal reveal-delay-1">
     Säkerhetsagenten täcker två angreppsytor: <strong>IT-sidan</strong> — konversationer, botar, prompter och autentisering — och <strong>OT-sidan</strong> — protokollanomalier, ovanliga skrivkommandon och enheter som inte borde finnas på nätverket.
@@ -1901,7 +1666,7 @@ footer {
 
 <!-- LARMFLÖDE -->
 <section class="alert-section" id="larmflode">
-  <div class="section-label" data-num="09">Larmflöde</div>
+  <div class="section-label" data-num="06">Larmflöde</div>
   <h2 class="section-title reveal">Från detektion till<br>säkerhetsteam — <span class="accent-red">isolerat.</span></h2>
   <p class="alert-intro reveal reveal-delay-1">
     Larmet tar aldrig vägen tillbaka in i driftkanalen. Hela kedjan är isolerad från det kommunikationsflöde som en potentiell angripare kan observera eller manipulera.
@@ -1994,7 +1759,7 @@ footer {
 <!-- HÅRDVARA -->
 <section class="hw-section" id="hardvara">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="10">Hårdvara &amp; nätverksisolering</div>
+  <div class="section-label" data-num="07">Hårdvara &amp; nätverksisolering</div>
   <h2 class="section-title reveal">Separat maskin.<br><span class="accent-red">Eget VLAN.</span></h2>
   <p class="hw-intro reveal reveal-delay-1">
     Säkerhetsinstansen kör samma typ av lokal AI-hårdvara som driftinstanserna — men aldrig
@@ -2062,153 +1827,10 @@ footer {
   </div>
 </section>
 
-<!-- KAN EJ STYRAS -->
-<section class="nocmd-section" id="notyp">
-  <div class="section-label" data-num="11">Angreppsytan</div>
-  <h2 class="section-title reveal">Vad händer om <em style="font-style:normal;color:var(--red)">den</em> attackeras?</h2>
-  <p class="threats-intro reveal reveal-delay-1" style="margin-bottom:0;">
-    Säkerhetsagenten är designad med antagandet att <strong>även den kan vara ett mål.</strong>
-    Varje attackvektor mot den är explicit stängd per design — inte per konfiguration.
-  </p>
-
-  <div class="nocmd-grid reveal reveal-delay-2" style="margin-top:3.5rem;">
-
-    <div class="nocmd-card">
-      <span class="nocmd-tag">Attackvektor 01</span>
-      <h3>Prompt injection via Teams-kanalen</h3>
-      <p>
-        En angripare skickar ett meddelande i en driftkanal med en instruktion till säkerhetsboten.
-        <strong>Har ingen effekt på beteendet.</strong> Säkerhetsboten har ingen svars- eller kommandoväg
-        från inkommande Teams-meddelanden. Innehållet analyseras — men av en icke-genererande klassificerare
-        som inte följer instruktioner — så injicerad text kan inte kapa bedömningen. <em>Den klassas, den lyds inte.</em>
-      </p>
-    </div>
-
-    <div class="nocmd-card">
-      <span class="nocmd-tag">Attackvektor 02</span>
-      <h3>Direktmeddelande till säkerhetsbotens identitet</h3>
-      <p>
-        En angripare försöker kommunicera direkt med botkontot i Teams.
-        <strong>Genererar ett larm.</strong> Kontot svarar inte. Interaktionsförsöket
-        tidsstämplas, bevismaterial bevaras och säkerhetsteamet notifieras i
-        #security-alerts — <em>utan att driftflödet påverkas.</em>
-      </p>
-    </div>
-
-    <div class="nocmd-card">
-      <span class="nocmd-tag">Attackvektor 03</span>
-      <h3>SSH-inlogg med komprometterade säkerhetsinstansuppgifter</h3>
-      <p>
-        Angriparen tar kontroll över säkerhetsinstansen och försöker använda SSH-kontot
-        för att påverka driftinstanserna. <strong>Kontot har inga skrivrättigheter.</strong>
-        Filsystemsbegränsningar är i OS-kärnan. Eskaleringsförsök loggas i
-        driftinstansernas auditdaemon och <em>flaggas av säkerhetsagentens egna logganalys</em>.
-      </p>
-    </div>
-
-    <div class="nocmd-card">
-      <span class="nocmd-tag">Attackvektor 04</span>
-      <h3>Radering av säkerhetsinstansens loggar</h3>
-      <p>
-        Angriparen komprometterar säkerhetsinstansen och försöker radera bevis.
-        <strong>Audit-databasen är append-only</strong> med signaturer per post.
-        Dessutom replikerar säkerhetsinstansen larmposter till ett <strong>append-only-mål i en separat
-        förtroendedomän</strong> — en WORM-logg eller en extern syslog-mottagare — <em>angriparen kan inte
-        radera vad som redan skickats.</em>
-      </p>
-    </div>
-
-    <div class="nocmd-card">
-      <span class="nocmd-tag">Attackvektor 05</span>
-      <h3>Lateral förflyttning via säkerhetsinstansen till OT</h3>
-      <p>
-        En angripare på säkerhetsinstansen försöker nå OT-nätverket.
-        <strong>VLAN-ACL:er på switchnivå blockerar all trafik</strong> utom
-        SSH mot driftinstanserna och Teams-API utgående.
-        Säkerhetsinstansen har ingen routad väg till VLAN 10 (OT) eller VLAN 20 (Mgmt) —
-        <em>det är en nätverksarkitekturrestriktion, inte en mjukvarurestriktion.</em>
-      </p>
-    </div>
-
-    <div class="nocmd-card">
-      <span class="nocmd-tag">Attackvektor 06</span>
-      <h3>Förgiftning av Teams-konversationsdata</h3>
-      <p>
-        En angripare försöker lura säkerhetsagentens AI-analys genom att plantera
-        normaliserande mönster i konversationer över tid — för att dölja framtida
-        attacker i baselinen. <strong>Säkerhetsinstansen korrelerar alltid mot
-        OT-auditloggar oberoende av Teams-data</strong> — ett spår måste synas i båda
-        källorna för att väljas bort som falskt positiv.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- BEGRÄNSNINGAR -->
-<section class="threats" id="begransningar">
-  <div class="grid-bg"></div>
-  <div class="section-label" data-num="12">Begränsningar</div>
-  <h2 class="section-title reveal">Vad det <span class="accent-red">inte</span><br>löser.</h2>
-  <p class="threats-intro reveal reveal-delay-1">
-    Modellen ovan är ett konceptprojekt, och ärlighet om dess gränser är en del av designen.
-  </p>
-
-  <div class="threat-cols reveal reveal-delay-2">
-
-    <div class="threat-col">
-      <div class="threat-col-label it">Guardrails är inte vattentäta</div>
-      <div class="threat-list">
-
-        <div class="threat-item">
-          <span class="threat-item-icon">⚠️</span>
-          <div class="threat-item-body">
-            <h5>De går att kringgå</h5>
-            <p>Ingen klassificerare fångar allt. Nya jailbreak-tekniker dyker upp, och detektion är ett kontinuerligt kapprustningslopp — inte ett löst problem.</p>
-          </div>
-        </div>
-
-        <div class="threat-item">
-          <span class="threat-item-icon">🚦</span>
-          <div class="threat-item-body">
-            <h5>Överdefensivitet är ett känt problem</h5>
-            <p>Godartad text med triggerord kan falskflaggas. För hårt satta trösklar skapar larmtrötthet; för lösa missar hot. <em>Slutsatsen är defense-in-depth — flera oberoende lager, inte en enda grind.</em></p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="threat-col">
-      <div class="threat-col-label ot">OT är inte ett språkmodellsproblem</div>
-      <div class="threat-list">
-
-        <div class="threat-item">
-          <span class="threat-item-icon">📐</span>
-          <div class="threat-item-body">
-            <h5>Annan typ av detektion</h5>
-            <p>Protokollanomalier, okända enheter och värden utanför fysikaliska gränser fångas av <strong>statistisk och regelbaserad anomalidetektering</strong> plus skills — inte av en LLM-guardrail.</p>
-          </div>
-        </div>
-
-        <div class="threat-item">
-          <span class="threat-item-icon">🔧</span>
-          <div class="threat-item-body">
-            <h5>Rätt verktyg för rätt lager</h5>
-            <p>Språkmodellklassificerare hör hemma på IT- och konversationssidan. OT-sidan vilar på deterministiska regler och baseline-jämförelser mot Systemdatabasen — där en LLM aldrig är grindvakt.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
 <!-- EU COMPLIANCE SKILLS -->
 <section class="compliance-section" id="compliance">
   <div class="grid-bg"></div>
-  <div class="section-label" data-num="13">Regelverksskills</div>
+  <div class="section-label" data-num="08">Regelverksskills</div>
   <h2 class="section-title reveal">AI Act. NIS2. CRA.<br><span class="accent-red">Inbyggt — inte påklistrat.</span></h2>
 
   <p class="compliance-intro reveal reveal-delay-1">
