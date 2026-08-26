@@ -1439,7 +1439,7 @@
     openAut-Advisor ska kunna ge olika svar till olika roller i de verktyg de redan använder.
     <strong>Drifttekniker</strong> får larmkorrelation och rotorsak i sin chatt.
     <strong>Energisamordnare</strong> får automatiska veckoapporter och avvikelseanalyser.
-    <strong>Förvaltare</strong> ser fastighetsstatus och underhållsprognos i en webbvy.
+    <strong>Förvaltare</strong> ser fastighetsstatus och underhållsprognos.
   </p>
 
   <div class="scenario-cards reveal reveal-delay-2">
@@ -1527,7 +1527,7 @@
     <div class="teams-mock reveal reveal-delay-2">
       <div class="teams-header">
         <div class="teams-icon">⚙</div>
-        <div class="teams-channel">openAut Engineer · Kontrollplan<span>service-PC · mgmt-nät</span></div>
+        <div class="teams-channel">openAut Engineer · OpenCode<span>service-PC</span></div>
       </div>
       <div class="teams-body">
 
@@ -1536,7 +1536,7 @@
           <div class="teams-bubble">
             <div class="teams-name">Magnus N · Drifttekniker (service-PC)</div>
             <div class="teams-text">
-              Ska integrera Grundfos Magna3 65-120 på edge-nod <code>EDGE-04</code> (UC byggnad 25 plan 2). Laddar upp manualen i kontrollplanet.
+              Ska integrera Grundfos Magna3 65-120 på edge-nod <code>EDGE-04</code> (UC byggnad 25 plan 2). Laddar upp manualen till OpenCode
             </div>
             <div class="teams-attachment">
               <span class="teams-attachment-icon">📄</span>
@@ -1593,7 +1593,7 @@
           <span class="guided-step-num">01</span>
           <div>
             <h4>Installera edge-noden vid utrustningen</h4>
-            <p>En Siemens SIMATIC IOT2050 monteras i närheten av anläggningsdelen — pump, kylmaskin, AHU. Den kör standard Linux och ansluts till OT-nätverket. openAut Engineer når noden via <strong>SSH</strong> och installerar protokolldrivrutiner — efter att du bekräftat i kontrollplanet. <strong>Ingen proprietär middleware krävs.</strong></p>
+            <p>En Siemens SIMATIC IOT2050 monteras i närheten av anläggningsdelen — pump, kylmaskin, AHU. Den kör standard Linux och ansluts till OT-nätverket. openAut Engineer når noden via <strong>SSH</strong> och installerar protokolldrivrutiner — efter att du bekräftat i OpenCode <strong>Ingen proprietär middleware krävs.</strong></p>
           </div>
         </div>
 
@@ -1601,7 +1601,7 @@
           <span class="guided-step-num">02</span>
           <div>
             <h4>Ladda upp manualen från din service-PC</h4>
-            <p>Teknikern ansluter sin service-PC till Engineers kontrollplan på plats (mgmt-nät, bastion · mTLS · MFA) och laddar upp fabrikantens manual där. openAut Engineer läser dokumentet, identifierar kommunikationsprotokoll, registerstruktur och inställningsparametrar — <em>utan att teknikern behöver leta</em>.</p>
+            <p>Teknikern ansluter sin service-PC till Engineers OpenCode på plats och laddar upp fabrikantens manual där. openAut Engineer läser dokumentet, identifierar kommunikationsprotokoll, registerstruktur och inställningsparametrar — <em>utan att teknikern behöver leta</em>.</p>
           </div>
         </div>
 
@@ -1902,7 +1902,7 @@
   <div class="oss-layout">
 
     <div class="oss-text reveal reveal-delay-1">
-      <p>En av de frågor konceptet utforskar är hur en öppen plattform skulle kunna passa offentlig sektor. För kommuner, regioner och offentliga fastighetsägare skapar LOU reella begränsningar för teknikval — och tanken är att openAut ska kunna <strong>fungera inom de begränsningarna</strong>, inte runt dem.</p>
+      <p>En av de frågor konceptet utforskar är hur en öppen plattform skulle kunna passa offentlig sektor. För kommuner, regioner och offentliga fastighetsägare skapar LOU reella begränsningar för teknikval — och tanken är att openAut ska kunna <strong>fungera inom de begränsningarna.</strong></p>
 
       <p>Eftersom openAut är MIT-licensierat och öppen källkod <strong>finns det ingen enskild leverantör att upphandla.</strong> Plattformen är gratis att använda. Vad din organisation upphandlar är <strong>kompetensen</strong> att implementera, konfigurera och förvalta den — tjänster som kan läggas ut på öppen anbudsgivning och tilldelas valfri regional konsult, befintliga ramavtalspartner, eller en intern driftsorganisation.</p>
 
