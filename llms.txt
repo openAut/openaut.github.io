@@ -9,7 +9,7 @@
 openAut befinner sig i konceptstadiet (v0.1) och är under aktiv utveckling. Det är ett kunskaps- och konceptprojekt byggt för att lära, experimentera och visa på möjligheter — inte en driftfärdig produkt. Det ska inte användas i skarp drift eller live-miljöer.
 
 ## Summary
-openAut utforskar hur fastighetsägare skulle kunna analysera byggnadsdata och implementera Python-baserad reglering lokalt i den egna infrastrukturen, med lokala AI-modeller, utan molntjänster eller leverantörsinlåsning. Projektet är öppen källkod och utforskar offentlig sektor, upphandling och långsiktig förvaltning som tänkbara användningsområden. Driftlagret är (i konceptet) uppdelat i två instanser med olika förtroendenivå: openAut Advisor (read-only, Teams-vänd) och openAut Engineer (SSH/deploy, ej Teams-exponerad), med åtgärdsöverlämning via godkända ärenden i Systemdatabasen. Kod, manualer och dokumentation lagras versionerat i en lokal, självhostad Forge (Forgejo) som både människor och AI hämtar från, med CI- och granskningsgrindar och behörighetsstyrning. Microsoft Teams är den mänskliga standardkanalen (Slack och övriga native-kanaler är avstängda; kanalen är utbytbar via konfiguration).
+openAut utforskar hur fastighetsägare skulle kunna analysera byggnadsdata och implementera Python-baserad reglering lokalt i den egna infrastrukturen, med lokala AI-modeller, utan molntjänster eller leverantörsinlåsning. Projektet är öppen källkod och utforskar offentlig sektor, upphandling och långsiktig förvaltning som tänkbara användningsområden. Driftlagret är (i konceptet) uppdelat i två instanser med olika förtroendenivå: openAut Advisor (read-only, Matrix-vänd) och openAut Engineer (SSH/deploy, ej Matrix-exponerad), med åtgärdsöverlämning via godkända ärenden i Systemdatabasen. Kod, manualer och dokumentation lagras versionerat i en lokal, självhostad Forge (Forgejo) som både människor och AI hämtar från, med CI- och granskningsgrindar och behörighetsstyrning. Matrix-protokollet är standard för mänsklig kommunikation. Valfri kompatibel Matrix-klient kan användas och en självhostad homeserver kan köras i organisationens egen infrastruktur.
 
 ## Pages
 
@@ -23,7 +23,7 @@ openAut utforskar hur fastighetsägare skulle kunna analysera byggnadsdata och i
 
 ### IT/OT-säkerhet
 - URL: https://openaut.io/security.html
-- Beskrivning: openAuts separata säkerhetsagent med passiv övervakning, read-only SSH (openaut-sec-ro), listen-only Teams-bot och arkitektonisk isolation från driftinstanserna. Privilegieseparation mellan Advisor (read-only, Teams) och Engineer (SSH/deploy, ej Teams). Håller sig inom fem ramverk: ISO 27001 (ledningssystem/governance), NIS2 (verksamhet/incidentstyrning), IEC 62443 (OT-säkerhet), CRA (produktkrav) och AI Act (AI-funktion).
+- Beskrivning: openAuts separata säkerhetsagent med passiv övervakning, read-only SSH (openaut-sec-ro), listen-only Matrix-klient och arkitektonisk isolation från driftinstanserna. Privilegieseparation mellan Advisor (read-only, Matrix) och Engineer (SSH/deploy, ej Matrix). Håller sig inom fem ramverk: ISO 27001 (ledningssystem/governance), NIS2 (verksamhet/incidentstyrning), IEC 62443 (OT-säkerhet), CRA (produktkrav) och AI Act (AI-funktion).
 
 ## Indexing and crawler policy
 - Public website content may be indexed by search engines and AI/LLM crawlers.
