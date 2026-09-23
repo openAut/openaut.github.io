@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>openAut — Konceptprojekt: lokal AI för fastighetsautomation. Öppen källkod.</title>
-<meta name="description" content="openAut är ett öppet konceptprojekt under utveckling för att utforska hur AI med lokala modeller kan användas inom fastighetsautomation. Inte en färdig produkt — ska inte användas i skarp drift.">
+<meta name="description" content="openAut utforskar lokal AI för fastighetsautomation och kommunikation via Matrix, ett öppet kommunikationsprotokoll. Konceptprojekt — inte för skarp drift.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://openaut.io/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sv_SE">
 <meta property="og:title" content="openAut — Konceptprojekt: lokal AI för fastighetsautomation. Öppen källkod.">
-<meta property="og:description" content="Öppet kunskaps- och konceptprojekt under utveckling som utforskar AI med lokala modeller inom fastighetsautomation. Inte avsett för live-miljöer.">
+<meta property="og:description" content="Konceptprojekt för lokal AI inom fastighetsautomation. Kommunikation via Matrix, ett öppet kommunikationsprotokoll. Inte avsett för live-miljöer.">
 <meta property="og:url" content="https://openaut.io/">
 <meta property="og:image" content="https://openaut.io/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="openAut — Konceptprojekt: lokal AI för fastighetsautomation. Öppen källkod.">
-<meta name="twitter:description" content="Öppet kunskaps- och konceptprojekt under utveckling som utforskar AI med lokala modeller inom fastighetsautomation. Inte avsett för live-miljöer.">
+<meta name="twitter:description" content="Konceptprojekt för lokal AI inom fastighetsautomation. Kommunikation via Matrix, ett öppet kommunikationsprotokoll. Inte avsett för live-miljöer.">
 <meta name="twitter:image" content="https://openaut.io/icon-512.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/icon.svg">
@@ -908,14 +908,14 @@
     align-items: start;
   }
 
-  /* Teams chat mock */
-  .teams-mock {
+  /* Chat mock */
+  .chat-mock {
     border: 1px solid var(--border);
     background: var(--surface2);
     font-family: var(--body);
   }
 
-  .teams-header {
+  .chat-header {
     background: #1f2937;
     padding: 0.75rem 1.2rem;
     display: flex;
@@ -924,7 +924,7 @@
     border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
-  .teams-icon {
+  .chat-icon {
     width: 28px; height: 28px;
     background: #5b5fc7;
     border-radius: 6px;
@@ -939,33 +939,33 @@
     flex-shrink: 0;
   }
 
-  .teams-channel {
+  .chat-channel {
     font-size: 0.8rem;
     color: rgba(255,255,255,0.75);
     font-weight: 500;
   }
 
-  .teams-channel span {
+  .chat-channel span {
     color: rgba(255,255,255,0.35);
     font-weight: 400;
     margin-left: 0.4rem;
   }
 
-  .teams-body {
+  .chat-body {
     padding: 1.2rem 1.2rem;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
   }
 
-  .teams-msg {
+  .chat-msg {
     display: grid;
     grid-template-columns: 32px 1fr;
     gap: 0.7rem;
     align-items: start;
   }
 
-  .teams-avatar {
+  .chat-avatar {
     width: 32px; height: 32px;
     border-radius: 50%;
     display: flex;
@@ -982,12 +982,12 @@
   .av-human { background: #6b8a7a; }
   .av-ai    { background: var(--green); }
 
-  .teams-bubble {
+  .chat-bubble {
     font-size: 0.82rem;
     line-height: 1.65;
   }
 
-  .teams-name {
+  .chat-name {
     font-size: 0.68rem;
     font-weight: 600;
     color: var(--text-muted);
@@ -995,18 +995,18 @@
     letter-spacing: 0.02em;
   }
 
-  .teams-name.ai-name { color: var(--green); }
+  .chat-name.ai-name { color: var(--green); }
 
-  .teams-text {
+  .chat-text {
     color: var(--text-muted);
     font-weight: 300;
   }
 
-  .teams-text strong { color: var(--text); font-weight: 500; }
-  .teams-text em     { color: var(--green); font-style: normal; }
-  .teams-text code   { font-family: var(--mono); font-size: 0.75em; color: var(--cyan); background: rgba(0,200,224,0.08); padding: 0.1em 0.35em; }
+  .chat-text strong { color: var(--text); font-weight: 500; }
+  .chat-text em     { color: var(--green); font-style: normal; }
+  .chat-text code   { font-family: var(--mono); font-size: 0.75em; color: var(--cyan); background: rgba(0,200,224,0.08); padding: 0.1em 0.35em; }
 
-  .teams-attachment {
+  .chat-attachment {
     margin-top: 0.5rem;
     border: 1px solid var(--border);
     background: rgba(0,220,130,0.04);
@@ -1020,9 +1020,9 @@
     letter-spacing: 0.05em;
   }
 
-  .teams-attachment-icon { color: var(--amber); }
+  .chat-attachment-icon { color: var(--amber); }
 
-  .teams-divider {
+  .chat-divider {
     text-align: center;
     font-family: var(--mono);
     font-size: 0.58rem;
@@ -1342,7 +1342,7 @@
   /* Skydd mot horisontell overflow på små skärmar */
   @media (max-width: 900px) {
     img, svg, table, pre { max-width: 100%; height: auto; }
-    .teams-text,
+    .chat-text,
     code, pre { overflow-wrap: anywhere; word-break: break-word; }
   }
 </style>
@@ -1441,6 +1441,13 @@
     <strong>Förvaltare</strong> ser fastighetsstatus och underhållsprognos.
   </p>
 
+  <p class="scenario-intro reveal reveal-delay-1">
+    <strong>Kommunikation via Matrix — ett öppet kommunikationsprotokoll.</strong>
+    Drifttekniker och säkerhetspersonal använder en Matrix-kompatibel chattklient, exempelvis Element.
+    Samtalen sker i Matrix-rum. En självhostad Matrix-server, en så kallad <em>homeserver</em>,
+    kan hantera meddelanden och rum i organisationens egen infrastruktur.
+  </p>
+
   <div class="scenario-cards reveal reveal-delay-2">
 
     <div class="scenario-card">
@@ -1461,7 +1468,7 @@
         </div>
         <div class="scenario-event">
           <span class="event-time">07:10</span>
-          <div class="event-text">Teknikern i Matrix-klienten: "Mäter 0 VDC mellan plint 201 och 202."<br>openAut svarar:<br><br><strong>0 VDC bekräftar att styrsignalen aldrig når ställdonet. Trolig orsak: fel på analog utgångsmodul eller felaktigt programvärde i regulatorn. Kontrollera modulstatus i BMS-klienten — byt modul om ingen hårdvaruindikering syns.</strong></div>
+          <div class="event-text">Teknikern svarar i sin Matrix-kompatibla chattklient: "Mäter 0 VDC mellan plint 201 och 202."<br>openAut svarar:<br><br><strong>0 VDC bekräftar att styrsignalen aldrig når ställdonet. Trolig orsak: fel på analog utgångsmodul eller felaktigt programvärde i regulatorn. Kontrollera modulstatus i BMS-klienten — byt modul om ingen hårdvaruindikering syns.</strong></div>
         </div>
         <div class="scenario-event">
           <span class="event-time">08:15</span>
@@ -1523,34 +1530,34 @@
   <div class="guided-layout">
 
     <!-- KONTROLLPLAN-MOCK (Engineer, service-PC) -->
-    <div class="teams-mock reveal reveal-delay-2">
-      <div class="teams-header">
-        <div class="teams-icon">⚙</div>
-        <div class="teams-channel">openAut Engineer · OpenCode<span>service-PC</span></div>
+    <div class="chat-mock reveal reveal-delay-2">
+      <div class="chat-header">
+        <div class="chat-icon">⚙</div>
+        <div class="chat-channel">openAut Engineer · OpenCode<span>service-PC</span></div>
       </div>
-      <div class="teams-body">
+      <div class="chat-body">
 
-        <div class="teams-msg">
-          <div class="teams-avatar av-human">MN</div>
-          <div class="teams-bubble">
-            <div class="teams-name">Magnus N · Drifttekniker (service-PC)</div>
-            <div class="teams-text">
+        <div class="chat-msg">
+          <div class="chat-avatar av-human">MN</div>
+          <div class="chat-bubble">
+            <div class="chat-name">Magnus N · Drifttekniker (service-PC)</div>
+            <div class="chat-text">
               Ska integrera Grundfos Magna3 65-120 på edge-nod <code>EDGE-04</code> (UC byggnad 25 plan 2). Laddar upp manualen till OpenCode
             </div>
-            <div class="teams-attachment">
-              <span class="teams-attachment-icon">📄</span>
+            <div class="chat-attachment">
+              <span class="chat-attachment-icon">📄</span>
               Grundfos_Magna3_Installation_SE.pdf
             </div>
           </div>
         </div>
 
-        <div class="teams-divider">openAut Engineer läser dokumentet · identifierar protokoll och registerstruktur</div>
+        <div class="chat-divider">openAut Engineer läser dokumentet · identifierar protokoll och registerstruktur</div>
 
-        <div class="teams-msg">
-          <div class="teams-avatar av-ai">AI</div>
-          <div class="teams-bubble">
-            <div class="teams-name ai-name">openAut Engineer</div>
-            <div class="teams-text">
+        <div class="chat-msg">
+          <div class="chat-avatar av-ai">AI</div>
+          <div class="chat-bubble">
+            <div class="chat-name ai-name">openAut Engineer</div>
+            <div class="chat-text">
               Hittade Modbus RTU-stöd på sidan 47. Magna3 65-120 exponerar <em>18 holding registers</em> från adress 1. Jag ser att EDGE-04 redan har en ledig RS-485-port.<br><br>
               <strong>Steg 1:</strong> Ställ in pumpens kommunikationsparametrar via frontpanelen:<br>
               → Meny: <code>COMM → Modbus → Adress: 5</code><br>
@@ -1560,19 +1567,19 @@
           </div>
         </div>
 
-        <div class="teams-msg">
-          <div class="teams-avatar av-human">MN</div>
-          <div class="teams-bubble">
-            <div class="teams-name">Magnus N · Drifttekniker (service-PC)</div>
-            <div class="teams-text">Klart. Inställt.</div>
+        <div class="chat-msg">
+          <div class="chat-avatar av-human">MN</div>
+          <div class="chat-bubble">
+            <div class="chat-name">Magnus N · Drifttekniker (service-PC)</div>
+            <div class="chat-text">Klart. Inställt.</div>
           </div>
         </div>
 
-        <div class="teams-msg">
-          <div class="teams-avatar av-ai">AI</div>
-          <div class="teams-bubble">
-            <div class="teams-name ai-name">openAut Engineer</div>
-            <div class="teams-text">
+        <div class="chat-msg">
+          <div class="chat-avatar av-ai">AI</div>
+          <div class="chat-bubble">
+            <div class="chat-name ai-name">openAut Engineer</div>
+            <div class="chat-text">
               Inställningarna stämmer. Jag driftsätter Modbus-drivrutinen mot EDGE-04 via SSH — bekräfta varje steg här i OpenCode<br><br>
               ✔ <strong>Driftsatt.</strong> Kommunikation verifierad mot port RS485-2, adress 5. Grundregistren läses — flöde, tryckhöjd, effekt, driftläge, larmstatus.<br><br>
               <strong>Integration klar.</strong> Magna3 65-120 är nu aktiv i namnrymden <code>EDGE-04/VVS/Pump/CIR-07</code>. Semantisk taggning enligt Brick Schema tillagd automatiskt.<br><br>
@@ -1645,7 +1652,7 @@
       <p>Du har redan datan. Dina system registrerar temperaturer, tryck, energiuttag, driftlägen och larmstatus dygnet runt. Det är inte tillgången till data som är problemet.</p>
       <p>Problemet är vad som krävs för att <strong>analysera den.</strong> Marknadens AI-tjänster förutsätter att du skickar driftsdata till en molnplattform — deras plattform. Känslig information om dina byggnaders tekniska status, energimönster och driftslägen hamnar hos en extern leverantör, under deras villkor, till ett löpande abonnemangspris som kan förändras.</p>
       <p>För offentliga fastighetsägare är det här <strong>inte ett acceptabelt utbyte.</strong> Driftsdata om samhällsviktig infrastruktur ska inte lämna nätverket. Verksamheten ska inte bli beroende av en extern tjänst som kan sägas upp, prisändras eller läggas ned.</p>
-      <p>openAut löser det genom att köra all AI-analys <strong>lokalt — i din fastighet, på din hårdvara, under din kontroll.</strong> Inget moln för analys och lagring. Inga abonnemang. Din driftsdata stannar i byggnaden — bara beslut och notiser går vidare till Teams.</p>
+      <p>openAut löser det genom att köra all AI-analys <strong>lokalt — i din fastighet, på din hårdvara, under din kontroll.</strong> Inget moln för analys och lagring. Inga abonnemang. Din driftsdata analyseras och lagras i byggnaden — beslut och notiser förmedlas via Matrix till behöriga mottagare. Organisationen väljer homeserver och styr vilka rum och mottagare som får ta del av meddelandena.</p>
     </div>
 
     <div class="pain-points reveal reveal-delay-2">
@@ -1715,7 +1722,7 @@
           <span class="stack-chip">Alltid-på agenter</span>
           <span class="stack-chip">Multi-agent orkestrering</span>
           <span class="stack-chip">Verktygsstöd</span>
-          <span class="stack-chip">Teams-kanal</span>
+          <span class="stack-chip">Matrix-rum</span>
           <span class="stack-chip">Självhostad</span>
           <span class="stack-chip green">250 000+ GitHub-stars (mars 2026)</span>
         </div>
@@ -1776,7 +1783,7 @@
           <span class="stack-chip">Python I/O-skill</span>
           <span class="stack-chip">Edge-reglerings-skill</span>
           <span class="stack-chip">MQTT over TLS (stream + req/resp)</span>
-          <span class="stack-chip">Teams-integration</span>
+          <span class="stack-chip">Kommunikation via Matrix</span>
           <span class="stack-chip green">Forge-skills (Forgejo)</span>
           <span class="stack-chip">Webb-HMI</span>
         </div>
@@ -1846,7 +1853,7 @@
     <div class="arch-layer">
       <div class="arch-layer-num">LAGER 03 — AI</div>
       <div class="arch-layer-name">Systemdatabas & AI-analys</div>
-      <div class="arch-layer-desc">EMQX-brokern tar emot MQTT over TLS från alla edge-noder. Telegraf skriver tidsseriedata och larm till TimescaleDB, medan enheter, metadata, konfiguration och ärendekö ligger i Systemdatabasen (PostgreSQL). Separata agentmotorer kör öppna modeller lokalt — openAut Advisor (read-only, Teams) och openAut Engineer (SSH/deploy) som egna runtimes med egen sandbox och egna credentials, samlokaliserade på samma lokala AI-hårdvara. Analyser, larm och åtgärdsförslag skrivs tillbaka utan externa anrop. Kod, manualer, genererad dokumentation och migrationer versionshanteras i en lokal Forge (Forgejo) som både människor och AI hämtar från, med CI- och granskningsgrindar innan något blir betrott eller driftsatt. On-demand-förfrågningar till edge-noder sker via MQTT request/response-topics.</div>
+      <div class="arch-layer-desc">EMQX-brokern tar emot MQTT over TLS från alla edge-noder. Telegraf skriver tidsseriedata och larm till TimescaleDB, medan enheter, metadata, konfiguration och ärendekö ligger i Systemdatabasen (PostgreSQL). Separata agentmotorer kör öppna modeller lokalt — openAut Advisor (read-only, tillgänglig via Matrix) och openAut Engineer (SSH/deploy via OpenCode) som egna runtimes med egen sandbox och egna credentials, samlokaliserade på samma lokala AI-hårdvara. Analyser, larm och åtgärdsförslag skrivs tillbaka utan externa anrop. Kod, manualer, genererad dokumentation och migrationer versionshanteras i en lokal Forge (Forgejo) som både människor och AI hämtar från, med CI- och granskningsgrindar innan något blir betrott eller driftsatt. On-demand-förfrågningar till edge-noder sker via MQTT request/response-topics.</div>
       <div class="arch-user-view">Driftsdata stannar i byggnaden. GDPR-säkert per design.</div>
       <div class="arch-nodes">
         <div class="arch-node cyan">EMQX-broker (MQTT over TLS)</div>
@@ -1864,10 +1871,10 @@
     <div class="arch-layer">
       <div class="arch-layer-num">LAGER 04 — GRÄNSSNITT</div>
       <div class="arch-layer-name">Operatörens verktyg</div>
-      <div class="arch-layer-desc">Insikter når de som behöver dem — i verktyg de redan använder. Chatten (openAut Advisor) för drifttekniker. Dashboarden och Power BI för energisamordnare och förvaltare. API:et för integrationsteamet.</div>
+      <div class="arch-layer-desc">Insikter når de som behöver dem — i verktyg de redan använder. Drifttekniker når openAut Advisor i en Matrix-kompatibel chattklient, exempelvis Element. Matrix är det öppna kommunikationsprotokollet; klienten är användarens verktyg och en homeserver hanterar meddelanden och rum. Dashboarden och Power BI används av energisamordnare och förvaltare. API:et används av integrationsteamet.</div>
       <div class="arch-user-view">Inget nytt system att lära sig. Rådgivande — aldrig styrande.</div>
       <div class="arch-nodes">
-        <div class="arch-node">Microsoft Teams</div>
+        <div class="arch-node">Matrix — öppet kommunikationsprotokoll</div>
         <div class="arch-node">Webb-HMI & dashboard</div>
         <div class="arch-node">Power BI Report Server (on-prem, read-only)</div>
         <div class="arch-node">Larmhantering</div>

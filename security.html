@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>openAut Security — IT/OT-säkerhetsagent</title>
-<meta name="description" content="openAuts separata IT/OT-säkerhetsagent: passiv övervakning, read-only SSH, listen-only Teams-bot och arkitektonisk isolation från driftinstanserna.">
+<meta name="description" content="openAuts separata IT/OT-säkerhetsagent: read-only SSH och passiv övervakning via Matrix, ett öppet kommunikationsprotokoll. Isolerad från driftinstanserna.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://openaut.io/security.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sv_SE">
 <meta property="og:title" content="openAut Security — IT/OT-säkerhetsagent">
-<meta property="og:description" content="Separerad säkerhetsagent med passiv övervakning, read-only SSH och listen-only Teams-bot. Arkitektoniskt isolerad från driftinstanserna.">
+<meta property="og:description" content="Separerad säkerhetsagent med read-only SSH och passiv övervakning via Matrix, ett öppet kommunikationsprotokoll. Isolerad från driftinstanserna.">
 <meta property="og:url" content="https://openaut.io/security.html">
 <meta property="og:image" content="https://openaut.io/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="openAut Security — IT/OT-säkerhetsagent">
-<meta name="twitter:description" content="Separerad säkerhetsagent med passiv övervakning, read-only SSH och listen-only Teams-bot. Arkitektoniskt isolerad från driftinstanserna.">
+<meta name="twitter:description" content="Separerad säkerhetsagent med read-only SSH och passiv övervakning via Matrix, ett öppet kommunikationsprotokoll. Isolerad från driftinstanserna.">
 <meta name="twitter:image" content="https://openaut.io/icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -447,53 +447,53 @@ section { padding: 7rem 4rem; position: relative; }
 .t-deny    { color: var(--red); }
 .t-warn    { color: var(--amber); }
 
-/* ── TEAMS MONITORING ── */
-.teams-section {
+/* ── MATRIX MONITORING ── */
+.matrix-section {
   background: var(--surface);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
-.teams-layout {
+.chat-layout {
   margin-top: 4rem;
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 4rem; align-items: start;
 }
 
-.teams-mock {
+.chat-mock {
   border: 1px solid var(--border-sec);
   background: var(--surface2);
 }
-.teams-header {
+.chat-header {
   background: #1a1f2e; padding: 0.75rem 1.2rem;
   display: flex; align-items: center; gap: 0.75rem;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.teams-icon-main {
+.chat-icon-main {
   width: 28px; height: 28px; background: #5b5fc7; border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--mono); font-size: 0.6rem; font-weight: 700;
   color: #fff; letter-spacing: 0.05em; flex-shrink: 0;
 }
-.teams-icon-sec {
+.chat-icon-sec {
   width: 28px; height: 28px; background: #7c2020; border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--mono); font-size: 0.6rem; font-weight: 700;
   color: #ffb3b3; letter-spacing: 0.05em; flex-shrink: 0;
   border: 1px solid rgba(255,77,77,0.4);
 }
-.teams-channel {
+.chat-channel {
   font-size: 0.8rem; color: rgba(255,255,255,0.7); font-weight: 500;
 }
-.teams-channel span { color: rgba(255,255,255,0.3); font-weight: 400; margin-left: 0.4rem; }
-.teams-body {
+.chat-channel span { color: rgba(255,255,255,0.3); font-weight: 400; margin-left: 0.4rem; }
+.chat-body {
   padding: 1.2rem; display: flex; flex-direction: column; gap: 1.1rem;
 }
-.teams-msg {
+.chat-msg {
   display: grid; grid-template-columns: 32px 1fr;
   gap: 0.7rem; align-items: start;
 }
-.teams-avatar {
+.chat-avatar {
   width: 32px; height: 32px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--mono); font-size: 0.6rem; font-weight: 700;
@@ -504,16 +504,16 @@ section { padding: 7rem 4rem; position: relative; }
 .av-sec   { background: var(--red); }
 .av-bad   { background: #555; color: #ccc; }
 
-.teams-name { font-size: 0.68rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.2rem; letter-spacing: 0.02em; }
-.teams-name.ai-name  { color: var(--green); }
-.teams-name.sec-name { color: var(--red); }
-.teams-text { font-size: 0.8rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
-.teams-text strong { color: var(--text); font-weight: 500; }
-.teams-text em { color: var(--amber); font-style: normal; }
-.teams-text code { font-family: var(--mono); font-size: 0.73em; color: var(--cyan); background: rgba(0,200,224,0.08); padding: 0.1em 0.35em; }
-.teams-text .bad { color: var(--red); font-style: italic; }
+.chat-name { font-size: 0.68rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.2rem; letter-spacing: 0.02em; }
+.chat-name.ai-name  { color: var(--green); }
+.chat-name.sec-name { color: var(--red); }
+.chat-text { font-size: 0.8rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
+.chat-text strong { color: var(--text); font-weight: 500; }
+.chat-text em { color: var(--amber); font-style: normal; }
+.chat-text code { font-family: var(--mono); font-size: 0.73em; color: var(--cyan); background: rgba(0,200,224,0.08); padding: 0.1em 0.35em; }
+.chat-text .bad { color: var(--red); font-style: italic; }
 
-.teams-divider {
+.chat-divider {
   text-align: center; font-family: var(--mono);
   font-size: 0.56rem; color: var(--text-muted); letter-spacing: 0.12em;
   text-transform: uppercase; border-top: 1px dashed rgba(255,77,77,0.18);
@@ -536,7 +536,7 @@ section { padding: 7rem 4rem; position: relative; }
 }
 .no-response-note strong { color: var(--red); }
 
-/* Teams listen principles */
+/* Matrix listen principles */
 .listen-principles {
   display: flex; flex-direction: column; gap: 0;
 }
@@ -825,7 +825,7 @@ footer {
   .arch-diagram { grid-template-columns: 1fr; }
   .arch-connector { flex-direction: row; padding: 1.2rem; border-left: none; border-right: none; border-top: 1px solid var(--border-sec); border-bottom: 1px solid var(--border-sec); }
   .arch-conn-arrow, .arch-conn-label, .arch-conn-block { writing-mode: horizontal-tb; }
-  .ssh-grid, .teams-layout, .threat-cols, .hw-compare { grid-template-columns: 1fr; gap: 2.5rem; }
+  .ssh-grid, .chat-layout, .threat-cols, .hw-compare { grid-template-columns: 1fr; gap: 2.5rem; }
   .ssh-grid > * { min-width: 0; }
   .ssh-perm-row { grid-template-columns: 1.8rem minmax(0,1fr) auto; }
   .ssh-cmd-block { overflow-x: auto; min-width: 0; }
@@ -837,7 +837,7 @@ footer {
   footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
   .footer-meta { text-align: left; }
   .isolation-note { grid-template-columns: 1fr; }
-  .teams-text code { word-break: break-all; }
+  .chat-text code { word-break: break-all; }
   img, svg, table, pre { max-width: 100%; height: auto; }
   code, pre { overflow-wrap: anywhere; }
 }
@@ -854,7 +854,7 @@ footer {
   .arch-instance { padding: 1.8rem 1.2rem; }
   .alert-step-content { padding: 1.4rem 1.2rem; }
   .alert-step-label { padding: 1.4rem 1.2rem; }
-  .teams-mock { font-size: 0.9em; }
+  .chat-mock { font-size: 0.9em; }
   .cs-name { font-size: 1.5rem; }
   .compliance-skill-content { padding: 1.6rem 1.2rem; }
   .compliance-skill-label { padding: 1.6rem 1.2rem; }
@@ -1135,7 +1135,8 @@ footer {
 
   <p class="hero-sub">
     En <strong>separat openAut-instans</strong> specialiserad på IT- och OT-säkerhet
-    läser driftinstansernas loggar via read-only SSH, lyssnar på alla Teams-kanaler
+    läser driftinstansernas loggar via read-only SSH, lyssnar i behöriga driftrum via
+    <strong>Matrix — ett öppet kommunikationsprotokoll</strong> —
     utan att kunna ta emot kommandon, och flaggar misstänkt aktivitet till ett isolerat
     säkerhetsteam.
     Principen är medveten: agentstacken är kraftfull och tillåtande som standard, så
@@ -1159,19 +1160,19 @@ footer {
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item red">Passiv observation</span>
-    <span class="ticker-item">Kan ej ta emot Teams-kommandon</span>
+    <span class="ticker-item">Kan ej ta emot kommandon via Matrix</span>
     <span class="ticker-item amber">Prompt injection-detektering</span>
     <span class="ticker-item">Read-only SSH · Noll skrivåtkomst</span>
     <span class="ticker-item red">OT anomalidetektering</span>
     <span class="ticker-item">Separat fysisk maskin</span>
     <span class="ticker-item amber">Auditloggranskning</span>
     <span class="ticker-item green">Isolerat larmsystem</span>
-    <span class="ticker-item">Lyssnar på alla driftkanaler</span>
+    <span class="ticker-item">Lyssnar i behöriga Matrix-rum</span>
     <span class="ticker-item red">Social engineering-detektering</span>
     <span class="ticker-item">Nätverksisolering · VLAN-segmenterat</span>
     <span class="ticker-item amber">Modbus · BACnet · MQTT-trafikanalys</span>
     <span class="ticker-item red">Passiv observation</span>
-    <span class="ticker-item">Kan ej ta emot Teams-kommandon</span>
+    <span class="ticker-item">Kan ej ta emot kommandon via Matrix</span>
     <span class="ticker-item amber">Prompt injection-detektering</span>
     <span class="ticker-item">Read-only SSH · Noll skrivåtkomst</span>
     <span class="ticker-item red">OT anomalidetektering</span>
@@ -1195,17 +1196,17 @@ footer {
       <div class="arch-inst-hw">Separata agentmotorer · egen sandbox + credentials per instans · samlokaliserad AI-hårdvara</div>
 
       <div>
-        <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em;margin:0.25rem 0 0.5rem;">ADVISOR — read-only, Teams-vänd:</div>
+        <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em;margin:0.25rem 0 0.5rem;">ADVISOR — read-only, tillgänglig via Matrix:</div>
         <div class="arch-nodes">
           <div class="arch-node green">FDD · rotorsak · energianalys</div>
-          <div class="arch-node green">Teams Bot — Advisor</div>
+          <div class="arch-node green">Advisor-bot via Matrix</div>
           <div class="arch-node green">Read-only mot Systemdatabasen</div>
           <div class="arch-node amber">Skrivväg: enbart ärendekö (förslag)</div>
         </div>
       </div>
 
       <div>
-        <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em;margin:0.25rem 0 0.5rem;">ENGINEER — SSH-skrivåtkomst/deploy, ej Teams:</div>
+        <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em;margin:0.25rem 0 0.5rem;">ENGINEER — SSH-skrivåtkomst/deploy via OpenCode, ej Matrix:</div>
         <div class="arch-nodes">
           <div class="arch-node amber">SSH-skriv & deploy mot edge/OT (IOT2050)</div>
           <div class="arch-node green">Guidad integration · autodokumentation</div>
@@ -1254,16 +1255,16 @@ footer {
         <div class="arch-node red">OT-säkerhets-skill</div>
         <div class="arch-node red">Prompt-klassificerare (icke-genererande)</div>
         <div class="arch-node red">Anomalikorrelation</div>
-        <div class="arch-node amber">Teams Bot — listen-only</div>
-        <div class="arch-node amber">Larmsändare → Säkerhetskanal</div>
+        <div class="arch-node amber">Security-bot via Matrix — enbart lyssnande i driftrum</div>
+        <div class="arch-node amber">Larmsändare → Separat Matrix-rum</div>
         <div class="arch-node">Lokal audit-databas (separat)</div>
         <div class="arch-node">VLAN 30 — Säkerhetsnät (isolerat)</div>
       </div>
       <div style="margin-top:1rem;">
         <div style="font-family:var(--mono);font-size:0.62rem;color:var(--text-muted);letter-spacing:0.1em;margin-bottom:0.5rem;">BEGRÄNSNINGAR:</div>
-        <div class="arch-node red">Tar inga kommandon via Teams</div>
+        <div class="arch-node red">Tar inga kommandon via Matrix</div>
         <div class="arch-node red">Kan ej skriva till driftinstanserna</div>
-        <div class="arch-node red">Larm går till separat kanal</div>
+        <div class="arch-node red">Larm går till separat Matrix-rum</div>
       </div>
     </div>
 
@@ -1378,29 +1379,36 @@ footer {
   </div>
 </section>
 
-<!-- TEAMS LISTEN-ONLY -->
-<section class="teams-section" id="teams">
-  <div class="section-label" data-num="04">Teams-övervakning</div>
-  <h2 class="section-title reveal">Lyssnar i alla kanaler.<br><span class="accent-red">Svarar aldrig.</span></h2>
+<!-- MATRIX LISTEN-ONLY -->
+<section class="matrix-section" id="matrix-monitoring">
+  <div class="section-label" data-num="04">Övervakning av Matrix-kommunikation</div>
+  <h2 class="section-title reveal">Lyssnar i driftrummen.<br><span class="accent-red">Svarar aldrig där.</span></h2>
+  <p class="threats-intro reveal reveal-delay-1">
+    Matrix är det öppna kommunikationsprotokollet. Användarna chattar i en
+    <strong>Matrix-kompatibel klient</strong>, exempelvis Element. Meddelanden och rum hanteras
+    av en Matrix-server, en <strong>homeserver</strong>, som kan driftas i organisationens egen infrastruktur.
+    Säkerhetsboten läser enbart rum där den har medlemskap, läsbehörighet och, för krypterade rum,
+    tillgång till nödvändiga dekrypteringsnycklar.
+  </p>
 
-  <div class="teams-layout">
+  <div class="chat-layout">
 
     <!-- MOCK KONVERSATION -->
     <div class="reveal reveal-delay-1">
-      <div class="teams-mock">
-        <div class="teams-header">
-          <div class="teams-icon-main">T</div>
-          <div class="teams-channel">openAut Advisor<span># drift</span></div>
-          <div class="teams-icon-sec" style="margin-left:auto;margin-right:0.3rem;" title="openAut Security — listen-only">🛡</div>
+      <div class="chat-mock">
+        <div class="chat-header">
+          <div class="chat-icon-main" title="Matrix-kompatibel chattklient" aria-label="Matrix-kompatibel chattklient">💬</div>
+          <div class="chat-channel">openAut Advisor<span>Matrix-rum: drift</span></div>
+          <div class="chat-icon-sec" style="margin-left:auto;margin-right:0.3rem;" title="openAut Security — enbart lyssnande i driftrummet">🛡</div>
         </div>
-        <div class="teams-body">
+        <div class="chat-body">
 
           <!-- Tekniker laddar upp manualen -->
-          <div class="teams-msg">
-            <div class="teams-avatar av-human">MN</div>
+          <div class="chat-msg">
+            <div class="chat-avatar av-human">MN</div>
             <div>
-              <div class="teams-name">Magnus N · Drifttekniker</div>
-              <div class="teams-text">
+              <div class="chat-name">Magnus N · Drifttekniker</div>
+              <div class="chat-text">
                 Ska integrera ny cirkulationspump på EDGE-04. Hittade den uppdaterade manualen på leverantörens sida.
               </div>
               <div style="margin-top:0.5rem;border:1px solid rgba(245,166,35,0.25);background:rgba(245,166,35,0.04);padding:0.55rem 0.85rem;display:flex;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:0.63rem;color:var(--text-muted);">
@@ -1411,43 +1419,43 @@ footer {
           </div>
 
           <!-- Advisor-boten läser och svarar — ser normalt ut men innehåller avvikande steg -->
-          <div class="teams-msg">
-            <div class="teams-avatar av-ai">AI</div>
+          <div class="chat-msg">
+            <div class="chat-avatar av-ai">AI</div>
             <div>
-              <div class="teams-name ai-name">openAut Advisor</div>
-              <div class="teams-text">
+              <div class="chat-name ai-name">openAut Advisor</div>
+              <div class="chat-text">
                 Läser dokumentet… Hittade Modbus RTU-stöd på sidan 47. Magna3 exponerar 18 holding registers från adress 1.<br><br>
                 Dokumentet anger ett <strong>förberedelsesteg</strong> innan kommunikationsinställning: för att säkerställa kompatibilitet i befintlig installation rekommenderas en inventering av aktiva noder i nätverkssegmentet. Jag hämtar aktuell nätverkstopologi för EDGE-04:s segment —<br><br>
                 <code>EDGE-01 · 10.20.4.11 · Profil A/D · Online</code><br>
                 <code>EDGE-02 · 10.20.4.12 · Profil B/G · Online</code><br>
                 <code>EDGE-03 · 10.20.4.13 · Profil C/E · Online</code><br>
                 <code>EDGE-04 · 10.20.4.14 · Profil C/F · Online</code><br><br>
-                Vill du att jag fortsätter? <em>(Obs: integration och driftsättning sker i Engineers kontrollplan via din service-PC — manualer laddas inte upp här i Teams.)</em>
+                Vill du att jag fortsätter? <em>(Obs: integration och driftsättning sker i Engineers kontrollplan via din service-PC — manualer ska inte laddas upp i detta Matrix-rum.)</em>
               </div>
             </div>
           </div>
 
-          <div class="teams-divider" style="color:var(--red);border-color:rgba(255,77,77,0.3);">
+          <div class="chat-divider" style="color:var(--red);border-color:rgba(255,77,77,0.3);">
             🛡 openAut Security detekterade avvikelse — larm genereras tyst i bakgrunden
           </div>
 
-          <!-- Säkerhetsbotens larm — syns INTE i denna kanal, visas här för illustration -->
+          <!-- Säkerhetsbotens larm — syns INTE i detta rum, visas här för illustration -->
           <div class="sec-alert-banner">
             <span class="sec-alert-icon">🚨</span>
             <div class="sec-alert-text">
-              SÄKERHETSLARM · #drift · 14:07:33<br>
+              SÄKERHETSLARM · Matrix-rummet drift · 14:07:33<br>
               <strong style="color:var(--amber)">Typ:</strong> Dokumentinjicerad instruktion — prompt injection via PDF<br>
               <strong style="color:var(--amber)">Fynd 1:</strong> PDF sida 3 fotnot innehåller instruktionstext utanför Grundfos dokumentformat. Metadata visar fil modifierad 6h sedan — inte matchande Grundfos publiceringstidsstämpel.<br>
               <strong style="color:var(--amber)">Fynd 2:</strong> Advisor-botens svar innehåller nätverkstopologilista med IP-adresser. Steg saknas i alla 47 tidigare Grundfos-integrationer i konversationsloggen.<br>
-              <strong style="color:var(--amber)">Fynd 3:</strong> IP-adresser för samtliga EDGE-noder nu exponerade i klartext i Teams-kanal.<br>
-              <strong style="color:var(--amber)">Fynd 4:</strong> Integrationsmanual uppladdad i Teams. Otrustade dokument ska ingestas i Engineers kontrollplan (service-PC, mgmt-nät) — aldrig via Teams. Uppladdningen bryter mot dokumentpolicyn.<br>
-              Risk: HÖG · Skickat till: #security-alerts · Magnus N notifieras separat
+              <strong style="color:var(--amber)">Fynd 3:</strong> IP-adresser för samtliga EDGE-noder nu synliga för deltagarna i driftrummet via Matrix.<br>
+              <strong style="color:var(--amber)">Fynd 4:</strong> Integrationsmanual uppladdad i ett Matrix-rum. Otrustade dokument ska ingestas i Engineers kontrollplan (service-PC, mgmt-nät) — aldrig via Matrix. Uppladdningen bryter mot dokumentpolicyn.<br>
+              Risk: HÖG · Skickat till Matrix-rummet: openaut-security-alerts · Magnus N notifieras separat
             </div>
           </div>
 
           <div class="no-response-note">
-            <strong>openAut Security syns inte i denna kanal och svarar inte.</strong><br>
-            Larmet ovan skickas uteslutande till #security-alerts. Magnus N och Advisor-boten ser det inte här — säkerhetsteamet agerar separat utan att varna angriparen.
+            <strong>openAut Security skickar inga meddelanden i driftrummet.</strong><br>
+            Boten är medlem i rummet, men larmet ovan skickas uteslutande till det separata Matrix-rummet openaut-security-alerts. Magnus N och Advisor-boten ser inte larmet här — säkerhetsteamet agerar separat.
           </div>
 
         </div>
@@ -1461,8 +1469,8 @@ footer {
         <div class="listen-p">
           <span class="listen-p-num">01</span>
           <div>
-            <h4>Boten läggs till i alla kanaler — med läsrättighet</h4>
-            <p>openAut Security-boten registreras som medlem i exakt samma Teams-kanaler som Advisor-boten. Den ser alla meddelanden, filuppladdningar och konversationer. <strong>Den svarar aldrig på något i dessa kanaler.</strong></p>
+            <h4>Boten läggs till i driftrummen — med läsrättighet</h4>
+            <p>openAut Security-boten registreras som medlem i de Matrix-rum som används av Advisor-boten. Den läser de meddelanden och filuppladdningar som rummens behörigheter och kryptering ger den åtkomst till. <strong>Den skickar inga svar i dessa rum och tar inte emot styrkommandon.</strong></p>
           </div>
         </div>
 
@@ -1471,8 +1479,9 @@ footer {
           <div>
             <h4>Inget svar — men innehållet analyseras</h4>
             <p>
-              Säkerhetsagentens NemoClaw har <strong>ingen svarsväg</strong> för inkommande Teams-meddelanden:
-              en felhanterare fångar alla inkommande webhooks så att de aldrig kan utlösa ett svar eller en handling.
+              Inkommande meddelanden hämtas från homeservern via <strong>Matrix Client-Server API</strong>.
+              Säkerhetsagentens anslutning till driftrummen ska sakna rättighet att skicka meddelanden;
+              händelserna går till detektionslagret, inte till en kommandokanal.
               Innehållet <strong>läses ändå</strong> — det är så hot upptäcks — men bedömningen görs av en
               icke-genererande klassificerare, inte av en LLM som kan luras av instruktioner i texten.
               <em>Skyddet ligger i hur innehållet analyseras, inte i att det aldrig läses.</em>
@@ -1483,10 +1492,10 @@ footer {
         <div class="listen-p">
           <span class="listen-p-num">03</span>
           <div>
-            <h4>Larm skickas till isolerad säkerhetskanal</h4>
+            <h4>Larm skickas till ett separat Matrix-rum</h4>
             <p>
               När ett misstänkt mönster detekteras skickar säkerhetsagenten ett larm
-              till en kanal som <strong>Advisor-boten inte är medlem i</strong>.
+              till ett åtkomstbegränsat Matrix-rum som <strong>Advisor-boten inte är medlem i</strong>.
               Säkerhetspersonalen tar emot larmet i ett flöde som driftsoperatörer
               inte ser — och som Advisor-boten inte kan manipulera.
             </p>
@@ -1510,8 +1519,8 @@ footer {
           <div>
             <h4>Konversationshistorik jämförs mot SSH-loggar</h4>
             <p>
-              Säkerhetsagenten korrelerar Teams-konversationer mot driftinstansernas
-              SSH-auditlogg och kommandologg. En begäran om att lista edge-noder i Teams
+              Säkerhetsagenten korrelerar konversationer i Matrix-rum mot driftinstansernas
+              SSH-auditlogg och kommandologg. En begäran om att lista edge-noder via Matrix
               följt av <em>ovanligt SSH-nyckelutbyte på driftinstanserna</em> är ett
               sammansatt larm — inget av systemen ser det ensamt.
             </p>
@@ -1542,7 +1551,7 @@ footer {
         <div class="threat-item">
           <span class="threat-item-icon">💉</span>
           <div class="threat-item-body">
-            <h5>Prompt injection via Teams</h5>
+            <h5>Prompt injection via Matrix-meddelanden</h5>
             <p>Instruktioner inbäddade i meddelanden, dokument eller bildtexter som försöker överskriva Advisor-botens beteende. <em>Detekteras via mönsteranalys av konversationsinnehåll.</em></p>
           </div>
         </div>
@@ -1648,7 +1657,7 @@ footer {
   <div class="section-label" data-num="06">Larmflöde</div>
   <h2 class="section-title reveal">Från detektion till<br>säkerhetsteam — <span class="accent-red">isolerat.</span></h2>
   <p class="alert-intro reveal reveal-delay-1">
-    Larmet tar aldrig vägen tillbaka in i driftkanalen. Hela kedjan är isolerad från det kommunikationsflöde som en potentiell angripare kan observera eller manipulera.
+    Larmet tar aldrig vägen tillbaka in i driftrummet. Det skickas till ett separat, åtkomstbegränsat Matrix-rum för säkerhetspersonal.
   </p>
 
   <div class="alert-flow reveal reveal-delay-2">
@@ -1660,7 +1669,7 @@ footer {
       </div>
       <div class="alert-step-content">
         <div class="alert-step-desc">
-          Säkerhetsinstansens <strong>detektionslager</strong> — den icke-genererande klassificeraren — bedömer kontinuerligt SSH-loggar och Teams-konversationsflöden och matchar mot hotmodellen, ensamt eller i kombination med en andra signal. NemoClaw formulerar därefter fyndet i klartext.
+          Säkerhetsinstansens <strong>detektionslager</strong> — den icke-genererande klassificeraren — bedömer kontinuerligt SSH-loggar och meddelandeflöden från behöriga Matrix-rum och matchar mot hotmodellen, ensamt eller i kombination med en andra signal. NemoClaw formulerar därefter fyndet i klartext.
           <strong>All detektion loggas lokalt på säkerhetsinstansen</strong> innan någon extern åtgärd vidtas.
         </div>
         <div class="alert-chips">
@@ -1681,7 +1690,7 @@ footer {
       <div class="alert-step-content">
         <div class="alert-step-desc">
           Säkerhetsinstansen korrelerar signalen mot historiska mönster och parallella observationer.
-          En Teams-förfrågan om edge-nod-data plus ett ovanligt SSH-inlogg på samma tid höjer
+          En förfrågan via Matrix om edge-nod-data plus ett ovanligt SSH-inlogg på samma tid höjer
           larmnivån automatiskt. <em>Korrelation ökar precision och minskar falska positiver.</em>
         </div>
         <div class="alert-chips">
@@ -1696,15 +1705,15 @@ footer {
     <div class="alert-step">
       <div class="alert-step-label">
         <div class="alert-step-num">STEG 03</div>
-        <div class="alert-step-name red">Larm till säkerhetskanal</div>
+        <div class="alert-step-name red">Larm till säkerhetsrum</div>
       </div>
       <div class="alert-step-content">
         <div class="alert-step-desc">
-          Larmet skickas av säkerhetsboten till <strong>#openaut-security-alerts</strong> — en Teams-kanal som enbart säkerhetspersonal är medlemmar i. Advisor-boten är <em>inte</em> medlem i kanalen. Driftoperatörer ser inte larmet.
+          Larmet skickas av säkerhetsboten till Matrix-rummet <strong>openaut-security-alerts</strong>. Åtkomsten är begränsad till larmsändaren och behörig säkerhetspersonal, som läser larmet i en Matrix-kompatibel chattklient. Advisor-boten är <em>inte</em> medlem i rummet. Driftoperatörer saknar åtkomst till larmet.
           Larmmeddelandet innehåller: typ, tid, källa, risknivå, bevismaterial och rekommenderad åtgärd.
         </div>
         <div class="alert-chips">
-          <span class="a-chip red">Isolerad kanal</span>
+          <span class="a-chip red">Åtkomstbegränsat Matrix-rum</span>
           <span class="a-chip red">Advisor-boten saknar åtkomst</span>
           <span class="a-chip green">Bevismaterial bifogat</span>
           <span class="a-chip green">Åtgärdsrekommendation</span>
@@ -1756,12 +1765,12 @@ footer {
         <div class="hw-spec-row"><span class="hw-spec-key">Hårdvara</span><span class="hw-spec-val hi">Samlokaliserad AI-hårdvara · separata sandboxar</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">Minne</span><span class="hw-spec-val">Dimensioneras efter modellval</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">VLAN</span><span class="hw-spec-val">VLAN 10 (OT) · VLAN 20 (Mgmt)</span></div>
-        <div class="hw-spec-row"><span class="hw-spec-key">Nätverksåtkomst</span><span class="hw-spec-val">Edge-noder · BMS · Teams API</span></div>
+        <div class="hw-spec-row"><span class="hw-spec-key">Nätverksåtkomst</span><span class="hw-spec-val">Edge-noder · BMS · Matrix Client-Server API (Advisor)</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">SSH-exponering</span><span class="hw-spec-val hi">openaut-sec-ro (read-only)</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">Skrivåtkomst till OT</span><span class="hw-spec-val hi">Ja — via applikationsprofil</span></div>
       </div>
       <div class="hw-card-note">
-        Advisor (read-only, Teams) och Engineer (SSH/deploy, ej Teams) körs som separata
+        Advisor (read-only, tillgänglig via Matrix) och Engineer (SSH/deploy via OpenCode, ej Matrix) körs som separata
         agentmotorer (NemoClaw/OpenCode) med egen sandbox, samlokaliserade på lokal AI-hårdvara
         mot Systemdatabasen. Säkerhetsinstansen har <strong>aldrig skrivåtkomst</strong>
         till dessa instanser — enbart read-only via begränsat SSH-konto.
@@ -1776,9 +1785,9 @@ footer {
         <div class="hw-spec-row"><span class="hw-spec-key">Hårdvara</span><span class="hw-spec-val hi">Valfri lokal AI-hårdvara — egen maskin</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">Minne</span><span class="hw-spec-val">Dimensioneras efter modellval</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">VLAN</span><span class="hw-spec-val hi">VLAN 30 — Säkerhetsnät (isolerat)</span></div>
-        <div class="hw-spec-row"><span class="hw-spec-key">Nätverksåtkomst</span><span class="hw-spec-val">SSH read-only → drift · Teams API</span></div>
+        <div class="hw-spec-row"><span class="hw-spec-key">Nätverksåtkomst</span><span class="hw-spec-val">SSH read-only → drift · Matrix Client-Server API</span></div>
         <div class="hw-spec-row"><span class="hw-spec-key">Skrivåtkomst till OT</span><span class="hw-spec-val hi">Aldrig — inga OT-rättigheter</span></div>
-        <div class="hw-spec-row"><span class="hw-spec-key">Larmutgång</span><span class="hw-spec-val">Teams #security-alerts · Webhook</span></div>
+        <div class="hw-spec-row"><span class="hw-spec-key">Larmutgång</span><span class="hw-spec-val">Matrix-rummet openaut-security-alerts via HTTPS</span></div>
       </div>
       <div class="hw-card-note">
         <em>Kan aldrig skriva till driftinstansernas filsystem, databas eller OT-nätverk.</em>
@@ -1793,12 +1802,15 @@ footer {
         <h4>Varför <span>separata VLAN</span> är icke-förhandlingsbart</h4>
         <p>
           Säkerhetsinstansen och driftinstanserna kommunicerar via ett VLAN-gränssnitt med explicit ACL:
-          SSH port 22 inåt (till driftinstanserna) och Teams-API utåt. All annan trafik blockeras av nätverksinfrastrukturen — inte av mjukvara.
+          SSH port 22 till driftinstanserna och HTTPS via Matrix Client-Server API till en uttryckligen tillåten homeserver.
+          Övrig trafik blockeras som standard; separata flöden, exempelvis bevisreplikering, kräver egna explicita regler.
           En angripare som tar kontroll över säkerhetsinstansen kan inte använda den som språngbräda mot OT-nätverket
           eftersom routingtabeller och VLAN-access-listor förbjuder det på switchnivå.
-          Det <strong>utgående Teams-API:t är enda egress-vägen</strong> — låst med explicit ACL och används
-          enbart för strukturerade larm till säkerhetskanalen. Ingen rådata förs ut den vägen, så den blir
-          ingen exfiltreringskanal.
+          <strong>Matrix-anslutningen begränsas till den valda homeservern</strong> och används för att läsa behöriga driftrum
+          och skicka strukturerade larm till säkerhetsrummet. Nätverksregler begränsar destinationen;
+          kontobehörigheter och separata kontroller för larmutskick begränsar rum, åtgärder och innehåll.
+          En självhostad homeserver kan nås inom organisationens nätverk utan internetåtkomst.
+          Om meddelanden kan spridas till andra homeservrar beror på hur federation och rumsåtkomst konfigureras.
         </p>
       </div>
     </div>

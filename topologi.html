@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Systemtopologi — openAut</title>
-<meta name="description" content="openAuts systemtopologi: lager, protokoll, dataflöden och hårdvarukrav för AI-driven fastighetsautomation.">
+<meta name="description" content="openAuts systemtopologi: lager, dataflöden och hårdvarukrav för lokal AI i fastighetsautomation. Matrix är det öppna kommunikationsprotokollet för chatt och larm.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://openaut.io/topologi.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sv_SE">
 <meta property="og:title" content="Systemtopologi — openAut">
-<meta property="og:description" content="Fullständig bild av openAuts arkitektur — fältsensorer, edge-noder, AI-lager och gränssnitt. Protokoll, dataflöden och hårdvarukrav lager för lager.">
+<meta property="og:description" content="openAuts arkitektur — fältsensorer, edge-noder, lokal AI och kommunikation via Matrix, ett öppet kommunikationsprotokoll. Dataflöden och hårdvarukrav lager för lager.">
 <meta property="og:url" content="https://openaut.io/topologi.html">
 <meta property="og:image" content="https://openaut.io/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Systemtopologi — openAut">
-<meta name="twitter:description" content="Fullständig bild av openAuts arkitektur — fältsensorer, edge-noder, AI-lager och gränssnitt. Protokoll, dataflöden och hårdvarukrav lager för lager.">
+<meta name="twitter:description" content="openAuts arkitektur — fältsensorer, edge-noder, lokal AI och kommunikation via Matrix, ett öppet kommunikationsprotokoll. Dataflöden och hårdvarukrav lager för lager.">
 <meta name="twitter:image" content="https://openaut.io/icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -493,7 +493,8 @@ footer {
 <div class="page-header">
   <div class="page-label">Arkitektur</div>
   <h1 class="page-title">Systemtopologi.<br><em>Lager för lager.</em></h1>
-  <p class="page-desc">Fullständig bild av openAuts arkitektur — från fältsensorer via edge-noder till AI-lager och gränssnitt. Protokoll, dataflöden och hårdvarukrav för varje lager. Driftlagret är delat i två instanser med olika förtroendenivå: <em>Advisor</em> (read-only, Matrix) och <em>Engineer</em> (SSH/deploy, ej Matrix).</p>
+  <p class="page-desc">Fullständig bild av openAuts arkitektur — från fältsensorer via edge-noder till AI-lager och gränssnitt. Protokoll, dataflöden och hårdvarukrav för varje lager. Driftlagret är delat i två instanser med olika förtroendenivå: <em>Advisor</em> (read-only, tillgänglig via Matrix) och <em>Engineer</em> (SSH/deploy via OpenCode, ej Matrix).</p>
+  <p class="page-desc"><strong>Matrix är ett öppet kommunikationsprotokoll.</strong> Användarna väljer en Matrix-kompatibel chattklient, exempelvis Element. En Matrix-server, en <em>homeserver</em>, hanterar meddelanden och rum och kan driftas i organisationens egen infrastruktur. Chatt och larm går via Matrix Client-Server API över HTTPS; federation och rumsåtkomst avgör om meddelanden kan nå andra homeservrar.</p>
   <div class="concept-notice">
     <strong>⚠ Konceptarkitektur.</strong> Topologin beskriver hur openAut är <em>tänkt</em> att byggas
     upp inom ramen för ett konceptprojekt under utveckling. Det är inte en driftsatt referensinstallation
@@ -534,8 +535,10 @@ footer {
 
       <!-- ══ RAD 1 — IT-ZON ══ -->
       <rect x="16"  y="16" width="134" height="72" rx="7" fill="rgba(93,78,255,0.12)"  stroke="rgba(93,78,255,0.5)"   stroke-width="0.75"/>
-      <text x="83"  y="40" font-family="'Space Mono',monospace" font-size="9"   fill="#8b7cf8" text-anchor="middle">Matrix</text>
-      <text x="83"  y="56" font-family="'Space Mono',monospace" font-size="7.5" fill="#7c6fcc" text-anchor="middle">openAut Advisor-bot</text>
+      <text x="83"  y="34" font-family="'Space Mono',monospace" font-size="9"   fill="#8b7cf8" text-anchor="middle">Matrix</text>
+      <text x="83"  y="47" font-family="'Space Mono',monospace" font-size="6.5" fill="#7c6fcc" text-anchor="middle">Öppet kommunikationsprotokoll</text>
+      <text x="83"  y="62" font-family="'Space Mono',monospace" font-size="7" fill="#7c6fcc" text-anchor="middle">Chattklient ↔ homeserver</text>
+      <text x="83"  y="76" font-family="'Space Mono',monospace" font-size="6.5" fill="#7c6fcc" text-anchor="middle">Advisor · Security</text>
 
       <!-- Power BI Report Server (on-prem) -->
       <rect x="152" y="16" width="74" height="72" rx="7" fill="rgba(245,158,11,0.1)"  stroke="rgba(245,158,11,0.45)" stroke-width="0.75"/>
@@ -665,9 +668,9 @@ footer {
       <path id="l-bms"    d="M416,88 L416,153 L109,153 L109,192"          fill="none" stroke="#facc15" stroke-width="1" opacity="0.72" marker-end="url(#ar)"/>
       <path id="l-m-bms"  d="M103,192 L103,166 L422,166 L422,88"          fill="none" stroke="#facc15" stroke-width="1" opacity="0.65" stroke-dasharray="4 3" marker-end="url(#ar)"/>
       <path id="l-iwms"   d="M589,88 L589,179 L180,179 L180,192"          fill="none" stroke="#4ade80" stroke-width="1" opacity="0.72" marker-end="url(#ar)"/>
-      <path id="l-teams"  d="M78,88 L78,114 L216,114 L216,192"            fill="none" stroke="#8b7cf8" stroke-width="1" opacity="0.72" marker-end="url(#ar)"/>
+      <path id="l-matrix"  d="M78,88 L78,114 L216,114 L216,192"            fill="none" stroke="#8b7cf8" stroke-width="1" opacity="0.72" marker-end="url(#ar)"/>
       <path id="l-sp"     d="M250,88 L250,192"                            fill="none" stroke="#8b7cf8" stroke-width="1" opacity="0.72" marker-end="url(#ar)"/>
-      <path id="l-nc-teams" d="M226,192 L226,101 L100,101 L100,88"        fill="none" stroke="#8b7cf8" stroke-width="1" opacity="0.72" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+      <path id="l-nc-matrix" d="M226,192 L226,101 L100,101 L100,88"        fill="none" stroke="#8b7cf8" stroke-width="1" opacity="0.72" stroke-dasharray="4 3" marker-end="url(#ar)"/>
       <path id="l-nc-sp"  d="M262,192 L262,96 L300,96 L300,88"            fill="none" stroke="#8b7cf8" stroke-width="1" opacity="0.72" stroke-dasharray="4 3" marker-end="url(#ar)"/>
       <!-- Power BI ← Systemdatabas (IT/OT-korsning, enkelriktad read-only) -->
       <path id="l-pbi-db" d="M150,192 L150,160 L189,160 L189,88"         fill="none" stroke="#f5b942" stroke-width="1" opacity="0.8" marker-end="url(#ar)"/>
@@ -727,8 +730,8 @@ footer {
             fill="none" stroke="#f87171" stroke-width="1" opacity="0.9"
             style="filter: drop-shadow(0 0 3px #f87171)"/>
 
-      <!-- Matrix → Security (läser alla konversationer) -->
-      <path id="l-teams-sec" d="M93,88 L93,140 L740,140 L740,192"
+      <!-- Matrix → Security (läser behöriga driftrum) -->
+      <path id="l-matrix-sec" d="M93,88 L93,140 L740,140 L740,192"
             fill="none" stroke="#f87171" stroke-width="1" opacity="0.9"
             style="filter: drop-shadow(0 0 3px #f87171)"/>
 
@@ -736,7 +739,7 @@ footer {
     </svg>
 
     <div class="oa-leg">
-      <div class="li"><div class="ld" style="background:#8b7cf8"></div>Matrix ↔ Advisor (chatt + godkännanden) · återföring streckad</div>
+      <div class="li"><div class="ld" style="background:#8b7cf8"></div>Matrix — öppet kommunikationsprotokoll ↔ Advisor (chatt + godkännanden) · återföring streckad</div>
       <div class="li"><div class="ld" style="background:#f5b942"></div>Power BI Report Server ← Systemdatabas (on-prem, enkelriktad read-only)</div>
       <div class="li"><div class="ld" style="background:#facc15"></div>BMS ↔ Systemdatabas (återföring streckad)</div>
       <div class="li"><div class="ld" style="background:#4ade80"></div>IWMS → Systemdatabas · EMQX → Systemdatabas (Telegraf-ingest)</div>
@@ -744,7 +747,7 @@ footer {
       <div class="li"><div class="ld" style="background:#818cf8"></div>Forge (Forgejo) ↔ Advisor/Engineer · System of Record (återföring streckad)</div>
       <div class="li"><div class="ld" style="background:#22d3ee"></div>Edge → EMQX (MQTT over TLS) · Engineer → Edge (SSH/deploy, streckad)</div>
       <div class="li"><div class="ld" style="background:#f59e0b"></div>Fält → Edge (M-Bus · Modbus RTU/TCP · BACnet · LoRaWAN)</div>
-      <div class="li"><div class="ld" style="background:rgba(239,68,68,0.7);border-radius:2px;"></div>Advisor/Engineer ↔ Security (observation) · Matrix → Security (läser konv.) · Larm → Matrix</div>
+      <div class="li"><div class="ld" style="background:rgba(239,68,68,0.7);border-radius:2px;"></div>Advisor/Engineer ↔ Security (observation) · Matrix → Security (läser behöriga driftrum) · Larm → separat Matrix-rum</div>
       <div class="li"><div class="ld" style="background:rgba(59,130,246,0.5)"></div>IT-zon · VLAN 40/50 · Purdue L3.5–L4</div>
       <div class="li"><div class="ld" style="background:rgba(124,58,237,0.5)"></div>OT Management · VLAN 20 · IEC 62443 SL 2</div>
       <div class="li"><div class="ld" style="background:rgba(6,182,212,0.5)"></div>Edge-lager · VLAN 10 · IEC 62443 SL 2</div>
@@ -843,7 +846,7 @@ footer {
           </div>
           <div class="hw-spec">
             <span class="hw-spec-label">Air-gap</span>
-            <span class="hw-spec-value">Möjligt för dataplanet (Matrix undantaget)</span>
+            <span class="hw-spec-value">Möjligt för dataplanet (Matrix kräver nät till vald homeserver)</span>
           </div>
           <div class="hw-spec">
             <span class="hw-spec-label">Upphandling</span>
@@ -985,9 +988,9 @@ footer {
     {id:'l-bms',      c:'#facc15',r:4.0,dur:2.2,d:0  },{id:'l-bms',      c:'#facc15',r:2.6,dur:2.2,d:1.1},
     {id:'l-m-bms',    c:'#facc15',r:3.8,dur:2.4,d:0.8},{id:'l-m-bms',    c:'#facc15',r:2.4,dur:2.4,d:1.7},
     {id:'l-iwms',     c:'#4ade80',r:4.0,dur:2.6,d:0.4},{id:'l-iwms',     c:'#4ade80',r:2.6,dur:2.6,d:1.5},
-    {id:'l-teams',    c:'#8b7cf8',r:3.8,dur:1.6,d:0.2},{id:'l-teams',    c:'#8b7cf8',r:2.6,dur:1.6,d:1.0},
+    {id:'l-matrix',    c:'#8b7cf8',r:3.8,dur:1.6,d:0.2},{id:'l-matrix',    c:'#8b7cf8',r:2.6,dur:1.6,d:1.0},
     {id:'l-sp',       c:'#8b7cf8',r:3.8,dur:1.2,d:0.6},{id:'l-sp',       c:'#8b7cf8',r:2.6,dur:1.2,d:0.0},
-    {id:'l-nc-teams', c:'#8b7cf8',r:3.8,dur:1.8,d:0.5},{id:'l-nc-teams', c:'#8b7cf8',r:2.6,dur:1.8,d:1.3},
+    {id:'l-nc-matrix', c:'#8b7cf8',r:3.8,dur:1.8,d:0.5},{id:'l-nc-matrix', c:'#8b7cf8',r:2.6,dur:1.8,d:1.3},
     {id:'l-nc-sp',    c:'#8b7cf8',r:3.8,dur:1.4,d:0.9},{id:'l-nc-sp',    c:'#8b7cf8',r:2.6,dur:1.4,d:0.2},
     {id:'l-pbi-db',   c:'#f5b942',r:3.6,dur:2.0,d:0.3},{id:'l-pbi-db',   c:'#f5b942',r:2.4,dur:2.0,d:1.2},
     {id:'l-m-nc',     c:'#00dc82',r:4.0,dur:1.0,d:0.0},{id:'l-m-nc',     c:'#00dc82',r:2.6,dur:1.0,d:0.5},
@@ -1014,7 +1017,7 @@ footer {
     {id:'l-nc-sec',   c:'#f87171',r:3.2,dur:1.2,d:0.0},
     {id:'l-sec-nc',   c:'#f87171',r:3.2,dur:1.2,d:0.6},
     {id:'l-sec-alarm',c:'#f87171',r:2.8,dur:4.2,d:1.5},
-    {id:'l-teams-sec',c:'#f87171',r:2.8,dur:3.8,d:0.7},
+    {id:'l-matrix-sec',c:'#f87171',r:2.8,dur:3.8,d:0.7},
   ];
   flows.forEach(f=>{
     const ref=document.getElementById(f.id); if(!ref) return;

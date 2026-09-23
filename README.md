@@ -14,7 +14,7 @@ openAut utforskar hur ett **öppet tillägg till ett befintligt BMS** skulle kun
 
 ## Vad openAut gör
 
-- **Feldetektering (FDD):** Korrelerar signaler över tid och identifierar rotorsak med konfidensgrad — levererat via Matrix, inte i BMS-klienten.
+- **Feldetektering (FDD):** Korrelerar signaler över tid och identifierar rotorsak med konfidensgrad — levererat via Matrix, ett öppet kommunikationsprotokoll, till användarens chattklient.
 - **Energioptimering:** Prediktion, lastprognos och avvikelseanalys mot historisk trenddata.
 - **Guidad integration:** Läs in en fabrikants manual, ange edge-nod — openAut guidar teknikern steg för steg och dokumenterar automatiskt.
 - **Python edge-reglering:** Driftsätt Python-baserade reglerloopar direkt på edge-noden mot lokal I/O. Utan rundtur till AI-servern. Versionshanterat, loggat och återkallelsebart centralt via NemoClaw.
@@ -25,7 +25,7 @@ openAut utforskar hur ett **öppet tillägg till ett befintligt BMS** skulle kun
 ## Arkitektur — fyra lager
 
 ```
-LAGER 04 — GRÄNSSNITT   Matrix · Webb-HMI · REST API
+LAGER 04 — GRÄNSSNITT   Matrix (öppet kommunikationsprotokoll) · Webb-HMI · REST API
 LAGER 03 — AI           OpenClaw · NemoClaw · lokal AI-hårdvara · öppna modeller (lokal LLM) · FDD · Energioptimering
                          EMQX-broker · Telegraf (ingest) · TimescaleDB/PostgreSQL · lokal Forge (Forgejo)
 LAGER 02 — EDGE         Linux-noder · SSH · Protokolldrivrutiner · Python edge-reglering
@@ -39,7 +39,7 @@ LAGER 01 — FÄLT         Modbus RTU/TCP · BACnet · M-Bus · LoRaWAN · KNX �
 
 **LAGER 03 — AI:** En lokal AI-server — valfri LLM- och ML-hårdvara, dimensionerad efter de modeller som ska köras — kör EMQX-brokern, Telegraf (ingest till TimescaleDB/PostgreSQL) och agentstacken lokalt. Agentstacken är **NemoClaw** — NVIDIAs härdade referensimplementation ovanpå **OpenClaw** — som kör lokal inferens med **öppna modeller** (open weights) i en OpenShell-sandbox. NemoClaw läser historik och skriver analyser och larm till masterdatabasen. Kod, manualer, genererad dokumentation och migrationer versionshanteras i en **lokal Forge (Forgejo)** — åtkomlig av både människor och AI, med CI- och granskningsgrindar innan något blir betrott eller driftsatt. Drift- och analysdata stannar i fastigheten; endast beslut och notifieringar når Matrix-kommunikationslagret.
 
-**LAGER 04 — GRÄNSSNITT:** Insikter når de som behöver dem i de verktyg de redan använder. Drifttekniker via en Matrix-kompatibel klient. Energisamordnare i dashboard. Integrationsteam via REST API.
+**LAGER 04 — GRÄNSSNITT:** Insikter når de som behöver dem i de verktyg de redan använder. Drifttekniker når Advisor i en Matrix-kompatibel chattklient, exempelvis Element. Matrix är protokollet; en Matrix-server, en så kallad **homeserver**, hanterar meddelanden och rum och kan driftas i organisationens egen infrastruktur. Klienter och botar ansluter via Matrix Client-Server API över HTTPS. Federation och rumsåtkomst avgör om meddelanden kan nå andra homeservrar. Energisamordnare använder dashboard och integrationsteam REST API.
 
 ---
 
@@ -49,7 +49,7 @@ LAGER 01 — FÄLT         Modbus RTU/TCP · BACnet · M-Bus · LoRaWAN · KNX �
 |---|---|
 | **openAut** (domänramverk) | BACnet-skill · Modbus-skill · M-Bus-skill · LoRa-skill · FDD-skill · Energianalys-skill · SSH edge-access · Python I/O-skill · Edge-reglerings-skill · MIT |
 | **NemoClaw** (agentstack) | NVIDIAs referensimplementation ovanpå OpenClaw · OpenShell-sandbox (Landlock + seccomp + netns) · policy-baserade guardrails · lokal inferens med öppna modeller · livscykelhantering · Apache 2.0 · alpha/tidig fas (mars 2026) |
-| **OpenClaw** (agent-gateway) | Självhostad multi-channel-gateway för AI-agenter · Matrix-kanal · skills & verktygsstöd · MIT · 250 000+ GitHub-stjärnor (mars 2026) |
+| **OpenClaw** (agent-gateway) | Självhostad multi-channel-gateway för AI-agenter · kommunikation via Matrix-rum · skills & verktygsstöd · MIT · 250 000+ GitHub-stjärnor (mars 2026) |
 | **Modell** (LLM) | Öppna modeller (open weights) · valfri modellfamilj · lokal inferens · modellstorlek dimensioneras efter tillgänglig hårdvara |
 | **AI-hårdvara** | Valfri lokal LLM- och ML-hårdvara · GPU eller annan AI-accelerator · dimensioneras efter modellval · ingen hårdvarulåsning |
 | **Edge-hårdvara** | Siemens SIMATIC IOT2050 |
@@ -86,7 +86,7 @@ openAut är hårdvaruagnostiskt i AI-lagret — plattformen ställer kapacitetsk
 | Acceleratorminne | Dimensioneras efter vald modell — lättviktig LLM kräver lite, stora resonerande modeller mer |
 | OS | Linux (Ubuntu 24.04 LTS rekommenderat) · x86_64 eller ARM64 |
 | Lagring | ≥2 TB NVMe rekommenderat |
-| Nät | Lokal inferens · air-gap möjligt för dataplanet (Matrix-notiser kräver nät) |
+| Nät | Lokal inferens · air-gap möjligt för dataplanet (Matrix-notiser kräver nät till vald homeserver) |
 
 ### Edge-lager
 | Enhet | CPU | Gränssnitt | Roll |
