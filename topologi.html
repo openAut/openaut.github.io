@@ -493,7 +493,7 @@ footer {
 <div class="page-header">
   <div class="page-label">Arkitektur</div>
   <h1 class="page-title">Systemtopologi.<br><em>Lager för lager.</em></h1>
-  <p class="page-desc">Fullständig bild av openAuts arkitektur — från fältsensorer via edge-noder till AI-lager och gränssnitt. Protokoll, dataflöden och hårdvarukrav för varje lager. Driftlagret är delat i två instanser med olika förtroendenivå: <em>Advisor</em> (read-only, Teams) och <em>Engineer</em> (SSH/deploy, ej Teams).</p>
+  <p class="page-desc">Fullständig bild av openAuts arkitektur — från fältsensorer via edge-noder till AI-lager och gränssnitt. Protokoll, dataflöden och hårdvarukrav för varje lager. Driftlagret är delat i två instanser med olika förtroendenivå: <em>Advisor</em> (read-only, Matrix) och <em>Engineer</em> (SSH/deploy, ej Matrix).</p>
   <div class="concept-notice">
     <strong>⚠ Konceptarkitektur.</strong> Topologin beskriver hur openAut är <em>tänkt</em> att byggas
     upp inom ramen för ett konceptprojekt under utveckling. Det är inte en driftsatt referensinstallation
@@ -534,7 +534,7 @@ footer {
 
       <!-- ══ RAD 1 — IT-ZON ══ -->
       <rect x="16"  y="16" width="134" height="72" rx="7" fill="rgba(93,78,255,0.12)"  stroke="rgba(93,78,255,0.5)"   stroke-width="0.75"/>
-      <text x="83"  y="40" font-family="'Space Mono',monospace" font-size="9"   fill="#8b7cf8" text-anchor="middle">Microsoft Teams</text>
+      <text x="83"  y="40" font-family="'Space Mono',monospace" font-size="9"   fill="#8b7cf8" text-anchor="middle">Matrix</text>
       <text x="83"  y="56" font-family="'Space Mono',monospace" font-size="7.5" fill="#7c6fcc" text-anchor="middle">openAut Advisor-bot</text>
 
       <!-- Power BI Report Server (on-prem) -->
@@ -584,7 +584,7 @@ footer {
 
       <!-- Advisor (vänster) -->
       <text x="226" y="210" font-family="'Space Mono',monospace" font-size="9"   fill="#a78bfa">openAut Advisor</text>
-      <text x="226" y="221" font-family="'Space Mono',monospace" font-size="6.5" fill="rgba(167,139,250,0.75)">Read-only · Teams · motor: NemoClaw</text>
+      <text x="226" y="221" font-family="'Space Mono',monospace" font-size="6.5" fill="rgba(167,139,250,0.75)">Read-only · Matrix · motor: NemoClaw</text>
       <text x="226" y="235" font-family="'Space Mono',monospace" font-size="7.5" fill="#9d6df0">▸ FDD — Feldetektering</text>
       <text x="226" y="248" font-family="'Space Mono',monospace" font-size="7.5" fill="#9d6df0">▸ Energioptimering</text>
       <text x="226" y="261" font-family="'Space Mono',monospace" font-size="7.5" fill="#9d6df0">▸ Rotorsaksanalys</text>
@@ -593,7 +593,7 @@ footer {
 
       <!-- Engineer (höger) -->
       <text x="448" y="210" font-family="'Space Mono',monospace" font-size="9"   fill="#a78bfa">openAut Engineer</text>
-      <text x="448" y="221" font-family="'Space Mono',monospace" font-size="6.5" fill="rgba(167,139,250,0.75)">SSH/deploy · ej Teams · motor: OpenCode</text>
+      <text x="448" y="221" font-family="'Space Mono',monospace" font-size="6.5" fill="rgba(167,139,250,0.75)">SSH/deploy · ej Matrix · motor: OpenCode</text>
       <text x="448" y="235" font-family="'Space Mono',monospace" font-size="7.5" fill="#9d6df0">▸ Integration / driftsättning</text>
       <text x="448" y="248" font-family="'Space Mono',monospace" font-size="7.5" fill="#9d6df0">▸ Edge-reglering (IOT2050)</text>
       <text x="448" y="261" font-family="'Space Mono',monospace" font-size="7.5" fill="#9d6df0">▸ Automatisk dokumentation</text>
@@ -722,12 +722,12 @@ footer {
             fill="none" stroke="#f87171" stroke-width="1" opacity="0.9"
             style="filter: drop-shadow(0 0 3px #f87171)"/>
 
-      <!-- Larm: Security → Teams -->
+      <!-- Larm: Security → Matrix -->
       <path id="l-sec-alarm" d="M750,192 L750,127 L88,127 L88,88"
             fill="none" stroke="#f87171" stroke-width="1" opacity="0.9"
             style="filter: drop-shadow(0 0 3px #f87171)"/>
 
-      <!-- Teams → Security (läser alla konversationer) -->
+      <!-- Matrix → Security (läser alla konversationer) -->
       <path id="l-teams-sec" d="M93,88 L93,140 L740,140 L740,192"
             fill="none" stroke="#f87171" stroke-width="1" opacity="0.9"
             style="filter: drop-shadow(0 0 3px #f87171)"/>
@@ -736,7 +736,7 @@ footer {
     </svg>
 
     <div class="oa-leg">
-      <div class="li"><div class="ld" style="background:#8b7cf8"></div>Teams ↔ Advisor (chatt + godkännanden) · återföring streckad</div>
+      <div class="li"><div class="ld" style="background:#8b7cf8"></div>Matrix ↔ Advisor (chatt + godkännanden) · återföring streckad</div>
       <div class="li"><div class="ld" style="background:#f5b942"></div>Power BI Report Server ← Systemdatabas (on-prem, enkelriktad read-only)</div>
       <div class="li"><div class="ld" style="background:#facc15"></div>BMS ↔ Systemdatabas (återföring streckad)</div>
       <div class="li"><div class="ld" style="background:#4ade80"></div>IWMS → Systemdatabas · EMQX → Systemdatabas (Telegraf-ingest)</div>
@@ -744,7 +744,7 @@ footer {
       <div class="li"><div class="ld" style="background:#818cf8"></div>Forge (Forgejo) ↔ Advisor/Engineer · System of Record (återföring streckad)</div>
       <div class="li"><div class="ld" style="background:#22d3ee"></div>Edge → EMQX (MQTT over TLS) · Engineer → Edge (SSH/deploy, streckad)</div>
       <div class="li"><div class="ld" style="background:#f59e0b"></div>Fält → Edge (M-Bus · Modbus RTU/TCP · BACnet · LoRaWAN)</div>
-      <div class="li"><div class="ld" style="background:rgba(239,68,68,0.7);border-radius:2px;"></div>Advisor/Engineer ↔ Security (observation) · Teams → Security (läser konv.) · Larm → Teams</div>
+      <div class="li"><div class="ld" style="background:rgba(239,68,68,0.7);border-radius:2px;"></div>Advisor/Engineer ↔ Security (observation) · Matrix → Security (läser konv.) · Larm → Matrix</div>
       <div class="li"><div class="ld" style="background:rgba(59,130,246,0.5)"></div>IT-zon · VLAN 40/50 · Purdue L3.5–L4</div>
       <div class="li"><div class="ld" style="background:rgba(124,58,237,0.5)"></div>OT Management · VLAN 20 · IEC 62443 SL 2</div>
       <div class="li"><div class="ld" style="background:rgba(6,182,212,0.5)"></div>Edge-lager · VLAN 10 · IEC 62443 SL 2</div>
@@ -843,7 +843,7 @@ footer {
           </div>
           <div class="hw-spec">
             <span class="hw-spec-label">Air-gap</span>
-            <span class="hw-spec-value">Möjligt för dataplanet (Teams undantaget)</span>
+            <span class="hw-spec-value">Möjligt för dataplanet (Matrix undantaget)</span>
           </div>
           <div class="hw-spec">
             <span class="hw-spec-label">Upphandling</span>
